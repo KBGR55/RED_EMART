@@ -1,8 +1,10 @@
 package modelo;
 
+import modelo.enums.TipoIdentificacion;
+
 /**
  *
- * @author KBGR55/Hilary-015-Thaisncp/AdrianArtz/ronaldcuenca19
+ * @author KBGR55/Hilary-Madelein/Thaisncp/AdrianArtz/ronaldcuenca19
  */
 public class Persona {
     
@@ -10,7 +12,8 @@ public class Persona {
     private String nombres;
     private String apellidos;
     private String identificacion;
-
+    private TipoIdentificacion tipo_identificacion;
+ 
     public Integer getId() {
         return id;
     }
@@ -43,11 +46,20 @@ public class Persona {
         this.identificacion = identificacion;
     }
 
-    public Persona(Integer id, String nombres, String apellidos, String identificacion) {
+    public TipoIdentificacion getTipo_identificacion() {
+        return tipo_identificacion;
+    }
+
+    public void setTipo_identificacion(TipoIdentificacion tipo_identificacion) {
+        this.tipo_identificacion = tipo_identificacion;
+    }
+
+    public Persona(Integer id, String nombres, String apellidos, String identificacion, TipoIdentificacion tipo_identificacion) {
         this.id = id;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.identificacion = identificacion;
+        this.tipo_identificacion = tipo_identificacion;
     }
 
     public Persona() {
