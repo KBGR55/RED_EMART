@@ -2,39 +2,11 @@ package modelo;
 
 /**
  *
- * @author K.G
+ * @author KBGR55/Hilary-015-Thaisncp/AdrianArtz/ronaldcuenca19
  */
-public class Cliente {
-    private Integer id;
-    private String nombres;
-    private String apellidos;
+public class Cliente extends Persona{
     private Integer edad;
     private String telefono;
-    private String dni;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNombres() {
-        return nombres;
-    }
-
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
-    }
-
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
 
     public Integer getEdad() {
         return edad;
@@ -52,21 +24,15 @@ public class Cliente {
         this.telefono = telefono;
     }
 
-    public String getDni() {
-        return dni;
+    public Cliente(Integer edad, String telefono, Integer id, String nombres, String apellidos, String identificacion) {
+        super(id, nombres, apellidos, identificacion);
+        this.edad = edad;
+        this.telefono = telefono;
     }
 
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
-
-    @Override
-    public String toString() {
-        return "Cliente{" +"id='" +id+ '\'' +
-                "nombres='" + nombres + '\'' +
-                ", apellidos='" + apellidos + '\'' +
-                ", edad=" + edad +"telefono='" + telefono + '\'' +
-                ", dni='" + dni+ '\'' +
-                '}';
-    }
+    public Cliente(Integer edad, String telefono) {
+        this.edad = edad;
+        this.telefono = telefono;
+    }  
+    
 }
