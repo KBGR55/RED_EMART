@@ -1,25 +1,22 @@
 /**
- *
- * @author  KBGR55/Hilary-Madelein/Thaisncp/AdrianArtz/ronaldcuenca19
+ * @Author: Adrián Hernández  || 2A || POO
+ * TRABAJO FINAL DE ASIGNATURA|| SISTEMA DE GESTION DE INVENTARIO
  */
 package vista;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.sql.SQLException;
 import java.time.LocalDate;
-import javax.swing.JOptionPane;
 
 import javax.swing.JPanel;
 
 public class InterfacePrincipal extends javax.swing.JFrame {
 
-    private int xMouse, yMouse;
-    private Boolean permiso;
+    int xMouse, yMouse;
 
     public InterfacePrincipal() {
         initComponents();
-        //EXAMPLE PERMISO
-        permiso = true;
         setLocationRelativeTo(null);
         LocalDate now = LocalDate.now();
         int year = now.getYear();
@@ -28,21 +25,6 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         String[] meses = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", " ;Septiembre", "Octubre", "Noviembre", "Diciemrbre"};
         fecha.setText("Hoy es " + dia + " de " + meses[month - 1] + " del " + year);
         PanelPrincipal p1 = new PanelPrincipal();
-        mostrarContenido(p1);
-
-    }
-
-    public InterfacePrincipal(Boolean permiso, String nameUser) {
-        initComponents();
-        this.permiso = permiso;
-        setLocationRelativeTo(null);
-        LocalDate now = LocalDate.now();
-        int year = now.getYear();
-        int dia = now.getDayOfMonth();
-        int month = now.getMonthValue();
-        String[] meses = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", " ;Septiembre", "Octubre", "Noviembre", "Diciemrbre"};
-        fecha.setText("Hoy es " + dia + " de " + meses[month - 1] + " del " + year);
-        PanelPrincipal p1 = new PanelPrincipal(nameUser);
         mostrarContenido(p1);
 
     }
@@ -67,7 +49,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         PrincipalBtn = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         PrincipalName = new javax.swing.JLabel();
-        inmueblesBttn = new javax.swing.JPanel();
+        ProductosBtn = new javax.swing.JPanel();
         PrincipalName1 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         FacturacionBtn = new javax.swing.JPanel();
@@ -127,30 +109,30 @@ public class InterfacePrincipal extends javax.swing.JFrame {
 
         Menu.add(PrincipalBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 270, 70));
 
-        inmueblesBttn.setBackground(new java.awt.Color(13, 72, 160));
-        inmueblesBttn.addMouseListener(new java.awt.event.MouseAdapter() {
+        ProductosBtn.setBackground(new java.awt.Color(13, 72, 160));
+        ProductosBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                inmueblesBttnMouseEntered(evt);
+                ProductosBtnMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                inmueblesBttnMouseExited(evt);
+                ProductosBtnMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                inmueblesBttnMousePressed(evt);
+                ProductosBtnMousePressed(evt);
             }
         });
-        inmueblesBttn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        ProductosBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         PrincipalName1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         PrincipalName1.setForeground(new java.awt.Color(255, 255, 255));
-        PrincipalName1.setText(" Lista Inmuebles");
-        inmueblesBttn.add(PrincipalName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 190, 30));
+        PrincipalName1.setText("Productos");
+        ProductosBtn.add(PrincipalName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 100, 30));
 
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/calendar-plus.png"))); // NOI18N
-        inmueblesBttn.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 30, 30));
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/calendar-plus.png"))); // NOI18N
+        ProductosBtn.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 30, 30));
 
-        Menu.add(inmueblesBttn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 270, 70));
+        Menu.add(ProductosBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 270, 70));
 
         FacturacionBtn.setBackground(new java.awt.Color(13, 72, 160));
         FacturacionBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -172,7 +154,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         FacturacionBtn.add(PrincipalName3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 90, 30));
 
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/account-multiple.png"))); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/account-multiple.png"))); // NOI18N
         FacturacionBtn.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 30, 30));
 
         Menu.add(FacturacionBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 270, 70));
@@ -197,7 +179,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         ConfiguracionBtn.add(PrincipalName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 120, 30));
 
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/configimage.png"))); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/configimage.png"))); // NOI18N
         ConfiguracionBtn.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 30, 30));
 
         Menu.add(ConfiguracionBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 270, 70));
@@ -224,11 +206,11 @@ public class InterfacePrincipal extends javax.swing.JFrame {
 
         PrincipalName4.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         PrincipalName4.setForeground(new java.awt.Color(255, 255, 255));
-        PrincipalName4.setText("Vender/ Arrendar");
-        VenderBtn.add(PrincipalName4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 180, 30));
+        PrincipalName4.setText("Vender");
+        VenderBtn.add(PrincipalName4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 100, 30));
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/file-chart.png"))); // NOI18N
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/file-chart.png"))); // NOI18N
         VenderBtn.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 30, 30));
 
         Menu.add(VenderBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 270, 70));
@@ -320,7 +302,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         Background.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, -1));
 
         slogan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        slogan.setText("Autores: KBGR55/Hilary-Madelein/Thaisncp/AdrianArtz/ronaldcuenca19");
+        slogan.setText("Autores: KBGR55/Hilary-015/Thaisncp/AdrianArtz/ronaldcuenca19");
         Background.add(slogan, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 690, 30));
 
         Panelcontenido.setBackground(new java.awt.Color(255, 255, 255));
@@ -399,13 +381,13 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         PrincipalBtn.setBackground(new Color(14, 72, 160));
     }//GEN-LAST:event_PrincipalBtnMouseExited
 
-    private void inmueblesBttnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inmueblesBttnMouseEntered
-        inmueblesBttn.setBackground(new Color(19, 99, 219));
-    }//GEN-LAST:event_inmueblesBttnMouseEntered
+    private void ProductosBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProductosBtnMouseEntered
+        ProductosBtn.setBackground(new Color(19, 99, 219));
+    }//GEN-LAST:event_ProductosBtnMouseEntered
 
-    private void inmueblesBttnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inmueblesBttnMouseExited
-        inmueblesBttn.setBackground(new Color(14, 72, 160));
-    }//GEN-LAST:event_inmueblesBttnMouseExited
+    private void ProductosBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProductosBtnMouseExited
+        ProductosBtn.setBackground(new Color(14, 72, 160));
+    }//GEN-LAST:event_ProductosBtnMouseExited
 
     private void ConfiguracionBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfiguracionBtnMouseEntered
         ConfiguracionBtn.setBackground(new Color(19, 99, 219));
@@ -420,10 +402,9 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         mostrarContenido(p2);
     }//GEN-LAST:event_PrincipalBtnMousePressed
 
-    private void inmueblesBttnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inmueblesBttnMousePressed
-        PanelBienesInmuebles pbi = new PanelBienesInmuebles();
-        mostrarContenido(pbi);
-    }//GEN-LAST:event_inmueblesBttnMousePressed
+    private void ProductosBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProductosBtnMousePressed
+
+    }//GEN-LAST:event_ProductosBtnMousePressed
 
     private void FacturacionBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FacturacionBtnMouseEntered
         FacturacionBtn.setBackground(new Color(19, 99, 219));
@@ -434,16 +415,11 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_FacturacionBtnMouseExited
 
     private void ConfiguracionBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfiguracionBtnMousePressed
-        if (permiso == true) {
-            PanelConfiguracionAdmin pcA = new PanelConfiguracionAdmin();
-            mostrarContenido(pcA);
-        } else {
 
-        }
     }//GEN-LAST:event_ConfiguracionBtnMousePressed
 
     private void FacturacionBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FacturacionBtnMousePressed
-        JOptionPane.showMessageDialog(this, "DISPONIBLE PRONTO");
+
     }//GEN-LAST:event_FacturacionBtnMousePressed
 
     private void VenderBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VenderBtnMouseEntered
@@ -455,7 +431,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_VenderBtnMouseExited
 
     private void VenderBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VenderBtnMousePressed
-        JOptionPane.showMessageDialog(this, "DISPONIBLE PRONTO");
+
     }//GEN-LAST:event_VenderBtnMousePressed
 
     public static void main(String args[]) {
@@ -481,13 +457,13 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel PrincipalName2;
     private javax.swing.JLabel PrincipalName3;
     private javax.swing.JLabel PrincipalName4;
+    private javax.swing.JPanel ProductosBtn;
     private javax.swing.JPanel SalirBtn;
     private javax.swing.JPanel Title;
     private javax.swing.JPanel VenderBtn;
     private javax.swing.JLabel app_name1;
     private javax.swing.JLabel exit;
     private javax.swing.JLabel fecha;
-    private javax.swing.JPanel inmueblesBttn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

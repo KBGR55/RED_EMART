@@ -1,24 +1,21 @@
 /**
- *
- * @author  KBGR55/Hilary-Madelein/Thaisncp/AdrianArtz/ronaldcuenca19
+ * @Author: Adrián Hernández  || 2A || POO
+ * TRABAJO FINAL DE ASIGNATURA|| SISTEMA DE GESTION DE INVENTARIO
  */
 package vista;
 
 public class PanelPrincipal extends javax.swing.JPanel {
-
-    public PanelPrincipal(String nameUser) {
-        initComponents();
-        TitleUserTxT.setText("Bienvenido " + MayuscUser(nameUser));
-    }
-
+    
     public PanelPrincipal() {
+        
         initComponents();
-    }
 
-    String MayuscUser(String n) {
+    }
+    
+    String MayuscUser(String n){
         return Character.toUpperCase(n.charAt(0)) + n.substring(1);
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -47,9 +44,7 @@ public class PanelPrincipal extends javax.swing.JPanel {
         TitleUserTxT.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         TitleUserTxT.setText("Bienvenido Usuario/Admin");
         add(TitleUserTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 450, -1));
-
-        ImageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/logo.png"))); // NOI18N
-        add(ImageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, 300, 170));
+        add(ImageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 290, 170));
 
         Text2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Text2.setText("comunidad.");
@@ -82,7 +77,6 @@ public class PanelPrincipal extends javax.swing.JPanel {
         add(Text7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 700, 30));
 
         Text8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Text8.setForeground(new java.awt.Color(194, 26, 26));
         Text8.setText("MISIÓN");
         Text8.setDoubleBuffered(true);
         add(Text8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 160, 20));

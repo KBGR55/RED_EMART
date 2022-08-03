@@ -15,7 +15,7 @@ public class SQLclass {
         try {
             DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
             System.out.println("connection to data base");
-            Connection connection= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "SYSTEM", "bridgerton28");
+            Connection connection= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "USERPY", "grupo1");
             System.out.println("CONEXION EXITOSA");
             return connection;
             

@@ -41,7 +41,7 @@ public class PersonaDAO extends AdaptadorDao<Persona> {
             return false;
         }
     }
-    
+//    
 //    public static void main(String[] args) {
 //        PersonaDAO personaDao = new PersonaDAO();
 //        ListaEnlazada<Persona> lista = personaDao.listar();       
