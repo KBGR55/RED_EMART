@@ -1,5 +1,6 @@
 package modelo;
 
+import java.util.Date;
 import modelo.enums.EstadoEmpleado;
 import modelo.enums.TipoEmpleado;
 import modelo.enums.TipoIdentificacion;
@@ -30,8 +31,17 @@ public class Empleado extends Persona{
         this.sueldo = sueldo;
     }
 
-    public Empleado(TipoEmpleado tipoEmp, Double sueldo, EstadoEmpleado estado, Integer id, String nombres, String apellidos, String identificacion, TipoIdentificacion tipo_identificacion) {
-        super(id, nombres, apellidos, identificacion, tipo_identificacion);
+    public EstadoEmpleado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoEmpleado estado) {
+        this.estado = estado;
+    }
+
+
+    public Empleado(TipoEmpleado tipoEmp, Double sueldo, EstadoEmpleado estado, Integer id, String nombres, String apellidos, String identificacion, TipoIdentificacion tipo_identificacion, Date fecha_Nacimiento) {
+        super(id, nombres, apellidos, identificacion, tipo_identificacion, fecha_Nacimiento);
         this.tipoEmp = tipoEmp;
         this.sueldo = sueldo;
         this.estado = estado;

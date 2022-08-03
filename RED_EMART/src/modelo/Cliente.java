@@ -1,5 +1,6 @@
 package modelo;
 
+import java.util.Date;
 import modelo.enums.TipoIdentificacion;
 
 /**
@@ -26,8 +27,8 @@ public class Cliente extends Persona{
         this.telefono = telefono;
     }
 
-    public Cliente(Integer edad, String telefono, Integer id, String nombres, String apellidos, String identificacion, TipoIdentificacion tipo_identificacion) {
-        super(id, nombres, apellidos, identificacion, tipo_identificacion);
+    public Cliente(Integer edad, String telefono, Integer id, String nombres, String apellidos, String identificacion, TipoIdentificacion tipo_identificacion, Date fecha_Nacimiento) {
+        super(id, nombres, apellidos, identificacion, tipo_identificacion, fecha_Nacimiento);
         this.edad = edad;
         this.telefono = telefono;
     }

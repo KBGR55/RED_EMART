@@ -1,5 +1,6 @@
 package modelo;
 
+import java.util.Date;
 import modelo.enums.TipoIdentificacion;
 
 /**
@@ -13,6 +14,7 @@ public class Persona {
     private String apellidos;
     private String identificacion;
     private TipoIdentificacion tipo_identificacion;
+    private Date fecha_Nacimiento;
  
     public Integer getId() {
         return id;
@@ -54,14 +56,26 @@ public class Persona {
         this.tipo_identificacion = tipo_identificacion;
     }
 
-    public Persona(Integer id, String nombres, String apellidos, String identificacion, TipoIdentificacion tipo_identificacion) {
+    public Date getFecha_Nacimiento() {
+        return fecha_Nacimiento;
+    }
+
+    public void setFecha_Nacimiento(Date fecha_Nacimiento) {
+        this.fecha_Nacimiento = fecha_Nacimiento;
+    }
+
+    public Persona(Integer id, String nombres, String apellidos, String identificacion, TipoIdentificacion tipo_identificacion, Date fecha_Nacimiento) {
         this.id = id;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.identificacion = identificacion;
         this.tipo_identificacion = tipo_identificacion;
+        this.fecha_Nacimiento = fecha_Nacimiento;
     }
 
     public Persona() {
     } 
+
+    public void setFecha_Nacimiento(String string) {
+    }
 }
