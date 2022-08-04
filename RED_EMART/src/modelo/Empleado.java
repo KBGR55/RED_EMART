@@ -10,11 +10,19 @@ import modelo.enums.TipoIdentificacion;
  * @author KBGR55/Hilary-Madelein/Thaisncp/AdrianArtz/ronaldcuenca19
  */
 public class Empleado extends Persona{
-       
+    private Credenciales credenciales;
     private TipoEmpleado tipoEmp;
     private Double sueldo;
     private EstadoEmpleado estado;
 
+    public Credenciales getCredenciales() {
+        return credenciales;
+    }
+
+    public void setCredenciales(Credenciales credenciales) {
+        this.credenciales = credenciales;
+    }
+    
     public TipoEmpleado getTipoEmp() {
         return tipoEmp;
     }
@@ -39,9 +47,9 @@ public class Empleado extends Persona{
         this.estado = estado;
     }
 
-
-    public Empleado(TipoEmpleado tipoEmp, Double sueldo, EstadoEmpleado estado, Integer id, String nombres, String apellidos, String identificacion, TipoIdentificacion tipo_identificacion, Date fecha_Nacimiento) {
+    public Empleado(Credenciales credenciales, TipoEmpleado tipoEmp, Double sueldo, EstadoEmpleado estado, Integer id, String nombres, String apellidos, String identificacion, TipoIdentificacion tipo_identificacion, Date fecha_Nacimiento) {
         super(id, nombres, apellidos, identificacion, tipo_identificacion, fecha_Nacimiento);
+        this.credenciales = credenciales;
         this.tipoEmp = tipoEmp;
         this.sueldo = sueldo;
         this.estado = estado;
