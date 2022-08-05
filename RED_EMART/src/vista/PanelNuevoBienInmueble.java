@@ -50,6 +50,11 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
         jSeparator17 = new javax.swing.JSeparator();
         estadoComboBox = new javax.swing.JComboBox<>();
         servicioComboBox = new javax.swing.JComboBox<>();
+        Text8 = new javax.swing.JLabel();
+        direccionTxT1 = new javax.swing.JTextField();
+        jSeparator9 = new javax.swing.JSeparator();
+        jSeparator10 = new javax.swing.JSeparator();
+        jSeparator11 = new javax.swing.JSeparator();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(750, 430));
@@ -90,7 +95,7 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
         jLabel1.setText("Subir");
         BotonGuardar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, 30));
 
-        add(BotonGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 340, 200, 50));
+        add(BotonGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 200, 50));
 
         Text3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Text3.setText("ID");
@@ -112,11 +117,11 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
 
         Text6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Text6.setText("Estado del Bien Inmueble");
-        add(Text6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
+        add(Text6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, -1, -1));
 
         Text7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Text7.setText("Dirección");
-        add(Text7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 70, -1));
+        Text7.setText("Descripcion");
+        add(Text7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 90, -1));
 
         direccionTxT.setForeground(new java.awt.Color(102, 102, 102));
         direccionTxT.setText("Ingrese la dirección");
@@ -148,17 +153,48 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
                 precioTxTMousePressed(evt);
             }
         });
-        add(precioTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 120, 180, 30));
+        add(precioTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 120, 260, 30));
 
         jSeparator17.setForeground(new java.awt.Color(0, 153, 255));
         jSeparator17.setPreferredSize(new java.awt.Dimension(200, 10));
         add(jSeparator17, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, 260, 10));
 
         estadoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponible", "Vendido" }));
-        add(estadoComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 260, 30));
+        add(estadoComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, 260, 30));
 
         servicioComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Arriendo", "Venta" }));
-        add(servicioComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, 260, 30));
+        add(servicioComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, 260, 30));
+
+        Text8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Text8.setText("Dirección");
+        add(Text8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 70, -1));
+
+        direccionTxT1.setForeground(new java.awt.Color(102, 102, 102));
+        direccionTxT1.setText("Ingrese la descripcion");
+        direccionTxT1.setBorder(null);
+        direccionTxT1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                direccionTxT1MousePressed(evt);
+            }
+        });
+        direccionTxT1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                direccionTxT1ActionPerformed(evt);
+            }
+        });
+        add(direccionTxT1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 260, 30));
+
+        jSeparator9.setForeground(new java.awt.Color(0, 153, 255));
+        jSeparator9.setPreferredSize(new java.awt.Dimension(200, 10));
+        add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, 260, 10));
+
+        jSeparator10.setForeground(new java.awt.Color(0, 153, 255));
+        jSeparator10.setPreferredSize(new java.awt.Dimension(200, 10));
+        add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 280, 260, 20));
+
+        jSeparator11.setForeground(new java.awt.Color(0, 153, 255));
+        jSeparator11.setPreferredSize(new java.awt.Dimension(200, 10));
+        add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 260, 10));
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonGuardarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonGuardarMouseEntered
@@ -186,6 +222,14 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
 
     }//GEN-LAST:event_precioTxTMousePressed
 
+    private void direccionTxT1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_direccionTxT1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_direccionTxT1MousePressed
+
+    private void direccionTxT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_direccionTxT1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_direccionTxT1ActionPerformed
+
     void setColor(JPanel panel){
         panel.setBackground(new Color(21,101,192));
     }
@@ -199,16 +243,21 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
     private javax.swing.JLabel Text3;
     private javax.swing.JLabel Text6;
     private javax.swing.JLabel Text7;
+    private javax.swing.JLabel Text8;
     private javax.swing.JLabel Title;
     private javax.swing.JPanel body;
     private javax.swing.JTextField direccionTxT;
+    private javax.swing.JTextField direccionTxT1;
     private javax.swing.JComboBox<String> estadoComboBox;
     private javax.swing.JTextField idTxT;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator17;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTextField precioTxT;
     private javax.swing.JComboBox<String> servicioComboBox;
     // End of variables declaration//GEN-END:variables

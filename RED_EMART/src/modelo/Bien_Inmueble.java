@@ -1,6 +1,5 @@
 package modelo;
 
-import controlador.tda.lista.ListaEnlazada;
 import modelo.enums.EstadoBienInmueble;
 import modelo.enums.TipoServicio;
 
@@ -11,20 +10,11 @@ import modelo.enums.TipoServicio;
 public class Bien_Inmueble {
     private String descripcion;
     private Integer id;
-    private Integer id_cliente;
     private EstadoBienInmueble estado;
     private Double precio;
     private String direccion;
     private TipoServicio servicio;
 
-    public Integer getId_cliente() {
-        return id_cliente;
-    }
-
-    public void setId_cliente(Integer id_cliente) {
-        this.id_cliente = id_cliente;
-    }
-    
     public String getDescripcion() {
         return descripcion;
     }
@@ -76,13 +66,13 @@ public class Bien_Inmueble {
     public Bien_Inmueble() {
     }
 
-    public Bien_Inmueble(String descripcion, Integer id, Integer id_cliente, EstadoBienInmueble estado, Double precio, String direccion, TipoServicio servicio) {
+    public Bien_Inmueble(String descripcion, Integer id, EstadoBienInmueble estado, Double precio, String direccion, TipoServicio servicio) {
         this.descripcion = descripcion;
         this.id = id;
-        this.id_cliente = id_cliente;
         this.estado = estado;
         this.precio = precio;
         this.direccion = direccion;
         this.servicio = servicio;
     }
+    
 }

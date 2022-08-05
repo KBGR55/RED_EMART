@@ -47,8 +47,6 @@ public class PanelBienesInmuebles extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         BotonEditar = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        BotonBorrar = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaProductoContenido = new javax.swing.JTable();
 
@@ -75,6 +73,11 @@ public class PanelBienesInmuebles extends javax.swing.JPanel {
         IdProductoObtenidoTxT.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 IdProductoObtenidoTxTMousePressed(evt);
+            }
+        });
+        IdProductoObtenidoTxT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IdProductoObtenidoTxTActionPerformed(evt);
             }
         });
         add(IdProductoObtenidoTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 620, 30));
@@ -123,7 +126,7 @@ public class PanelBienesInmuebles extends javax.swing.JPanel {
         jLabel3.setText("Nuevo");
         BotonNuevo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 60, -1));
 
-        add(BotonNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, 180, 30));
+        add(BotonNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 400, 180, -1));
 
         BotonEditar.setBackground(new java.awt.Color(18, 90, 173));
         BotonEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -146,30 +149,7 @@ public class PanelBienesInmuebles extends javax.swing.JPanel {
         jLabel2.setText("Editar");
         BotonEditar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 60, -1));
 
-        add(BotonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 400, 170, 30));
-
-        BotonBorrar.setBackground(new java.awt.Color(18, 90, 173));
-        BotonBorrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        BotonBorrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                BotonBorrarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                BotonBorrarMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                BotonBorrarMousePressed(evt);
-            }
-        });
-        BotonBorrar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Borrar");
-        BotonBorrar.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 60, -1));
-
-        add(BotonBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, 160, 30));
+        add(BotonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 400, 170, -1));
 
         TablaProductoContenido.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         TablaProductoContenido.setModel(new javax.swing.table.DefaultTableModel(
@@ -253,23 +233,12 @@ public class PanelBienesInmuebles extends javax.swing.JPanel {
         resetColor(BotonEditar);
     }//GEN-LAST:event_BotonEditarMouseExited
 
-    private void BotonBorrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonBorrarMouseEntered
-        setColor(BotonBorrar);
-    }//GEN-LAST:event_BotonBorrarMouseEntered
-
-    private void BotonBorrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonBorrarMouseExited
-        resetColor(BotonBorrar);
-    }//GEN-LAST:event_BotonBorrarMouseExited
-
     private void TablaProductoContenidoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaProductoContenidoMousePressed
         if(IdProductoObtenidoTxT.getText().equals("") || IdProductoObtenidoTxT.getText() == null || IdProductoObtenidoTxT.getText().equals(" "))
             IdProductoObtenidoTxT.setText("Ingrese el ID del Producto a Buscar");
     }//GEN-LAST:event_TablaProductoContenidoMousePressed
-    //BORRAR
-    private void BotonBorrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonBorrarMousePressed
-    
-    }//GEN-LAST:event_BotonBorrarMousePressed
-    //ABRIR SECCIÓN EDITAR
+
+   //ABRIR SECCIÓN EDITAR
     private void BotonEditarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonEditarMousePressed
         PanelNuevoBienInmueble pnbi = new PanelNuevoBienInmueble(Boolean.TRUE);
         mostrarContenido(pnbi);
@@ -279,8 +248,11 @@ public class PanelBienesInmuebles extends javax.swing.JPanel {
 
     }//GEN-LAST:event_BotonBuscarMousePressed
 
+    private void IdProductoObtenidoTxTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdProductoObtenidoTxTActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IdProductoObtenidoTxTActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel BotonBorrar;
     private javax.swing.JPanel BotonBuscar;
     private javax.swing.JPanel BotonEditar;
     private javax.swing.JPanel BotonNuevo;
@@ -291,7 +263,6 @@ public class PanelBienesInmuebles extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables

@@ -49,6 +49,7 @@ public class PanelEmpleados extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaUsuarioContenido = new javax.swing.JTable();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(750, 430));
@@ -65,17 +66,22 @@ public class PanelEmpleados extends javax.swing.JPanel {
 
         jSeparator2.setForeground(new java.awt.Color(0, 153, 255));
         jSeparator2.setPreferredSize(new java.awt.Dimension(250, 10));
-        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 620, 10));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 360, 10));
 
         UsuarioObtenidoTxT.setForeground(new java.awt.Color(102, 102, 102));
-        UsuarioObtenidoTxT.setText("Ingrese el Usuario a buscar");
+        UsuarioObtenidoTxT.setText("Ingrese el identificacion a buscar");
         UsuarioObtenidoTxT.setBorder(null);
         UsuarioObtenidoTxT.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 UsuarioObtenidoTxTMousePressed(evt);
             }
         });
-        add(UsuarioObtenidoTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 620, 30));
+        UsuarioObtenidoTxT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UsuarioObtenidoTxTActionPerformed(evt);
+            }
+        });
+        add(UsuarioObtenidoTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 360, 30));
 
         BotonBuscar.setBackground(new java.awt.Color(18, 90, 173));
         BotonBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -194,7 +200,10 @@ public class PanelEmpleados extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(TablaUsuarioContenido);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 750, 300));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 740, 300));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONE", "CEDULA", "PASAPORTE" }));
+        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, 220, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void UsuarioObtenidoTxTMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UsuarioObtenidoTxTMousePressed
@@ -246,6 +255,10 @@ public class PanelEmpleados extends javax.swing.JPanel {
 
     }//GEN-LAST:event_BotonBuscarMousePressed
 
+    private void UsuarioObtenidoTxTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuarioObtenidoTxTActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UsuarioObtenidoTxTActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BotonBuscar;
     private javax.swing.JPanel BotonEditar;
@@ -254,6 +267,7 @@ public class PanelEmpleados extends javax.swing.JPanel {
     private javax.swing.JLabel Title;
     private javax.swing.JTextField UsuarioObtenidoTxT;
     private javax.swing.JPanel body;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

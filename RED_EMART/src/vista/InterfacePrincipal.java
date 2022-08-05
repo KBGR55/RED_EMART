@@ -70,9 +70,6 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         inmueblesBttn = new javax.swing.JPanel();
         PrincipalName1 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        FacturacionBtn = new javax.swing.JPanel();
-        PrincipalName3 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         ConfiguracionBtn = new javax.swing.JPanel();
         PrincipalName2 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -152,31 +149,6 @@ public class InterfacePrincipal extends javax.swing.JFrame {
 
         Menu.add(inmueblesBttn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 270, 70));
 
-        FacturacionBtn.setBackground(new java.awt.Color(13, 72, 160));
-        FacturacionBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                FacturacionBtnMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                FacturacionBtnMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                FacturacionBtnMousePressed(evt);
-            }
-        });
-        FacturacionBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        PrincipalName3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        PrincipalName3.setForeground(new java.awt.Color(255, 255, 255));
-        PrincipalName3.setText("Facturación");
-        FacturacionBtn.add(PrincipalName3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 90, 30));
-
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/account-multiple.png"))); // NOI18N
-        FacturacionBtn.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 30, 30));
-
-        Menu.add(FacturacionBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 270, 70));
-
         ConfiguracionBtn.setBackground(new java.awt.Color(13, 72, 160));
         ConfiguracionBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -200,7 +172,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/configimage.png"))); // NOI18N
         ConfiguracionBtn.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 30, 30));
 
-        Menu.add(ConfiguracionBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 270, 70));
+        Menu.add(ConfiguracionBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 270, 70));
 
         app_name1.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
         app_name1.setForeground(new java.awt.Color(255, 255, 255));
@@ -425,26 +397,14 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         mostrarContenido(pbi);
     }//GEN-LAST:event_inmueblesBttnMousePressed
 
-    private void FacturacionBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FacturacionBtnMouseEntered
-        FacturacionBtn.setBackground(new Color(19, 99, 219));
-    }//GEN-LAST:event_FacturacionBtnMouseEntered
-
-    private void FacturacionBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FacturacionBtnMouseExited
-        FacturacionBtn.setBackground(new Color(14, 72, 160));
-    }//GEN-LAST:event_FacturacionBtnMouseExited
-
     private void ConfiguracionBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfiguracionBtnMousePressed
         if (permiso == true) {
-            PanelConfiguracionAdmin pcA = new PanelConfiguracionAdmin();
+            PanelConfiguracionCeo pcA = new PanelConfiguracionCeo();
             mostrarContenido(pcA);
         } else {
 
         }
     }//GEN-LAST:event_ConfiguracionBtnMousePressed
-
-    private void FacturacionBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FacturacionBtnMousePressed
-        JOptionPane.showMessageDialog(this, "DISPONIBLE PRONTO");
-    }//GEN-LAST:event_FacturacionBtnMousePressed
 
     private void VenderBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VenderBtnMouseEntered
         VenderBtn.setBackground(new Color(19, 99, 219));
@@ -471,7 +431,6 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Background;
     private javax.swing.JPanel ConfiguracionBtn;
-    private javax.swing.JPanel FacturacionBtn;
     private javax.swing.JPanel Header;
     private javax.swing.JPanel Menu;
     public static javax.swing.JPanel Panelcontenido;
@@ -479,7 +438,6 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel PrincipalName;
     private javax.swing.JLabel PrincipalName1;
     private javax.swing.JLabel PrincipalName2;
-    private javax.swing.JLabel PrincipalName3;
     private javax.swing.JLabel PrincipalName4;
     private javax.swing.JPanel SalirBtn;
     private javax.swing.JPanel Title;
@@ -490,7 +448,6 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel inmueblesBttn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;

@@ -7,8 +7,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JPanel;
 import static vista.InterfacePrincipal.Panelcontenido;
-public class PanelConfiguracionEmpleado extends javax.swing.JPanel {
-    public PanelConfiguracionEmpleado() { 
+public class PanelConfiguracionCeo extends javax.swing.JPanel {
+    public PanelConfiguracionCeo() { 
         initComponents();
     }
     @SuppressWarnings("unchecked")
@@ -46,6 +46,7 @@ public class PanelConfiguracionEmpleado extends javax.swing.JPanel {
         jPanel1.add(body1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         EditDatosLabelTxT.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        EditDatosLabelTxT.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         EditDatosLabelTxT.setText("EDITAR DATOS INFORMATIVOS DEL ADMIN");
         EditDatosLabelTxT.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -58,7 +59,7 @@ public class PanelConfiguracionEmpleado extends javax.swing.JPanel {
                 EditDatosLabelTxTMousePressed(evt);
             }
         });
-        jPanel1.add(EditDatosLabelTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 330, 20));
+        jPanel1.add(EditDatosLabelTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 400, 20));
 
         ListaUsuariosTxT.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         ListaUsuariosTxT.setText("VER LISTA DE EMPLEADOS CON ACESSO AL PROGRAMA");
@@ -76,7 +77,8 @@ public class PanelConfiguracionEmpleado extends javax.swing.JPanel {
         jPanel1.add(ListaUsuariosTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 430, 20));
 
         CrearNuevoAdminTxT.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
-        CrearNuevoAdminTxT.setText("CREAR UN NUEVO ADMIN");
+        CrearNuevoAdminTxT.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        CrearNuevoAdminTxT.setText("MODIFICAR DATOS");
         CrearNuevoAdminTxT.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 CrearNuevoAdminTxTMouseEntered(evt);
@@ -88,7 +90,7 @@ public class PanelConfiguracionEmpleado extends javax.swing.JPanel {
                 CrearNuevoAdminTxTMousePressed(evt);
             }
         });
-        jPanel1.add(CrearNuevoAdminTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 260, 20));
+        jPanel1.add(CrearNuevoAdminTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 400, 20));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 410));
     }// </editor-fold>//GEN-END:initComponents

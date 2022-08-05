@@ -45,7 +45,7 @@ public class PanelPrincipal extends javax.swing.JPanel {
 
         TitleUserTxT.setBackground(new java.awt.Color(0, 0, 0));
         TitleUserTxT.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        TitleUserTxT.setText("Bienvenido Usuario/Admin");
+        TitleUserTxT.setText("Bienvenido Usuario/Ceo");
         add(TitleUserTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 450, -1));
 
         ImageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/logo.png"))); // NOI18N
