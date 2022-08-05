@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controlador.Adaptador.DAO_Modelo;
 
 import controlador.Adaptador.AdaptadorDao;
@@ -12,7 +8,7 @@ import modelo.Venta;
 
 /**
  *
- * @author ASUS
+ * @author  KBGR55/Hilary-Madelein/Thaisncp/AdrianArtz/ronaldcuenca19
  */
 public class VentaDAO extends AdaptadorDao<Venta>{
     private Venta venta;

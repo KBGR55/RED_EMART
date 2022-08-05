@@ -3,15 +3,15 @@
  * @author  KBGR55/Hilary-Madelein/Thaisncp/AdrianArtz/ronaldcuenca19
  */
 package vista;
+
 import java.awt.Color;
 import javax.swing.JPanel;
-
-
 
 public class PanelNuevoBienInmueble extends javax.swing.JPanel {
 
     private boolean edition;
     String origId;
+
     public PanelNuevoBienInmueble() {
         initComponents();
         Text6.setVisible(false);
@@ -19,8 +19,8 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
         edition = false;
 
     }
-    
-    public PanelNuevoBienInmueble(Boolean edition){
+
+    public PanelNuevoBienInmueble(Boolean edition) {
         initComponents();
         this.edition = edition;
         Title.setText("Editar Bien Inmueble");
@@ -28,6 +28,15 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
         estadoComboBox.setVisible(true);
         jLabel1.setText("Guardar");
     }
+
+    private void setColor(JPanel p) {
+        p.setBackground(new Color(153, 153, 153));
+    }
+
+    private void resetColor(JPanel p) {
+        p.setBackground(new Color(6, 24, 60));
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -74,7 +83,7 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
         jSeparator3.setPreferredSize(new java.awt.Dimension(200, 10));
         add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 10, 200));
 
-        BotonGuardar.setBackground(new java.awt.Color(18, 90, 173));
+        BotonGuardar.setBackground(new java.awt.Color(5, 23, 58));
         BotonGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         BotonGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -230,12 +239,6 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_direccionTxT1ActionPerformed
 
-    void setColor(JPanel panel){
-        panel.setBackground(new Color(21,101,192));
-    }
-    void resetColor(JPanel panel){
-        panel.setBackground(new Color(18,90,173));
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BotonGuardar;
     private javax.swing.JLabel Text15;

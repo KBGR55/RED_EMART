@@ -10,7 +10,6 @@ import modelo.enums.TipoIdentificacion;
 public class Cliente extends Persona{
     private String telefono;
     
-    
     public String getTelefono() {
         return telefono;
     }

@@ -55,7 +55,7 @@ public class Login extends javax.swing.JFrame {
 
         IngresarTXT.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
         IngresarTXT.setText("INGRESAR SISTEMA");
-        IngresarPanel.add(IngresarTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 67, 230, -1));
+        IngresarPanel.add(IngresarTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 67, 250, -1));
 
         IngresarUsuarioTxT.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         IngresarUsuarioTxT.setText("USUARIO");
@@ -162,7 +162,7 @@ public class Login extends javax.swing.JFrame {
         );
         CerrarBtnLayout.setVerticalGroup(
             CerrarBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(CerrarTxT, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+            .addComponent(CerrarTxT, javax.swing.GroupLayout.PREFERRED_SIZE, 30, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout HeaderLayout = new javax.swing.GroupLayout(Header);

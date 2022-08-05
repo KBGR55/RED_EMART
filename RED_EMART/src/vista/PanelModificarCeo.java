@@ -19,14 +19,13 @@ public class PanelModificarCeo extends javax.swing.JPanel {
         jLabel1.setText("Editar");
     }
     
-    void setColor(JPanel panel){
-        panel.setBackground(new Color(21,101,192));
+    private void setColor(JPanel p) {
+        p.setBackground(new Color(153,153,153));
     }
-    
-    void resetColor(JPanel panel){
-        panel.setBackground(new Color(18,90,173));
+
+    private void resetColor(JPanel p) {
+        p.setBackground(new Color(6,24,60));
     }
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -83,7 +82,7 @@ public class PanelModificarCeo extends javax.swing.JPanel {
         jSeparator3.setPreferredSize(new java.awt.Dimension(200, 10));
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 10, 200));
 
-        BotonGuardar.setBackground(new java.awt.Color(18, 90, 173));
+        BotonGuardar.setBackground(new java.awt.Color(4, 22, 58));
         BotonGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         BotonGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {

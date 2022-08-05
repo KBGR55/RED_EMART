@@ -8,31 +8,32 @@ import java.awt.Color;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import static vista.InterfacePrincipal.Panelcontenido;
+
 public class PanelBienesInmuebles extends javax.swing.JPanel {
-    
+
     public PanelBienesInmuebles() {
         initComponents();
-        
+
     }
-    
-    void setColor(JPanel panel){
-        panel.setBackground(new Color(21,101,192));
-    }
-    
-    void resetColor(JPanel panel){
-        panel.setBackground(new Color(18,90,173));
-    }
-    
-    public void mostrarContenido(JPanel p){
+
+    public void mostrarContenido(JPanel p) {
         p.setSize(750, 430);
-        p.setLocation(0,0);
-        
+        p.setLocation(0, 0);
+
         Panelcontenido.removeAll();
         Panelcontenido.add(p, BorderLayout.CENTER);
         Panelcontenido.revalidate();
         Panelcontenido.repaint();
     }
-    
+
+    private void setColor(JPanel p) {
+        p.setBackground(new Color(153, 153, 153));
+    }
+
+    private void resetColor(JPanel p) {
+        p.setBackground(new Color(6, 24, 60));
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -63,7 +64,7 @@ public class PanelBienesInmuebles extends javax.swing.JPanel {
         Title.setText("Bienes Inmuebles");
         add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 240, -1));
 
-        jSeparator2.setForeground(new java.awt.Color(0, 153, 255));
+        jSeparator2.setForeground(new java.awt.Color(153, 153, 153));
         jSeparator2.setPreferredSize(new java.awt.Dimension(250, 10));
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 620, 10));
 
@@ -82,7 +83,7 @@ public class PanelBienesInmuebles extends javax.swing.JPanel {
         });
         add(IdProductoObtenidoTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 620, 30));
 
-        BotonBuscar.setBackground(new java.awt.Color(18, 90, 173));
+        BotonBuscar.setBackground(new java.awt.Color(5, 23, 58));
         BotonBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         BotonBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -105,7 +106,7 @@ public class PanelBienesInmuebles extends javax.swing.JPanel {
 
         add(BotonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 40, 80, 30));
 
-        BotonNuevo.setBackground(new java.awt.Color(18, 90, 173));
+        BotonNuevo.setBackground(new java.awt.Color(5, 23, 58));
         BotonNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         BotonNuevo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -128,7 +129,7 @@ public class PanelBienesInmuebles extends javax.swing.JPanel {
 
         add(BotonNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 400, 180, -1));
 
-        BotonEditar.setBackground(new java.awt.Color(18, 90, 173));
+        BotonEditar.setBackground(new java.awt.Color(5, 23, 58));
         BotonEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         BotonEditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -199,8 +200,8 @@ public class PanelBienesInmuebles extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void IdProductoObtenidoTxTMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IdProductoObtenidoTxTMousePressed
-       if(IdProductoObtenidoTxT.getText().equals("Ingrese el ID del Producto a Buscar"))
-        IdProductoObtenidoTxT.setText("");
+        if (IdProductoObtenidoTxT.getText().equals("Ingrese el ID del Producto a Buscar"))
+            IdProductoObtenidoTxT.setText("");
     }//GEN-LAST:event_IdProductoObtenidoTxTMousePressed
 
     private void BotonBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonBuscarMouseEntered
@@ -220,7 +221,7 @@ public class PanelBienesInmuebles extends javax.swing.JPanel {
     }//GEN-LAST:event_BotonNuevoMouseExited
     //ABRIR SECCIÓN
     private void BotonNuevoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonNuevoMousePressed
-        
+
         PanelNuevoBienInmueble pnbi = new PanelNuevoBienInmueble();
         mostrarContenido(pnbi);
     }//GEN-LAST:event_BotonNuevoMousePressed
@@ -234,11 +235,11 @@ public class PanelBienesInmuebles extends javax.swing.JPanel {
     }//GEN-LAST:event_BotonEditarMouseExited
 
     private void TablaProductoContenidoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaProductoContenidoMousePressed
-        if(IdProductoObtenidoTxT.getText().equals("") || IdProductoObtenidoTxT.getText() == null || IdProductoObtenidoTxT.getText().equals(" "))
+        if (IdProductoObtenidoTxT.getText().equals("") || IdProductoObtenidoTxT.getText() == null || IdProductoObtenidoTxT.getText().equals(" "))
             IdProductoObtenidoTxT.setText("Ingrese el ID del Producto a Buscar");
     }//GEN-LAST:event_TablaProductoContenidoMousePressed
 
-   //ABRIR SECCIÓN EDITAR
+    //ABRIR SECCIÓN EDITAR
     private void BotonEditarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonEditarMousePressed
         PanelNuevoBienInmueble pnbi = new PanelNuevoBienInmueble(Boolean.TRUE);
         mostrarContenido(pnbi);

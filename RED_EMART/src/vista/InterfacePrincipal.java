@@ -93,13 +93,13 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         Background.setBackground(new java.awt.Color(255, 255, 255));
         Background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Menu.setBackground(new java.awt.Color(13, 71, 161));
+        Menu.setBackground(new java.awt.Color(6, 24, 60));
         Menu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jSeparator1.setPreferredSize(new java.awt.Dimension(50, 5));
         Menu.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 190, 20));
 
-        PrincipalBtn.setBackground(new java.awt.Color(13, 72, 160));
+        PrincipalBtn.setBackground(new java.awt.Color(5, 23, 58));
         PrincipalBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 PrincipalBtnMouseEntered(evt);
@@ -124,7 +124,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
 
         Menu.add(PrincipalBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 270, 70));
 
-        inmueblesBttn.setBackground(new java.awt.Color(13, 72, 160));
+        inmueblesBttn.setBackground(new java.awt.Color(5, 23, 58));
         inmueblesBttn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 inmueblesBttnMouseEntered(evt);
@@ -149,7 +149,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
 
         Menu.add(inmueblesBttn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 270, 70));
 
-        ConfiguracionBtn.setBackground(new java.awt.Color(13, 72, 160));
+        ConfiguracionBtn.setBackground(new java.awt.Color(5, 23, 58));
         ConfiguracionBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 ConfiguracionBtnMouseEntered(evt);
@@ -180,7 +180,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         app_name1.setText("RED - EMART");
         Menu.add(app_name1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 180, -1));
 
-        VenderBtn.setBackground(new java.awt.Color(13, 72, 160));
+        VenderBtn.setBackground(new java.awt.Color(5, 23, 58));
         VenderBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 VenderBtnMouseEntered(evt);
@@ -207,7 +207,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
 
         Background.add(Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, 640));
 
-        Header.setBackground(new java.awt.Color(25, 118, 210));
+        Header.setBackground(new java.awt.Color(153, 153, 153));
         Header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -364,27 +364,27 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_exitMouseEntered
 
     private void PrincipalBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PrincipalBtnMouseEntered
-        PrincipalBtn.setBackground(new Color(19, 99, 219));
+        setColor(PrincipalBtn);
     }//GEN-LAST:event_PrincipalBtnMouseEntered
 
     private void PrincipalBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PrincipalBtnMouseExited
-        PrincipalBtn.setBackground(new Color(14, 72, 160));
+        resetColor(PrincipalBtn);
     }//GEN-LAST:event_PrincipalBtnMouseExited
 
     private void inmueblesBttnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inmueblesBttnMouseEntered
-        inmueblesBttn.setBackground(new Color(19, 99, 219));
+        setColor(inmueblesBttn);
     }//GEN-LAST:event_inmueblesBttnMouseEntered
 
     private void inmueblesBttnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inmueblesBttnMouseExited
-        inmueblesBttn.setBackground(new Color(14, 72, 160));
+        resetColor(inmueblesBttn);
     }//GEN-LAST:event_inmueblesBttnMouseExited
 
     private void ConfiguracionBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfiguracionBtnMouseEntered
-        ConfiguracionBtn.setBackground(new Color(19, 99, 219));
+        setColor(ConfiguracionBtn);
     }//GEN-LAST:event_ConfiguracionBtnMouseEntered
 
     private void ConfiguracionBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfiguracionBtnMouseExited
-        ConfiguracionBtn.setBackground(new Color(14, 72, 160));
+        resetColor(ConfiguracionBtn);
     }//GEN-LAST:event_ConfiguracionBtnMouseExited
 
     private void PrincipalBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PrincipalBtnMousePressed
@@ -407,16 +407,23 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_ConfiguracionBtnMousePressed
 
     private void VenderBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VenderBtnMouseEntered
-        VenderBtn.setBackground(new Color(19, 99, 219));
+        setColor(VenderBtn);
     }//GEN-LAST:event_VenderBtnMouseEntered
 
     private void VenderBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VenderBtnMouseExited
-        VenderBtn.setBackground(new Color(14, 72, 160));
+        resetColor(VenderBtn);
     }//GEN-LAST:event_VenderBtnMouseExited
 
     private void VenderBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VenderBtnMousePressed
         JOptionPane.showMessageDialog(this, "DISPONIBLE PRONTO");
     }//GEN-LAST:event_VenderBtnMousePressed
+    private void setColor(JPanel p) {
+        p.setBackground(new Color(153,153,153));
+    }
+
+    private void resetColor(JPanel p) {
+        p.setBackground(new Color(6,24,60));
+    }
 
     public static void main(String args[]) {
 

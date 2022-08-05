@@ -20,11 +20,12 @@ public class PanelNuevoEmpleado extends javax.swing.JPanel {
         jLabel1.setText(" Editar ");
     }
     
-    void setColor(JPanel panel){
-        panel.setBackground(new Color(21,101,192));
+    private void setColor(JPanel p) {
+        p.setBackground(new Color(153,153,153));
     }
-    void resetColor(JPanel panel){
-        panel.setBackground(new Color(18,90,173));
+
+    private void resetColor(JPanel p) {
+        p.setBackground(new Color(6,24,60));
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

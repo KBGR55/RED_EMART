@@ -15,13 +15,12 @@ public class PanelEmpleados extends javax.swing.JPanel {
         initComponents();
         
     }
-    
-    void setColor(JPanel panel){
-        panel.setBackground(new Color(21,101,192));
+    private void setColor(JPanel p) {
+        p.setBackground(new Color(153,153,153));
     }
-    
-    void resetColor(JPanel panel){
-        panel.setBackground(new Color(18,90,173));
+
+    private void resetColor(JPanel p) {
+        p.setBackground(new Color(6,24,60));
     }
 
     public void mostrarContenido(JPanel p){
@@ -64,7 +63,7 @@ public class PanelEmpleados extends javax.swing.JPanel {
         Title.setText("Lista de Empleados");
         add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jSeparator2.setForeground(new java.awt.Color(0, 153, 255));
+        jSeparator2.setForeground(new java.awt.Color(153, 153, 153));
         jSeparator2.setPreferredSize(new java.awt.Dimension(250, 10));
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 360, 10));
 
@@ -83,7 +82,7 @@ public class PanelEmpleados extends javax.swing.JPanel {
         });
         add(UsuarioObtenidoTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 360, 30));
 
-        BotonBuscar.setBackground(new java.awt.Color(18, 90, 173));
+        BotonBuscar.setBackground(new java.awt.Color(5, 23, 58));
         BotonBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         BotonBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -106,7 +105,7 @@ public class PanelEmpleados extends javax.swing.JPanel {
 
         add(BotonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 40, 80, 30));
 
-        BotonNuevo.setBackground(new java.awt.Color(18, 90, 173));
+        BotonNuevo.setBackground(new java.awt.Color(5, 23, 58));
         BotonNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         BotonNuevo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -129,7 +128,7 @@ public class PanelEmpleados extends javax.swing.JPanel {
 
         add(BotonNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 395, 200, 30));
 
-        BotonEditar.setBackground(new java.awt.Color(18, 90, 173));
+        BotonEditar.setBackground(new java.awt.Color(5, 23, 58));
         BotonEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         BotonEditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
