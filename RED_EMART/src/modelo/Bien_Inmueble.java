@@ -8,20 +8,12 @@ import modelo.enums.TipoServicio;
  * @author  KBGR55/Hilary-Madelein/Thaisncp/AdrianArtz/ronaldcuenca19
  */
 public class Bien_Inmueble {
-    private String descripcion;
     private Integer id;
+    private String descripcion;
     private EstadoBienInmueble estado;
     private Double precio;
     private String direccion;
     private TipoServicio servicio;
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
     
     public Integer getId() {
         return id;
@@ -30,7 +22,15 @@ public class Bien_Inmueble {
     public void setId(Integer id) {
         this.id = id;
     }
+    
+    public String getDescripcion() {
+        return descripcion;
+    }
 
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+    
     public EstadoBienInmueble getEstado() {
         return estado;
     }
@@ -66,7 +66,7 @@ public class Bien_Inmueble {
     public Bien_Inmueble() {
     }
 
-    public Bien_Inmueble(String descripcion, Integer id, EstadoBienInmueble estado, Double precio, String direccion, TipoServicio servicio) {
+    public Bien_Inmueble(Integer id,String descripcion, EstadoBienInmueble estado, Double precio, String direccion, TipoServicio servicio) {
         this.descripcion = descripcion;
         this.id = id;
         this.estado = estado;

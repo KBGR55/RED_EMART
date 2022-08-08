@@ -7,14 +7,14 @@ package vista;
 import java.awt.Color;
 import javax.swing.JPanel;
 
-public class PanelNuevoEmpleado extends javax.swing.JPanel {
+public class PanelNuevoCliente extends javax.swing.JPanel {
     private boolean edit;
-    public PanelNuevoEmpleado() { 
+    public PanelNuevoCliente() { 
         initComponents();
         edit = false;
     }
     
-    public PanelNuevoEmpleado(Boolean edit){
+    public PanelNuevoCliente(Boolean edit){
         initComponents();
         this.edit = edit;
         jLabel1.setText(" Editar ");
@@ -40,28 +40,22 @@ public class PanelNuevoEmpleado extends javax.swing.JPanel {
         Text3 = new javax.swing.JLabel();
         NombreTxT = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
-        Text6 = new javax.swing.JLabel();
         Text7 = new javax.swing.JLabel();
-        ContraseñaTxT = new javax.swing.JTextField();
+        TelefonoTxT = new javax.swing.JTextField();
         jSeparator8 = new javax.swing.JSeparator();
-        Text12 = new javax.swing.JLabel();
-        ConfirmarContraseñaTxT = new javax.swing.JTextField();
-        jSeparator13 = new javax.swing.JSeparator();
-        UsuarioTxT = new javax.swing.JTextField();
+        FechaNacimientoTxT = new javax.swing.JTextField();
         jSeparator16 = new javax.swing.JSeparator();
         Text15 = new javax.swing.JLabel();
         Text16 = new javax.swing.JLabel();
         ApellidoTxT = new javax.swing.JTextField();
-        jSeparator17 = new javax.swing.JSeparator();
         datosjlabel = new javax.swing.JLabel();
-        cargoComboBox = new javax.swing.JComboBox<>();
         jSeparator18 = new javax.swing.JSeparator();
         Text4 = new javax.swing.JLabel();
         IndentificacionTxt = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
         TitleUserTxT1 = new javax.swing.JLabel();
         Text8 = new javax.swing.JLabel();
-        cargoComboBox1 = new javax.swing.JComboBox<>();
+        TipoIdentificacionComboBox = new javax.swing.JComboBox<>();
         jSeparator19 = new javax.swing.JSeparator();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -85,7 +79,7 @@ public class PanelNuevoEmpleado extends javax.swing.JPanel {
         jSeparator3.setForeground(new java.awt.Color(204, 204, 204));
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator3.setPreferredSize(new java.awt.Dimension(200, 10));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 10, 240));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 10, 180));
 
         BotonGuardar.setBackground(new java.awt.Color(5, 23, 58));
         BotonGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -112,7 +106,7 @@ public class PanelNuevoEmpleado extends javax.swing.JPanel {
 
         Text3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Text3.setText("Nombre");
-        jPanel1.add(Text3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
+        jPanel1.add(Text3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
         NombreTxT.setForeground(new java.awt.Color(102, 102, 102));
         NombreTxT.setText("Ingresar Nombre");
@@ -122,73 +116,56 @@ public class PanelNuevoEmpleado extends javax.swing.JPanel {
                 NombreTxTMousePressed(evt);
             }
         });
-        jPanel1.add(NombreTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 260, 30));
+        jPanel1.add(NombreTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 260, 30));
 
         jSeparator4.setForeground(new java.awt.Color(0, 153, 255));
         jSeparator4.setPreferredSize(new java.awt.Dimension(200, 10));
-        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 260, 10));
-
-        Text6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Text6.setText("Cargo");
-        jPanel1.add(Text6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, 40, -1));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 260, 10));
 
         Text7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Text7.setText("Contraseña");
-        jPanel1.add(Text7, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, -1, -1));
+        Text7.setText("Nro. telefono");
+        jPanel1.add(Text7, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 220, 110, -1));
 
-        ContraseñaTxT.setForeground(new java.awt.Color(102, 102, 102));
-        ContraseñaTxT.setText("Ingrese una contraseña");
-        ContraseñaTxT.setBorder(null);
-        ContraseñaTxT.addMouseListener(new java.awt.event.MouseAdapter() {
+        TelefonoTxT.setForeground(new java.awt.Color(102, 102, 102));
+        TelefonoTxT.setText("Ingrese una numero de telefono");
+        TelefonoTxT.setBorder(null);
+        TelefonoTxT.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                ContraseñaTxTMousePressed(evt);
+                TelefonoTxTMousePressed(evt);
             }
         });
-        jPanel1.add(ContraseñaTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 220, 260, 30));
+        jPanel1.add(TelefonoTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 260, 30));
 
         jSeparator8.setForeground(new java.awt.Color(0, 153, 255));
         jSeparator8.setPreferredSize(new java.awt.Dimension(200, 10));
-        jPanel1.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 250, 260, 10));
+        jPanel1.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 270, 260, 10));
 
-        Text12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Text12.setText("Confirmar Contraseña");
-        jPanel1.add(Text12, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, -1, -1));
-
-        ConfirmarContraseñaTxT.setForeground(new java.awt.Color(102, 102, 102));
-        ConfirmarContraseñaTxT.setText("Repita la contraseña");
-        ConfirmarContraseñaTxT.setBorder(null);
-        ConfirmarContraseñaTxT.addMouseListener(new java.awt.event.MouseAdapter() {
+        FechaNacimientoTxT.setForeground(new java.awt.Color(102, 102, 102));
+        FechaNacimientoTxT.setText("Ingrese un fecha nacimiento");
+        FechaNacimientoTxT.setBorder(null);
+        FechaNacimientoTxT.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                ConfirmarContraseñaTxTMousePressed(evt);
+                FechaNacimientoTxTMousePressed(evt);
             }
         });
-        jPanel1.add(ConfirmarContraseñaTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 280, 260, 30));
-
-        jSeparator13.setForeground(new java.awt.Color(0, 153, 255));
-        jSeparator13.setPreferredSize(new java.awt.Dimension(200, 10));
-        jPanel1.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 310, 260, 10));
-
-        UsuarioTxT.setForeground(new java.awt.Color(102, 102, 102));
-        UsuarioTxT.setText("Ingrese un nombre de usuario");
-        UsuarioTxT.setBorder(null);
-        UsuarioTxT.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                UsuarioTxTMousePressed(evt);
+        FechaNacimientoTxT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FechaNacimientoTxTActionPerformed(evt);
             }
         });
-        jPanel1.add(UsuarioTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, 260, 30));
+        jPanel1.add(FechaNacimientoTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 180, 260, 30));
 
         jSeparator16.setForeground(new java.awt.Color(0, 153, 255));
         jSeparator16.setPreferredSize(new java.awt.Dimension(200, 10));
-        jPanel1.add(jSeparator16, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 190, 260, 10));
+        jPanel1.add(jSeparator16, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 210, 260, 10));
 
         Text15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Text15.setText("Usuario");
-        jPanel1.add(Text15, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, -1, -1));
+        Text15.setText("Fecha nacimiento");
+        jPanel1.add(Text15, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, 140, -1));
 
         Text16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Text16.setText("Apellido");
-        jPanel1.add(Text16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
+        jPanel1.add(Text16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
 
         ApellidoTxT.setForeground(new java.awt.Color(102, 102, 102));
         ApellidoTxT.setText("Ingresar Apellido");
@@ -198,30 +175,18 @@ public class PanelNuevoEmpleado extends javax.swing.JPanel {
                 ApellidoTxTMousePressed(evt);
             }
         });
-        jPanel1.add(ApellidoTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 260, 30));
+        jPanel1.add(ApellidoTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 260, 30));
 
-        jSeparator17.setForeground(new java.awt.Color(0, 153, 255));
-        jSeparator17.setPreferredSize(new java.awt.Dimension(200, 10));
-        jPanel1.add(jSeparator17, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, 260, 10));
-
-        datosjlabel.setText("Datos informativos del Empleado");
+        datosjlabel.setText("Datos informativos del Cliente");
         jPanel1.add(datosjlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 330, 20));
-
-        cargoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONE", "CAPTADOR", "DESPACHADOR" }));
-        cargoComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cargoComboBoxActionPerformed(evt);
-            }
-        });
-        jPanel1.add(cargoComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 260, 30));
 
         jSeparator18.setForeground(new java.awt.Color(0, 153, 255));
         jSeparator18.setPreferredSize(new java.awt.Dimension(200, 10));
-        jPanel1.add(jSeparator18, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 260, 10));
+        jPanel1.add(jSeparator18, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 260, 10));
 
         Text4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Text4.setText("Identificacion");
-        jPanel1.add(Text4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
+        jPanel1.add(Text4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
 
         IndentificacionTxt.setForeground(new java.awt.Color(102, 102, 102));
         IndentificacionTxt.setText("Ingresar Identificacion");
@@ -231,26 +196,26 @@ public class PanelNuevoEmpleado extends javax.swing.JPanel {
                 IndentificacionTxtMousePressed(evt);
             }
         });
-        jPanel1.add(IndentificacionTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 260, 30));
+        jPanel1.add(IndentificacionTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 260, 30));
 
         jSeparator5.setForeground(new java.awt.Color(0, 153, 255));
         jSeparator5.setPreferredSize(new java.awt.Dimension(200, 10));
-        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 260, 10));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 260, 10));
 
         TitleUserTxT1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        TitleUserTxT1.setText("Empleado");
+        TitleUserTxT1.setText("Nuevo Cliente");
         jPanel1.add(TitleUserTxT1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 190, -1));
 
         Text8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Text8.setText("Tipo Idenficacion");
-        jPanel1.add(Text8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 150, -1));
+        jPanel1.add(Text8, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 150, -1));
 
-        cargoComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONE", "CEDULA", "PASAPORTE", " " }));
-        jPanel1.add(cargoComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 260, 30));
+        TipoIdentificacionComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONE", "CEDULA", "PASAPORTE", " " }));
+        jPanel1.add(TipoIdentificacionComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, 260, 30));
 
         jSeparator19.setForeground(new java.awt.Color(0, 153, 255));
         jSeparator19.setPreferredSize(new java.awt.Dimension(200, 10));
-        jPanel1.add(jSeparator19, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 260, 10));
+        jPanel1.add(jSeparator19, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, 260, 10));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 410));
     }// </editor-fold>//GEN-END:initComponents
@@ -267,17 +232,13 @@ public class PanelNuevoEmpleado extends javax.swing.JPanel {
 
     }//GEN-LAST:event_BotonGuardarMousePressed
 
-    private void ContraseñaTxTMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ContraseñaTxTMousePressed
+    private void TelefonoTxTMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TelefonoTxTMousePressed
 
-    }//GEN-LAST:event_ContraseñaTxTMousePressed
+    }//GEN-LAST:event_TelefonoTxTMousePressed
 
-    private void ConfirmarContraseñaTxTMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfirmarContraseñaTxTMousePressed
+    private void FechaNacimientoTxTMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FechaNacimientoTxTMousePressed
 
-    }//GEN-LAST:event_ConfirmarContraseñaTxTMousePressed
-
-    private void UsuarioTxTMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UsuarioTxTMousePressed
-
-    }//GEN-LAST:event_UsuarioTxTMousePressed
+    }//GEN-LAST:event_FechaNacimientoTxTMousePressed
 
     private void ApellidoTxTMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ApellidoTxTMousePressed
 
@@ -291,38 +252,32 @@ public class PanelNuevoEmpleado extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_IndentificacionTxtMousePressed
 
-    private void cargoComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargoComboBoxActionPerformed
+    private void FechaNacimientoTxTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FechaNacimientoTxTActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cargoComboBoxActionPerformed
+    }//GEN-LAST:event_FechaNacimientoTxTActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ApellidoTxT;
     private javax.swing.JPanel BotonGuardar;
-    private javax.swing.JTextField ConfirmarContraseñaTxT;
-    private javax.swing.JTextField ContraseñaTxT;
+    private javax.swing.JTextField FechaNacimientoTxT;
     private javax.swing.JTextField IndentificacionTxt;
     private javax.swing.JTextField NombreTxT;
-    private javax.swing.JLabel Text12;
+    private javax.swing.JTextField TelefonoTxT;
     private javax.swing.JLabel Text15;
     private javax.swing.JLabel Text16;
     private javax.swing.JLabel Text3;
     private javax.swing.JLabel Text4;
-    private javax.swing.JLabel Text6;
     private javax.swing.JLabel Text7;
     private javax.swing.JLabel Text8;
+    private javax.swing.JComboBox<String> TipoIdentificacionComboBox;
     private javax.swing.JLabel TitleUserTxT1;
-    private javax.swing.JTextField UsuarioTxT;
     private javax.swing.JPanel body;
     private javax.swing.JPanel body1;
-    private javax.swing.JComboBox<String> cargoComboBox;
-    private javax.swing.JComboBox<String> cargoComboBox1;
     private javax.swing.JLabel datosjlabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSeparator jSeparator13;
     private javax.swing.JSeparator jSeparator16;
-    private javax.swing.JSeparator jSeparator17;
     private javax.swing.JSeparator jSeparator18;
     private javax.swing.JSeparator jSeparator19;
     private javax.swing.JSeparator jSeparator3;
