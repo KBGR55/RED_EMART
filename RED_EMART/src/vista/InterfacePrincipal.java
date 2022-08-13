@@ -21,7 +21,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         initComponents();
         //EXAMPLE PERMISO
         this.nameUser = "Example";
-        this.rol = "Despachador";
+        this.rol = "Captador";
         permiso = true;
         verSubtareas();
         setLocationRelativeTo(null);

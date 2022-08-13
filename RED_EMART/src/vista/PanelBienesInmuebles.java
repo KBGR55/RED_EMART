@@ -155,30 +155,30 @@ public class PanelBienesInmuebles extends javax.swing.JPanel {
         TablaProductoContenido.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         TablaProductoContenido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Estado del Inmueble", "Precio", "Dirección", "TipoServicio", "Descripcion"
+                "ID", "ID_Descripcion", "Dirección", "Precio", "Estado del Inmueble"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, true, true, true
+                false, false, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -221,7 +221,6 @@ public class PanelBienesInmuebles extends javax.swing.JPanel {
     }//GEN-LAST:event_BotonNuevoMouseExited
     //ABRIR SECCIÓN
     private void BotonNuevoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonNuevoMousePressed
-
         PanelNuevoBienInmueble pnbi = new PanelNuevoBienInmueble();
         mostrarContenido(pnbi);
     }//GEN-LAST:event_BotonNuevoMousePressed
