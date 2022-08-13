@@ -56,12 +56,10 @@ public class InterfacePrincipal extends javax.swing.JFrame {
 
     private void verSubtareas(String rol) {
         ImageIcon icon;
-
         verSubtareas();
         imageOption.setVisible(true);
-        if (rol.equals("Admin")) {
+        if (rol.equalsIgnoreCase("CEO")) {
             icon = new ImageIcon("src/vista/imagenes/account-multiple.png");
-
             SubTarea1Bttn.setVisible(true);
             subTarea1TxT.setText("Datos informativos");
             icon1TxT.setIcon(icon);
@@ -69,7 +67,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
             SubTarea2Bttn.setVisible(true);
             subTarea2TxT.setText("Lista Empleados");
             icon2TxT.setIcon(icon);
-        } else if (rol.equals("Despachador")) {
+        } else if (rol.equalsIgnoreCase("Despachador")) {
             icon = new ImageIcon("src/vista/imagenes/lista.png");
             SubTarea1Bttn.setVisible(true);
             subTarea1TxT.setText("Lista Clientes");
@@ -86,7 +84,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
             SubTarea4Bttn.setVisible(true);
             subTarea4TxT.setText("Saldo Actual");
             icon4TxT.setIcon(icon);
-        } else if (rol.equals("Captador")) {
+        } else if (rol.equalsIgnoreCase("Captador")) {
             icon = new ImageIcon("src/vista/imagenes/saldo.png");
             SubTarea1Bttn.setVisible(true);
             subTarea1TxT.setText("Saldo Actual");
@@ -540,7 +538,6 @@ public class InterfacePrincipal extends javax.swing.JFrame {
 
     private void TareasBttnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TareasBttnMouseEntered
         setColor(TareasBttn);
-
         verSubtareas(rol);
     }//GEN-LAST:event_TareasBttnMouseEntered
 
@@ -555,7 +552,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_PrincipalBtnMousePressed
 
     private void inmueblesBttnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inmueblesBttnMousePressed
-        PanelBienesInmuebles pbi = new PanelBienesInmuebles();
+        PanelBienesInmuebles pbi = new PanelBienesInmuebles(rol);
         mostrarContenido(pbi);
     }//GEN-LAST:event_inmueblesBttnMousePressed
 
@@ -580,13 +577,13 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_SubTarea1BttnMouseExited
 
     private void SubTarea1BttnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubTarea1BttnMousePressed
-        if (rol.equals("Admin")) {
+        if (rol.equalsIgnoreCase("CEO")) {
             PanelModificarCeo pna = new PanelModificarCeo();
             mostrarContenido(pna);
-        } else if (rol.equals("Despachador")) {
+        } else if (rol.equalsIgnoreCase("Despachador")) {
             PanelClientes pC = new PanelClientes();
             mostrarContenido(pC);
-        } else if (rol.equals("Captador")) {
+        } else if (rol.equalsIgnoreCase("Captador")) {
             PanelSaldo pS = new PanelSaldo();
             mostrarContenido(pS);
 
@@ -602,10 +599,10 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_SubTarea2BttnMouseExited
 
     private void SubTarea2BttnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubTarea2BttnMousePressed
-        if (rol.equals("Admin")) {
+        if (rol.equalsIgnoreCase("CEO")) {
             PanelEmpleados pEM = new PanelEmpleados();
             mostrarContenido(pEM);
-        } else if (rol.equals("Despachador")) {
+        } else if (rol.equalsIgnoreCase("Despachador")) {
             PanelServicio pS = new PanelServicio();
             mostrarContenido(pS);
         }
@@ -620,9 +617,8 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_SubTarea3BttnMouseExited
 
     private void SubTarea3BttnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubTarea3BttnMousePressed
-        if (rol.equals("Despachador")) {
-            PanelVentas pv = new PanelVentas();
-            mostrarContenido(pv);
+        if (rol.equalsIgnoreCase("Despachador")) {
+
         }
     }//GEN-LAST:event_SubTarea3BttnMousePressed
 
@@ -635,7 +631,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_SubTarea4BttnMouseExited
 
     private void SubTarea4BttnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubTarea4BttnMousePressed
-        if (rol.equals("Despachador")) {
+        if (rol.equalsIgnoreCase("Despachador")) {
             PanelSaldo pS = new PanelSaldo();
             mostrarContenido(pS);
         }

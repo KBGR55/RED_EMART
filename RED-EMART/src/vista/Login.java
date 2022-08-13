@@ -1,17 +1,21 @@
 /**
- * @Author: Adrián Hernández  || 2A || POO
- * TRABAJO FINAL DE ASIGNATURA|| SISTEMA DE GESTION DE INVENTARIO
+ *
+ * @author  KBGR55/Hilary-Madelein/Thaisncp/AdrianArtz/ronaldcuenca19
  */
 package vista;
+
+import controlador.Adaptador.DAO_Modelo.EmpleadoDAO;
+import controlador.tda.lista.exception.PosicionException;
 import java.awt.Color;
 
 import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
-    
+
     private int xMouse, yMouse;
     private InterfacePrincipal nuevaVentana;
-    
+    private EmpleadoDAO empleadoDao = new EmpleadoDAO();
+
     public Login() {
         initComponents();
         setLocationRelativeTo(null);
@@ -201,7 +205,7 @@ public class Login extends javax.swing.JFrame {
     private void HeaderMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeaderMouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
-        this.setLocation(x- xMouse, y- yMouse);
+        this.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_HeaderMouseDragged
 
     private void HeaderMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeaderMousePressed
@@ -248,28 +252,20 @@ public class Login extends javax.swing.JFrame {
     private void EntrarTxTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EntrarTxTMouseClicked
         String nameExample = CajaUsuario.getText();
         String passExample = String.valueOf(CajaPassword.getPassword());
-        String rol;
-        if(nameExample.equals("Admin") && passExample.equals("admin")){
-            rol = "Admin";
-            nuevaVentana = new InterfacePrincipal(Boolean.TRUE, nameExample, rol);
-            nuevaVentana.setVisible(true);
-            this.dispose();
-        }else if (nameExample.equals("Hilary") && passExample.equals("123")) {
-            rol = "Despachador";
-            nuevaVentana = new InterfacePrincipal(Boolean.FALSE, nameExample, rol);
-            nuevaVentana.setVisible(true);
-            this.dispose();
-        }else if (nameExample.equals("Karen") && passExample.equals("121")) {
-            rol = "Captador";
-            nuevaVentana = new InterfacePrincipal(Boolean.FALSE, nameExample, rol);
-            nuevaVentana.setVisible(true);
-            this.dispose();
-        }else{
-           JOptionPane.showMessageDialog(IngresarPanel, "Usuario y/o Contrasena incorrectos");
-            CajaUsuario.setText("");
-            CajaPassword.setText("");  
+        Object [] datos;
+        try {
+            datos = empleadoDao.iniciarSesion(nameExample, passExample);
+            if (datos[0].equals(Boolean.TRUE)) {
+                nuevaVentana = new InterfacePrincipal(Boolean.TRUE, datos[1].toString(), datos[2].toString());
+                nuevaVentana.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(IngresarPanel, "Usuario y/o Contrasena incorrectos");
+            }
+        } catch (PosicionException ex) {
+            System.out.println(""+ex);
         }
-        
+
     }//GEN-LAST:event_EntrarTxTMouseClicked
 
     private void EntrarTxTMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EntrarTxTMouseEntered
