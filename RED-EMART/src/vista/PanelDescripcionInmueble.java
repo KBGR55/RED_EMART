@@ -1,6 +1,6 @@
 /**
  *
- * @author  KBGR55/Hilary-Madelein/Thaisncp/AdrianArtz/ronaldcuenca19
+ * @author  KBGR55/Hilary-Madelein/Thaisncp/AdrianArtz
  */
 package vista;
 
@@ -9,11 +9,14 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import static vista.InterfacePrincipal.Panelcontenido;
 
 public class PanelDescripcionInmueble extends javax.swing.JPanel {
+
     RegistrarInmuebles cap = new RegistrarInmuebles();
+
     public PanelDescripcionInmueble() {
         initComponents();
         grupAmueblado.add(rbAmuebladoNO);
@@ -23,46 +26,81 @@ public class PanelDescripcionInmueble extends javax.swing.JPanel {
         grupPiscina.add(rbPiscinaNO);
         grupPiscina.add(rbPiscinaSI);
     }
-    
-    public String amueblado(){
-        String amueblado; 
+
+    public String amueblado() {
+        String amueblado;
         if (rbAmuebladoNO.isSelected()) {
             amueblado = "NO";
-        }else{
+        } else {
             amueblado = "SI";
         }
         return amueblado;
     }
-    
-    public String ascensor(){
-        String amueblado; 
+
+    public String ascensor() {
+        String amueblado;
         if (rbAsensorNO.isSelected()) {
             amueblado = "NO";
-        }else{
+        } else {
             amueblado = "SI";
         }
         return amueblado;
     }
-    
-    public String piscina(){
-        String amueblado; 
+
+    public String piscina() {
+        String amueblado;
         if (rbPiscinaNO.isSelected()) {
             amueblado = "NO";
-        }else{
+        } else {
             amueblado = "SI";
         }
         return amueblado;
     }
-    
-    public void guardar() throws Exception{
-        int tipoBien  = jboxTipoBien.getSelectedIndex();
-        switch (tipoBien) {
-            case 1:
-                cap.registrarDescripcion("TB_C", Double.parseDouble(txtSize.getText()), txtColor.getText(), Integer.parseInt(txtPisos.getText()), Integer.parseInt(txtHabitaciones.getText()), amueblado(), ascensor(), piscina());
-                break;
+
+    public void guardar() throws Exception {
+        if (txtColor.getText().trim().length() == 0 || txtHabitaciones.getText().trim().length() == 0 || txtPisos.getText().trim().length() == 0 || txtSize.getText().trim().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Datos incompletos", "ERROR", JOptionPane.ERROR_MESSAGE);
+        } else {
+            Boolean correct = false;
+            int tipoBien = jboxTipoBien.getSelectedIndex();
+            try {
+            switch (tipoBien) {
+                case 1:
+                    correct = cap.registrarDescripcion("TB_C", Double.parseDouble(txtSize.getText()), txtColor.getText(), Integer.parseInt(txtPisos.getText()), Integer.parseInt(txtHabitaciones.getText()), amueblado(), ascensor(), piscina());
+                    break;
+                case 2:
+                    correct = cap.registrarDescripcion("TB_CV", Double.parseDouble(txtSize.getText()), txtColor.getText(), Integer.parseInt(txtPisos.getText()), Integer.parseInt(txtHabitaciones.getText()), amueblado(), ascensor(), piscina());
+                    break;
+                case 3:
+                    correct = cap.registrarDescripcion("TB_E", Double.parseDouble(txtSize.getText()), txtColor.getText(), Integer.parseInt(txtPisos.getText()), Integer.parseInt(txtHabitaciones.getText()), amueblado(), ascensor(), piscina());
+                    break;
+                case 4:
+                    correct = cap.registrarDescripcion("TB_D", Double.parseDouble(txtSize.getText()), txtColor.getText(), Integer.parseInt(txtPisos.getText()), Integer.parseInt(txtHabitaciones.getText()), amueblado(), ascensor(), piscina());
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Seleccione un tipo de inmueble", "Error", JOptionPane.ERROR_MESSAGE);
+                    break;
+            }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Datos erroneos", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            if (correct) {
+                JOptionPane.showMessageDialog(null, "Datos guardados correctamente", "Guardar", JOptionPane.INFORMATION_MESSAGE);
+                limpiar();
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo guardar los datos ingresados", "Guardar", JOptionPane.ERROR);
+            }
         }
     }
-     public void mostrarContenido(JPanel p) {
+
+    public void limpiar(){
+       txtColor.setText("Ingrese el color");
+       txtHabitaciones.setText("Ingrese el nro. de habitaciones");
+       txtPisos.setText("Ingrese el nro. de pisos");
+       txtSize.setText("Ingrese el tamaño");
+    }
+    
+    public void mostrarContenido(JPanel p) {
         p.setSize(750, 430);
         p.setLocation(0, 0);
         Panelcontenido.removeAll();
@@ -171,11 +209,6 @@ public class PanelDescripcionInmueble extends javax.swing.JPanel {
                 txtColorMousePressed(evt);
             }
         });
-        txtColor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtColorActionPerformed(evt);
-            }
-        });
         add(txtColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 260, 30));
 
         jSeparator4.setForeground(new java.awt.Color(0, 153, 255));
@@ -231,11 +264,6 @@ public class PanelDescripcionInmueble extends javax.swing.JPanel {
                 txtSizeMousePressed(evt);
             }
         });
-        txtSize.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSizeActionPerformed(evt);
-            }
-        });
         add(txtSize, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 260, 30));
 
         jSeparator6.setForeground(new java.awt.Color(0, 153, 255));
@@ -273,42 +301,22 @@ public class PanelDescripcionInmueble extends javax.swing.JPanel {
         rbAmuebladoNO.setSelected(true);
         rbAmuebladoNO.setText("NO");
         rbAmuebladoNO.setActionCommand("");
-        rbAmuebladoNO.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbAmuebladoNOActionPerformed(evt);
-            }
-        });
         add(rbAmuebladoNO, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 220, -1, -1));
 
         rbAmuebladoSI.setBackground(new java.awt.Color(255, 255, 255));
         grupAmueblado.add(rbAmuebladoSI);
         rbAmuebladoSI.setText("SI");
-        rbAmuebladoSI.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbAmuebladoSIActionPerformed(evt);
-            }
-        });
         add(rbAmuebladoSI, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, -1, -1));
 
         rbAsensorNO.setBackground(new java.awt.Color(255, 255, 255));
         grupAscensor.add(rbAsensorNO);
         rbAsensorNO.setSelected(true);
         rbAsensorNO.setText("NO");
-        rbAsensorNO.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbAsensorNOActionPerformed(evt);
-            }
-        });
         add(rbAsensorNO, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 220, -1, -1));
 
         rbAsensorSI.setBackground(new java.awt.Color(255, 255, 255));
         grupAscensor.add(rbAsensorSI);
         rbAsensorSI.setText("SI");
-        rbAsensorSI.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbAsensorSIActionPerformed(evt);
-            }
-        });
         add(rbAsensorSI, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 220, -1, -1));
 
         rbPiscinaNO.setBackground(new java.awt.Color(255, 255, 255));
@@ -332,7 +340,7 @@ public class PanelDescripcionInmueble extends javax.swing.JPanel {
     }//GEN-LAST:event_BotonGuardarDescripcionMouseExited
 
     private void txtColorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtColorMousePressed
-
+        txtColor.setText("");
     }//GEN-LAST:event_txtColorMousePressed
 
     // SUBIR
@@ -345,40 +353,16 @@ public class PanelDescripcionInmueble extends javax.swing.JPanel {
     }//GEN-LAST:event_BotonGuardarDescripcionMousePressed
 
     private void txtPisosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPisosMousePressed
-
+        txtPisos.setText("");
     }//GEN-LAST:event_txtPisosMousePressed
 
-    private void txtColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtColorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtColorActionPerformed
-
     private void txtSizeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSizeMousePressed
-        // TODO add your handling code here:
+        txtSize.setText("");
     }//GEN-LAST:event_txtSizeMousePressed
 
-    private void txtSizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSizeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSizeActionPerformed
-
     private void txtHabitacionesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtHabitacionesMousePressed
-        // TODO add your handling code here:
+        txtHabitaciones.setText("");
     }//GEN-LAST:event_txtHabitacionesMousePressed
-
-    private void rbAmuebladoNOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAmuebladoNOActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rbAmuebladoNOActionPerformed
-
-    private void rbAmuebladoSIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAmuebladoSIActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rbAmuebladoSIActionPerformed
-
-    private void rbAsensorNOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAsensorNOActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rbAsensorNOActionPerformed
-
-    private void rbAsensorSIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAsensorSIActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rbAsensorSIActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BotonGuardarDescripcion;

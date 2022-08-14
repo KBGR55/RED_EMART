@@ -1,6 +1,6 @@
 /**
  *
- * @author  KBGR55/Hilary-Madelein/Thaisncp/AdrianArtz/ronaldcuenca19
+ * @author  KBGR55/Hilary-Madelein/Thaisncp/AdrianArtz
  */
 package vista;
 
@@ -9,101 +9,128 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import static vista.InterfacePrincipal.Panelcontenido;
 
 public class PanelDireccion extends javax.swing.JPanel {
+    
     RegistrarInmuebles cap = new RegistrarInmuebles();
+    
     public PanelDireccion() {
         initComponents();
     }
-     public void mostrarContenido(JPanel p) {
+    
+    public void mostrarContenido(JPanel p) {
         p.setSize(750, 430);
         p.setLocation(0, 0);
-
+        
         Panelcontenido.removeAll();
         Panelcontenido.add(p, BorderLayout.CENTER);
         Panelcontenido.revalidate();
         Panelcontenido.repaint();
     }
-
+    
     public void guardar() throws Exception {
         int lugar = jboxLugar.getSelectedIndex();
-        switch (lugar) {
-            case 1:
-                cap.resgitrarDireccion("LL_ESAG", txtCprincipal.getText(), txtCsecundaria.getText());
-                break;
-            case 2:
-                cap.resgitrarDireccion("LL_SUCR", txtCprincipal.getText(), txtCsecundaria.getText());
-                break;
-            case 3:
-                cap.resgitrarDireccion("LL_EVAL", txtCprincipal.getText(), txtCsecundaria.getText());
-                break;
-            case 4:
-                cap.resgitrarDireccion("LL_SSEB", txtCprincipal.getText(), txtCsecundaria.getText());
-                break;
-            case 5:
-                cap.resgitrarDireccion("LL_PUNZ", txtCprincipal.getText(), txtCsecundaria.getText());
-                break;
-            case 6:
-                cap.resgitrarDireccion("LL_CARI", txtCprincipal.getText(), txtCsecundaria.getText());
-                break;
-            case 7:
-                cap.resgitrarDireccion("LL_MALA", txtCprincipal.getText(), txtCsecundaria.getText());
-                break;
-            case 8:
-                cap.resgitrarDireccion("LL_SPED", txtCprincipal.getText(), txtCsecundaria.getText());
-                break;
-            case 9:
-                cap.resgitrarDireccion("LL_VILC", txtCprincipal.getText(), txtCsecundaria.getText());
-                break;
-            case 10:
-                cap.resgitrarDireccion("LL_ECIS", txtCprincipal.getText(), txtCsecundaria.getText());
-                break;
-            case 11:
-                cap.resgitrarDireccion("LL_CHAN", txtCprincipal.getText(), txtCsecundaria.getText());
-                break;
-            case 12:
-                cap.resgitrarDireccion("LL_CHUQ", txtCprincipal.getText(), txtCsecundaria.getText());
-                break;
-            case 13:
-                cap.resgitrarDireccion("LL_GUAL", txtCprincipal.getText(), txtCsecundaria.getText());
-                break;
-            case 14:
-                cap.resgitrarDireccion("LL_JIMB", txtCprincipal.getText(), txtCsecundaria.getText());
-                break;
-            case 15:
-                cap.resgitrarDireccion("LL_QUIN", txtCprincipal.getText(), txtCsecundaria.getText());
-                break;
-            case 16:
-                cap.resgitrarDireccion("LL_SLUC", txtCprincipal.getText(), txtCsecundaria.getText());
-                break;
-            case 17:
-                cap.resgitrarDireccion("LL_SANT", txtCprincipal.getText(), txtCsecundaria.getText());
-                break;
-            case 18:
-                cap.resgitrarDireccion("LL_YAQU", txtCprincipal.getText(), txtCsecundaria.getText());
-                break;
-            case 19:
-                cap.resgitrarDireccion("LL_YANG", txtCprincipal.getText(), txtCsecundaria.getText());
-                break;
+        if (txtCprincipal.getText().trim().length() == 0 || txtCsecundaria.getText().trim().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Datos incompletos", "ERROR", JOptionPane.ERROR_MESSAGE);
+        } else {
+            Boolean correct = false;
+            try {
+                switch (lugar) {
+                    case 1:
+                        correct = cap.resgitrarDireccion("LL_ESAG", txtCprincipal.getText(), txtCsecundaria.getText());
+                        break;
+                    case 2:
+                        correct = cap.resgitrarDireccion("LL_SUCR", txtCprincipal.getText(), txtCsecundaria.getText());
+                        break;
+                    case 3:
+                        correct = cap.resgitrarDireccion("LL_EVAL", txtCprincipal.getText(), txtCsecundaria.getText());
+                        break;
+                    case 4:
+                        correct = cap.resgitrarDireccion("LL_SSEB", txtCprincipal.getText(), txtCsecundaria.getText());
+                        break;
+                    case 5:
+                        correct = cap.resgitrarDireccion("LL_PUNZ", txtCprincipal.getText(), txtCsecundaria.getText());
+                        break;
+                    case 6:
+                        correct = cap.resgitrarDireccion("LL_CARI", txtCprincipal.getText(), txtCsecundaria.getText());
+                        break;
+                    case 7:
+                        correct = cap.resgitrarDireccion("LL_MALA", txtCprincipal.getText(), txtCsecundaria.getText());
+                        break;
+                    case 8:
+                        correct = cap.resgitrarDireccion("LL_SPED", txtCprincipal.getText(), txtCsecundaria.getText());
+                        break;
+                    case 9:
+                        correct = cap.resgitrarDireccion("LL_VILC", txtCprincipal.getText(), txtCsecundaria.getText());
+                        break;
+                    case 10:
+                        correct = cap.resgitrarDireccion("LL_ECIS", txtCprincipal.getText(), txtCsecundaria.getText());
+                        break;
+                    case 11:
+                        correct = cap.resgitrarDireccion("LL_CHAN", txtCprincipal.getText(), txtCsecundaria.getText());
+                        break;
+                    case 12:
+                        correct = cap.resgitrarDireccion("LL_CHUQ", txtCprincipal.getText(), txtCsecundaria.getText());
+                        break;
+                    case 13:
+                        correct = cap.resgitrarDireccion("LL_GUAL", txtCprincipal.getText(), txtCsecundaria.getText());
+                        break;
+                    case 14:
+                        correct = cap.resgitrarDireccion("LL_JIMB", txtCprincipal.getText(), txtCsecundaria.getText());
+                        break;
+                    case 15:
+                        correct = cap.resgitrarDireccion("LL_QUIN", txtCprincipal.getText(), txtCsecundaria.getText());
+                        break;
+                    case 16:
+                        correct = cap.resgitrarDireccion("LL_SLUC", txtCprincipal.getText(), txtCsecundaria.getText());
+                        break;
+                    case 17:
+                        correct = cap.resgitrarDireccion("LL_SANT", txtCprincipal.getText(), txtCsecundaria.getText());
+                        break;
+                    case 18:
+                        correct = cap.resgitrarDireccion("LL_YAQU", txtCprincipal.getText(), txtCsecundaria.getText());
+                        break;
+                    case 19:
+                        correct = cap.resgitrarDireccion("LL_YANG", txtCprincipal.getText(), txtCsecundaria.getText());
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(null, "Seleccione un lugar del bien inmueble", "Error", JOptionPane.ERROR_MESSAGE);
+                        break;
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Datos erroneos", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            if (correct) {
+                JOptionPane.showMessageDialog(null, "Datos guardados correctamente", "Guardar", JOptionPane.INFORMATION_MESSAGE);
+                limpiar();
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo guardar los datos ingresados", "Guardar", JOptionPane.ERROR);
+            }
         }
     }
-
+    
+    public void limpiar() {
+        txtCprincipal.setText("Ingrese la calle principal");
+        txtCsecundaria.setText("Ingrese la calle secundaria");
+    }
+    
     public PanelDireccion(Boolean edition) {
         initComponents();
         Title.setText("Editar Bien Inmueble");
         jLabel1.setText("Guardar");
     }
-
+    
     private void setColor(JPanel p) {
         p.setBackground(new Color(153, 153, 153));
     }
-
+    
     private void resetColor(JPanel p) {
         p.setBackground(new Color(6, 24, 60));
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -135,7 +162,7 @@ public class PanelDireccion extends javax.swing.JPanel {
         add(body, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         Title.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        Title.setText("Descripción Bien Inmueble");
+        Title.setText("Dirección Bien Inmueble");
         add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 330, -1));
 
         BotonGuardarDescripcion.setBackground(new java.awt.Color(5, 23, 58));
@@ -162,16 +189,11 @@ public class PanelDireccion extends javax.swing.JPanel {
         add(BotonGuardarDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, 130, 30));
 
         txtCsecundaria.setForeground(new java.awt.Color(102, 102, 102));
-        txtCsecundaria.setText("Ingrese el color");
+        txtCsecundaria.setText("Ingrese la calle secundaria");
         txtCsecundaria.setBorder(null);
         txtCsecundaria.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 txtCsecundariaMousePressed(evt);
-            }
-        });
-        txtCsecundaria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCsecundariaActionPerformed(evt);
             }
         });
         add(txtCsecundaria, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 530, 30));
@@ -196,16 +218,11 @@ public class PanelDireccion extends javax.swing.JPanel {
         add(jboxLugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 530, 30));
 
         txtCprincipal.setForeground(new java.awt.Color(102, 102, 102));
-        txtCprincipal.setText("Ingrese el tamaño");
+        txtCprincipal.setText("Ingrese la calle principal");
         txtCprincipal.setBorder(null);
         txtCprincipal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 txtCprincipalMousePressed(evt);
-            }
-        });
-        txtCprincipal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCprincipalActionPerformed(evt);
             }
         });
         add(txtCprincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 530, 30));
@@ -228,7 +245,7 @@ public class PanelDireccion extends javax.swing.JPanel {
     }//GEN-LAST:event_BotonGuardarDescripcionMouseExited
 
     private void txtCsecundariaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCsecundariaMousePressed
-
+        txtCsecundaria.setText("");
     }//GEN-LAST:event_txtCsecundariaMousePressed
 
     // SUBIR
@@ -240,17 +257,9 @@ public class PanelDireccion extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_BotonGuardarDescripcionMousePressed
 
-    private void txtCsecundariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCsecundariaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCsecundariaActionPerformed
-
     private void txtCprincipalMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCprincipalMousePressed
-        // TODO add your handling code here:
+        txtCprincipal.setText("");
     }//GEN-LAST:event_txtCprincipalMousePressed
-
-    private void txtCprincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCprincipalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCprincipalActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BotonGuardarDescripcion;

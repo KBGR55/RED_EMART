@@ -631,7 +631,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_SubTarea3BttnMouseExited
 
     private void SubTarea3BttnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubTarea3BttnMousePressed
-        if (rol.equals("Captador")) {
+        if (rol.equalsIgnoreCase("Captador")) {
             PanelDescripcionInmueble pde = new PanelDescripcionInmueble();
             mostrarContenido(pde);
         } else if (rol.equalsIgnoreCase("Despachador")) {

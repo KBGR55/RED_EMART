@@ -194,12 +194,12 @@ public class PanelVentas extends javax.swing.JPanel {
 
     // BUSCAR
     private void BotonBuscarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonBuscarMousePressed
-        try {
-            PanelDescripcionVenta pdv = new PanelDescripcionVenta(traerDato(ven.getDaoBien().listado().getSize()));
-            mostrarContenido(pdv);
-        } catch (Exception ex) {
-            Logger.getLogger(PanelVentas.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//    try {
+//        PanelDescripcionVenta pdv = new PanelDescripcionVenta(traerDato(ven.getDaoBien().listado().getSize()));
+//        mostrarContenido(pdv);
+//    } catch (Exception ex) {
+//        Logger.getLogger(PanelVentas.class.getName()).log(Level.SEVERE, null, ex);
+//    }
     }//GEN-LAST:event_BotonBuscarMousePressed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked

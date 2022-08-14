@@ -7,6 +7,8 @@ package vista;
 import controlador.CaptadorController.RegistrarInmuebles;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import static vista.InterfacePrincipal.Panelcontenido;
@@ -57,7 +59,6 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
 
     private void cargarVista2() {
         int fila = tblDireccion.getSelectedRow();
-
         if (fila <= - 1) {
             JOptionPane.showMessageDialog(null, "Escoja una fila de la tabla");
         } else {
@@ -114,6 +115,9 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
         tblDescripcion = new javax.swing.JTable();
         Text9 = new javax.swing.JLabel();
         Text10 = new javax.swing.JLabel();
+        Text17 = new javax.swing.JLabel();
+        jSeparator20 = new javax.swing.JSeparator();
+        DateFecha = new com.toedter.calendar.JDateChooser();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(750, 430));
@@ -126,12 +130,12 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
 
         Title.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         Title.setText("Nuevo Bien Inmueble");
-        add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 330, -1));
+        add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 330, -1));
 
         jSeparator3.setForeground(new java.awt.Color(204, 204, 204));
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator3.setPreferredSize(new java.awt.Dimension(200, 10));
-        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 10, 200));
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 10, 320));
 
         BotonGuardar.setBackground(new java.awt.Color(5, 23, 58));
         BotonGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -158,16 +162,17 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
 
         Text6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Text6.setText("Estado del Bien Inmueble");
-        add(Text6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, -1, -1));
+        add(Text6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 260, -1, -1));
 
         Text7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Text7.setText("Descripcion");
-        add(Text7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 120, 90, -1));
+        add(Text7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, 90, -1));
 
         Text16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Text16.setText("Precio");
-        add(Text16, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 180, -1, -1));
+        add(Text16, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, -1, -1));
 
+        descripcionTxT.setEditable(false);
         descripcionTxT.setForeground(new java.awt.Color(102, 102, 102));
         descripcionTxT.setText("Seleccionar ID descripcion");
         descripcionTxT.setBorder(null);
@@ -176,14 +181,14 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
                 descripcionTxTMousePressed(evt);
             }
         });
-        add(descripcionTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 260, 30));
+        add(descripcionTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 260, 30));
 
         jSeparator17.setForeground(new java.awt.Color(0, 153, 255));
         jSeparator17.setPreferredSize(new java.awt.Dimension(200, 10));
-        add(jSeparator17, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, 260, 10));
+        add(jSeparator17, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 260, 10));
 
         estadoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Disponible", "Vendido" }));
-        add(estadoComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, 260, 30));
+        add(estadoComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 260, 30));
 
         Text8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Text8.setText("TABLA DE DIRECCIÓN");
@@ -197,12 +202,13 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
                 precioTxT1MousePressed(evt);
             }
         });
-        add(precioTxT1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, 260, 30));
+        add(precioTxT1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 260, 30));
 
         jSeparator18.setForeground(new java.awt.Color(0, 153, 255));
         jSeparator18.setPreferredSize(new java.awt.Dimension(200, 10));
-        add(jSeparator18, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 230, 260, 10));
+        add(jSeparator18, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, 260, 10));
 
+        direccionTxT.setEditable(false);
         direccionTxT.setForeground(new java.awt.Color(102, 102, 102));
         direccionTxT.setText("Seleccionar ID direccion");
         direccionTxT.setBorder(null);
@@ -216,11 +222,11 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
                 direccionTxTActionPerformed(evt);
             }
         });
-        add(direccionTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 260, 30));
+        add(direccionTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 260, 30));
 
         jSeparator19.setForeground(new java.awt.Color(0, 153, 255));
         jSeparator19.setPreferredSize(new java.awt.Dimension(200, 10));
-        add(jSeparator19, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 260, 10));
+        add(jSeparator19, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 260, 10));
 
         tblDireccion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -280,11 +286,22 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
 
         Text9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Text9.setText("Dirección");
-        add(Text9, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 70, -1));
+        add(Text9, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, 70, 20));
 
         Text10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Text10.setText("TABLA DE DESCRIPCIÓN");
         add(Text10, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 170, -1));
+
+        Text17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Text17.setText("Fecha");
+        add(Text17, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, -1, -1));
+
+        jSeparator20.setForeground(new java.awt.Color(0, 153, 255));
+        jSeparator20.setPreferredSize(new java.awt.Dimension(200, 10));
+        add(jSeparator20, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, 260, 10));
+
+        DateFecha.setDateFormatString("yyyy-MM-dd");
+        add(DateFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 260, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonGuardarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonGuardarMouseEntered
@@ -297,8 +314,20 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
 
     // SUBIR
     private void BotonGuardarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonGuardarMousePressed
-
+        try {
+            guardar();
+        } catch (Exception ex) {
+            Logger.getLogger(PanelNuevoBienInmueble.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_BotonGuardarMousePressed
+    
+    public void guardar() throws Exception {
+        if (precioTxT1.getText().trim().length() == 0 || direccionTxT.getText().equalsIgnoreCase("Seleccionar ID direccion") || direccionTxT.getText().equalsIgnoreCase("Seleccionar ID descripcion")) {
+            JOptionPane.showMessageDialog(null, "Datos incompletos", "ERROR", JOptionPane.ERROR_MESSAGE);
+        } else {
+            registro.registrarInmueble(Integer.valueOf(descripcionTxT.getText()), Integer.valueOf(direccionTxT.getText()),DateFecha.getDate(), Double.valueOf(precioTxT1.getText()),"EB_D");
+        }   
+    }
 
     private void descripcionTxTMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_descripcionTxTMousePressed
 
@@ -328,8 +357,10 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BotonGuardar;
+    private com.toedter.calendar.JDateChooser DateFecha;
     private javax.swing.JLabel Text10;
     private javax.swing.JLabel Text16;
+    private javax.swing.JLabel Text17;
     private javax.swing.JLabel Text6;
     private javax.swing.JLabel Text7;
     private javax.swing.JLabel Text8;
@@ -345,6 +376,7 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator17;
     private javax.swing.JSeparator jSeparator18;
     private javax.swing.JSeparator jSeparator19;
+    private javax.swing.JSeparator jSeparator20;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTextField precioTxT1;
     private javax.swing.JTable tblDescripcion;
