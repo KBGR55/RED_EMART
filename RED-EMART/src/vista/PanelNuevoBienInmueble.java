@@ -325,7 +325,7 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
         if (precioTxT1.getText().trim().length() == 0 || direccionTxT.getText().equalsIgnoreCase("Seleccionar ID direccion") || direccionTxT.getText().equalsIgnoreCase("Seleccionar ID descripcion")) {
             JOptionPane.showMessageDialog(null, "Datos incompletos", "ERROR", JOptionPane.ERROR_MESSAGE);
         } else {
-            registro.registrarInmueble(Integer.valueOf(descripcionTxT.getText()), Integer.valueOf(direccionTxT.getText()),DateFecha.getDate(), Double.valueOf(precioTxT1.getText()),"EB_D");
+            registro.registrarInmueble(Integer.valueOf(descripcionTxT.getText()), Integer.valueOf(direccionTxT.getText()),DateFecha.getDate(), 1,Double.valueOf(precioTxT1.getText()) ,"EB_D" );
         }   
     }
 

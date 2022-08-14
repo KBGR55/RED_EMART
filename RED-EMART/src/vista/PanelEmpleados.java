@@ -4,16 +4,22 @@
  */
 package vista;
 
+import controlador.CEOController.RegistrarEmpleados;
 import java.awt.Color;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 import static vista.InterfacePrincipal.Panelcontenido;
 public class PanelEmpleados extends javax.swing.JPanel {
+    RegistrarEmpleados re = new RegistrarEmpleados();
+    public static Object[] empEdit = new Object[7];
     
     public PanelEmpleados() {
         initComponents();
-        
+        cargarTabla();
     }
     private void setColor(JPanel p) {
         p.setBackground(new Color(153,153,153));
@@ -32,6 +38,15 @@ public class PanelEmpleados extends javax.swing.JPanel {
         Panelcontenido.revalidate();
         Panelcontenido.repaint();
     }
+    
+    private void cargarTabla(){
+        re.leer(TablaUsuarioContenido, re.getEd().listar());
+    }
+    
+    private void buscarEmpleado() throws Exception{
+        re.buscarEmpleado(TablaUsuarioContenido, re.getPd(), re.getEd() ,UsuarioObtenidoTxT.getText());
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -246,12 +261,36 @@ public class PanelEmpleados extends javax.swing.JPanel {
 
 
     private void BotonEditarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonEditarMousePressed
+        if (TablaUsuarioContenido.getSelectedRow() >= 0) {
+            try {
+                empEdit[0]=re.getPd().obtener(Integer.parseInt(TablaUsuarioContenido.getValueAt(TablaUsuarioContenido.getSelectedRow(), 0).toString())).getNombres();
+                empEdit[1]=re.getPd().obtener(Integer.parseInt(TablaUsuarioContenido.getValueAt(TablaUsuarioContenido.getSelectedRow(), 0).toString())).getApellidos();
+                empEdit[2]=re.getPd().obtener(Integer.parseInt(TablaUsuarioContenido.getValueAt(TablaUsuarioContenido.getSelectedRow(), 0).toString())).getIdentificacion();
+                empEdit[3]=re.getPd().obtener(Integer.parseInt(TablaUsuarioContenido.getValueAt(TablaUsuarioContenido.getSelectedRow(), 0).toString())).getTelefono();
+                empEdit[4]=re.getEd().obtener(Integer.parseInt(TablaUsuarioContenido.getValueAt(TablaUsuarioContenido.getSelectedRow(), 0).toString())).getUsuario();
+                empEdit[5]=re.getEd().obtener(Integer.parseInt(TablaUsuarioContenido.getValueAt(TablaUsuarioContenido.getSelectedRow(), 0).toString())).getClave();
+                empEdit[6]=re.getEd().obtener(Integer.parseInt(TablaUsuarioContenido.getValueAt(TablaUsuarioContenido.getSelectedRow(), 0).toString())).getId_persona();
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
+            if (TablaUsuarioContenido.getValueAt(TablaUsuarioContenido.getSelectedRow(), 1).toString().equals("A_C")) {
+                PanelModificarCeo pmc = new PanelModificarCeo();
+                mostrarContenido(pmc);
+            }else {
         PanelNuevoEmpleado pnE = new PanelNuevoEmpleado(Boolean.TRUE);
-        mostrarContenido(pnE);
+        mostrarContenido(pnE);  
+        }
+        }else{
+            JOptionPane.showMessageDialog(null, "Seleccione un empleado de la lista a editar");
+        } 
     }//GEN-LAST:event_BotonEditarMousePressed
     // BUSCAR
     private void BotonBuscarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonBuscarMousePressed
-
+        try {
+            buscarEmpleado();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
     }//GEN-LAST:event_BotonBuscarMousePressed
 
     private void UsuarioObtenidoTxTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuarioObtenidoTxTActionPerformed

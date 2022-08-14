@@ -73,8 +73,6 @@ public class PanelClientes extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         BotonNuevo = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        BotonEditar = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaUsuarioContenido = new javax.swing.JTable();
 
@@ -157,32 +155,9 @@ public class PanelClientes extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Nuevo");
-        BotonNuevo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 180, -1));
+        BotonNuevo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 100, -1));
 
-        add(BotonNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 395, 200, 30));
-
-        BotonEditar.setBackground(new java.awt.Color(5, 23, 58));
-        BotonEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        BotonEditar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                BotonEditarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                BotonEditarMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                BotonEditarMousePressed(evt);
-            }
-        });
-        BotonEditar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Editar");
-        BotonEditar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 140, -1));
-
-        add(BotonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 395, 170, 30));
+        add(BotonNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 400, 180, 30));
 
         TablaUsuarioContenido.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         TablaUsuarioContenido.setModel(new javax.swing.table.DefaultTableModel(
@@ -261,24 +236,11 @@ public class PanelClientes extends javax.swing.JPanel {
         mostrarContenido(pnE);
     }//GEN-LAST:event_BotonNuevoMousePressed
 
-    private void BotonEditarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonEditarMouseEntered
-        setColor(BotonEditar);
-    }//GEN-LAST:event_BotonEditarMouseEntered
-
-    private void BotonEditarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonEditarMouseExited
-        resetColor(BotonEditar);
-    }//GEN-LAST:event_BotonEditarMouseExited
-
     private void TablaUsuarioContenidoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaUsuarioContenidoMousePressed
         if (UsuarioObtenidoTxT.getText().equals("") || UsuarioObtenidoTxT.getText() == null || UsuarioObtenidoTxT.getText().equals(" "))
             UsuarioObtenidoTxT.setText("Ingrese el Nombre de Usuario a Buscar");
     }//GEN-LAST:event_TablaUsuarioContenidoMousePressed
 
-
-    private void BotonEditarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonEditarMousePressed
-        PanelNuevoEmpleado pnE = new PanelNuevoEmpleado(Boolean.TRUE);
-        mostrarContenido(pnE);
-    }//GEN-LAST:event_BotonEditarMousePressed
     // BUSCAR
     private void BotonBuscarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonBuscarMousePressed
 
@@ -295,14 +257,12 @@ public class PanelClientes extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BotonBuscar;
-    private javax.swing.JPanel BotonEditar;
     private javax.swing.JPanel BotonNuevo;
     private javax.swing.JTable TablaUsuarioContenido;
     private javax.swing.JLabel Title;
     private javax.swing.JTextField UsuarioObtenidoTxT;
     private javax.swing.JPanel body;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
