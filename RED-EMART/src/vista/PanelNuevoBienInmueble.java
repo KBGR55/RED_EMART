@@ -7,6 +7,7 @@ package vista;
 import controlador.CaptadorController.RegistrarInmuebles;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import static vista.InterfacePrincipal.Panelcontenido;
 
@@ -23,7 +24,8 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
         estadoComboBox.setVisible(false);
         edition = false;
     }
-     public void mostrarContenido(JPanel p) {
+
+    public void mostrarContenido(JPanel p) {
         p.setSize(750, 430);
         p.setLocation(0, 0);
         Panelcontenido.removeAll();
@@ -31,14 +33,44 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
         Panelcontenido.revalidate();
         Panelcontenido.repaint();
     }
-     
-    public void llenarTabla(){
+
+    public void llenarTabla() {
         registro.leerDesc(tblDescripcion, registro.getDaoDes().listar());
         registro.leerDir(tblDireccion, registro.getDaoD().listar());
     }
-    
-    
-    
+
+    private void cargarVista() {
+        int fila = tblDescripcion.getSelectedRow();
+
+        if (fila <= - 1) {
+            JOptionPane.showMessageDialog(null, "Escoja una fila de la tabla");
+        } else {
+            String id = registro.getLista()[0][fila];
+            System.out.println(id);
+            try {
+                descripcionTxT.setText(id);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "ERROR");
+            }
+        }
+    }
+
+    private void cargarVista2() {
+        int fila = tblDireccion.getSelectedRow();
+
+        if (fila <= - 1) {
+            JOptionPane.showMessageDialog(null, "Escoja una fila de la tabla");
+        } else {
+            String id = registro.getLista2()[0][fila];
+            System.out.println(id);
+            try {
+                direccionTxT.setText(id);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "ERROR");
+            }
+        }
+    }
+
     public PanelNuevoBienInmueble(Boolean edition) {
         initComponents();
         this.edition = edition;
@@ -68,13 +100,13 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
         Text6 = new javax.swing.JLabel();
         Text7 = new javax.swing.JLabel();
         Text16 = new javax.swing.JLabel();
-        precioTxT = new javax.swing.JTextField();
+        descripcionTxT = new javax.swing.JTextField();
         jSeparator17 = new javax.swing.JSeparator();
         estadoComboBox = new javax.swing.JComboBox<>();
         Text8 = new javax.swing.JLabel();
         precioTxT1 = new javax.swing.JTextField();
         jSeparator18 = new javax.swing.JSeparator();
-        precioTxT2 = new javax.swing.JTextField();
+        direccionTxT = new javax.swing.JTextField();
         jSeparator19 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDireccion = new javax.swing.JTable();
@@ -136,15 +168,15 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
         Text16.setText("Precio");
         add(Text16, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 180, -1, -1));
 
-        precioTxT.setForeground(new java.awt.Color(102, 102, 102));
-        precioTxT.setText("Ingrese ID descripcion");
-        precioTxT.setBorder(null);
-        precioTxT.addMouseListener(new java.awt.event.MouseAdapter() {
+        descripcionTxT.setForeground(new java.awt.Color(102, 102, 102));
+        descripcionTxT.setText("Seleccionar ID descripcion");
+        descripcionTxT.setBorder(null);
+        descripcionTxT.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                precioTxTMousePressed(evt);
+                descripcionTxTMousePressed(evt);
             }
         });
-        add(precioTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 260, 30));
+        add(descripcionTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 260, 30));
 
         jSeparator17.setForeground(new java.awt.Color(0, 153, 255));
         jSeparator17.setPreferredSize(new java.awt.Dimension(200, 10));
@@ -171,15 +203,20 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
         jSeparator18.setPreferredSize(new java.awt.Dimension(200, 10));
         add(jSeparator18, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 230, 260, 10));
 
-        precioTxT2.setForeground(new java.awt.Color(102, 102, 102));
-        precioTxT2.setText("Ingrese ID direccion");
-        precioTxT2.setBorder(null);
-        precioTxT2.addMouseListener(new java.awt.event.MouseAdapter() {
+        direccionTxT.setForeground(new java.awt.Color(102, 102, 102));
+        direccionTxT.setText("Seleccionar ID direccion");
+        direccionTxT.setBorder(null);
+        direccionTxT.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                precioTxT2MousePressed(evt);
+                direccionTxTMousePressed(evt);
             }
         });
-        add(precioTxT2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 260, 30));
+        direccionTxT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                direccionTxTActionPerformed(evt);
+            }
+        });
+        add(direccionTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 260, 30));
 
         jSeparator19.setForeground(new java.awt.Color(0, 153, 255));
         jSeparator19.setPreferredSize(new java.awt.Dimension(200, 10));
@@ -195,7 +232,20 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblDireccion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDireccionMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblDireccion);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 300, 100));
@@ -210,7 +260,20 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblDescripcion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDescripcionMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblDescripcion);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 300, 100));
@@ -237,17 +300,31 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
 
     }//GEN-LAST:event_BotonGuardarMousePressed
 
-    private void precioTxTMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_precioTxTMousePressed
+    private void descripcionTxTMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_descripcionTxTMousePressed
 
-    }//GEN-LAST:event_precioTxTMousePressed
+    }//GEN-LAST:event_descripcionTxTMousePressed
 
     private void precioTxT1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_precioTxT1MousePressed
         // TODO add your handling code here:
     }//GEN-LAST:event_precioTxT1MousePressed
 
-    private void precioTxT2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_precioTxT2MousePressed
+    private void direccionTxTMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_direccionTxTMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_precioTxT2MousePressed
+    }//GEN-LAST:event_direccionTxTMousePressed
+
+    private void tblDescripcionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDescripcionMouseClicked
+
+        cargarVista();
+
+    }//GEN-LAST:event_tblDescripcionMouseClicked
+
+    private void tblDireccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDireccionMouseClicked
+        cargarVista2();
+    }//GEN-LAST:event_tblDireccionMouseClicked
+
+    private void direccionTxTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_direccionTxTActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_direccionTxTActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BotonGuardar;
@@ -259,6 +336,8 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
     private javax.swing.JLabel Text9;
     private javax.swing.JLabel Title;
     private javax.swing.JPanel body;
+    private javax.swing.JTextField descripcionTxT;
+    private javax.swing.JTextField direccionTxT;
     private javax.swing.JComboBox<String> estadoComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -267,9 +346,7 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator18;
     private javax.swing.JSeparator jSeparator19;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTextField precioTxT;
     private javax.swing.JTextField precioTxT1;
-    private javax.swing.JTextField precioTxT2;
     private javax.swing.JTable tblDescripcion;
     private javax.swing.JTable tblDireccion;
     // End of variables declaration//GEN-END:variables

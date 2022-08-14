@@ -5,6 +5,7 @@
 package vista;
 
 import java.awt.Color;
+import java.time.LocalDate;
 import javax.swing.JPanel;
 
 public class PanelSaldo extends javax.swing.JPanel {
@@ -14,7 +15,23 @@ public class PanelSaldo extends javax.swing.JPanel {
         jPanel3.setVisible(false);
     }
 
-
+    public PanelSaldo(String nameEmpleado, String porcentaje) {
+        initComponents();
+        NombreTxT.setText(MayuscUser(nameEmpleado));
+        porcentajeTxT.setText(porcentaje);
+        fechaActual();
+        jPanel3.setVisible(false);
+    }
+    private String MayuscUser(String n) {
+        return Character.toUpperCase(n.charAt(0)) + n.substring(1);
+    }
+    private void fechaActual(){
+        LocalDate now = LocalDate.now();
+        int year = now.getYear();
+        int dia = now.getDayOfMonth();
+        int month = now.getMonthValue();
+        fechaTxT.setText(dia + " / " + month + " / " + year);
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -69,6 +86,7 @@ public class PanelSaldo extends javax.swing.JPanel {
         jSeparator4.setPreferredSize(new java.awt.Dimension(200, 10));
         jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 260, 10));
 
+        NombreTxT.setEditable(false);
         NombreTxT.setForeground(new java.awt.Color(102, 102, 102));
         NombreTxT.setText("Ingresar Nombre");
         NombreTxT.setBorder(null);
@@ -86,9 +104,7 @@ public class PanelSaldo extends javax.swing.JPanel {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/calendar-plus.png"))); // NOI18N
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, 30, 30));
 
-        Text10.setBackground(new java.awt.Color(255, 255, 255));
         Text10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Text10.setForeground(new java.awt.Color(255, 255, 255));
         Text10.setText("Fecha");
         jPanel2.add(Text10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, 150, 20));
 
@@ -96,6 +112,7 @@ public class PanelSaldo extends javax.swing.JPanel {
         jSeparator5.setPreferredSize(new java.awt.Dimension(200, 10));
         jPanel2.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 210, 10));
 
+        fechaTxT.setEditable(false);
         fechaTxT.setForeground(new java.awt.Color(102, 102, 102));
         fechaTxT.setText("Ingresar fecha");
         fechaTxT.setBorder(null);
@@ -124,7 +141,7 @@ public class PanelSaldo extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Ingresar");
+        jLabel1.setText("Consultar");
         ingresarBttn.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, -1));
 
         jPanel2.add(ingresarBttn, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, 140, 50));
@@ -137,6 +154,7 @@ public class PanelSaldo extends javax.swing.JPanel {
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        numeroAccionesTxT.setEditable(false);
         numeroAccionesTxT.setForeground(new java.awt.Color(102, 102, 102));
         numeroAccionesTxT.setText("Datos");
         numeroAccionesTxT.setBorder(null);
@@ -158,11 +176,13 @@ public class PanelSaldo extends javax.swing.JPanel {
         jSeparator8.setPreferredSize(new java.awt.Dimension(200, 10));
         jPanel3.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, 330, 20));
 
+        totalTxT.setEditable(false);
         totalTxT.setForeground(new java.awt.Color(102, 102, 102));
         totalTxT.setText("Datos");
         totalTxT.setBorder(null);
         jPanel3.add(totalTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 330, 30));
 
+        porcentajeTxT.setEditable(false);
         porcentajeTxT.setForeground(new java.awt.Color(102, 102, 102));
         porcentajeTxT.setText("Datos");
         porcentajeTxT.setBorder(null);

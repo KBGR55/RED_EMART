@@ -25,6 +25,16 @@ public class PanelBienesInmuebles extends javax.swing.JPanel {
         Panelcontenido.revalidate();
         Panelcontenido.repaint();
     }
+    
+    public PanelBienesInmuebles(String rol) {
+        initComponents();
+        BotonEditar.setVisible(false);
+        TablaBienesInmuebles.setEnabled(false);
+        if (rol.equalsIgnoreCase("CAPTADOR")) {
+            BotonEditar.setVisible(true);
+            TablaBienesInmuebles.setEnabled(true);
+        }
+    }
 
     private void setColor(JPanel p) {
         p.setBackground(new Color(153, 153, 153));
@@ -44,12 +54,10 @@ public class PanelBienesInmuebles extends javax.swing.JPanel {
         IdProductoObtenidoTxT = new javax.swing.JTextField();
         BotonBuscar = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        BotonNuevo = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         BotonEditar = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TablaProductoContenido = new javax.swing.JTable();
+        TablaBienesInmuebles = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(750, 430));
@@ -106,29 +114,6 @@ public class PanelBienesInmuebles extends javax.swing.JPanel {
 
         add(BotonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 40, 80, 30));
 
-        BotonNuevo.setBackground(new java.awt.Color(5, 23, 58));
-        BotonNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        BotonNuevo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                BotonNuevoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                BotonNuevoMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                BotonNuevoMousePressed(evt);
-            }
-        });
-        BotonNuevo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Nuevo");
-        BotonNuevo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 60, -1));
-
-        add(BotonNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 400, 180, -1));
-
         BotonEditar.setBackground(new java.awt.Color(5, 23, 58));
         BotonEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         BotonEditar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -152,8 +137,8 @@ public class PanelBienesInmuebles extends javax.swing.JPanel {
 
         add(BotonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 400, 170, -1));
 
-        TablaProductoContenido.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        TablaProductoContenido.setModel(new javax.swing.table.DefaultTableModel(
+        TablaBienesInmuebles.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        TablaBienesInmuebles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -185,15 +170,15 @@ public class PanelBienesInmuebles extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        TablaProductoContenido.getTableHeader().setReorderingAllowed(false);
-        TablaProductoContenido.addMouseListener(new java.awt.event.MouseAdapter() {
+        TablaBienesInmuebles.getTableHeader().setReorderingAllowed(false);
+        TablaBienesInmuebles.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                TablaProductoContenidoMousePressed(evt);
+                TablaBienesInmueblesMousePressed(evt);
             }
         });
-        jScrollPane1.setViewportView(TablaProductoContenido);
-        if (TablaProductoContenido.getColumnModel().getColumnCount() > 0) {
-            TablaProductoContenido.getColumnModel().getColumn(0).setMaxWidth(100);
+        jScrollPane1.setViewportView(TablaBienesInmuebles);
+        if (TablaBienesInmuebles.getColumnModel().getColumnCount() > 0) {
+            TablaBienesInmuebles.getColumnModel().getColumn(0).setMaxWidth(100);
         }
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 710, 300));
@@ -212,20 +197,6 @@ public class PanelBienesInmuebles extends javax.swing.JPanel {
         resetColor(BotonBuscar);
     }//GEN-LAST:event_BotonBuscarMouseExited
 
-    private void BotonNuevoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonNuevoMouseEntered
-        setColor(BotonNuevo);
-    }//GEN-LAST:event_BotonNuevoMouseEntered
-
-    private void BotonNuevoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonNuevoMouseExited
-        resetColor(BotonNuevo);
-    }//GEN-LAST:event_BotonNuevoMouseExited
-    //ABRIR SECCIÓN
-    private void BotonNuevoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonNuevoMousePressed
-
-        PanelNuevoBienInmueble pnbi = new PanelNuevoBienInmueble();
-        mostrarContenido(pnbi);
-    }//GEN-LAST:event_BotonNuevoMousePressed
-
     private void BotonEditarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonEditarMouseEntered
         setColor(BotonEditar);
     }//GEN-LAST:event_BotonEditarMouseEntered
@@ -234,10 +205,10 @@ public class PanelBienesInmuebles extends javax.swing.JPanel {
         resetColor(BotonEditar);
     }//GEN-LAST:event_BotonEditarMouseExited
 
-    private void TablaProductoContenidoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaProductoContenidoMousePressed
+    private void TablaBienesInmueblesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaBienesInmueblesMousePressed
         if (IdProductoObtenidoTxT.getText().equals("") || IdProductoObtenidoTxT.getText() == null || IdProductoObtenidoTxT.getText().equals(" "))
             IdProductoObtenidoTxT.setText("Ingrese el ID del Producto a Buscar");
-    }//GEN-LAST:event_TablaProductoContenidoMousePressed
+    }//GEN-LAST:event_TablaBienesInmueblesMousePressed
 
     //ABRIR SECCIÓN EDITAR
     private void BotonEditarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonEditarMousePressed
@@ -256,14 +227,12 @@ public class PanelBienesInmuebles extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BotonBuscar;
     private javax.swing.JPanel BotonEditar;
-    private javax.swing.JPanel BotonNuevo;
     private javax.swing.JTextField IdProductoObtenidoTxT;
-    private javax.swing.JTable TablaProductoContenido;
+    private javax.swing.JTable TablaBienesInmuebles;
     private javax.swing.JLabel Title;
     private javax.swing.JPanel body;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
