@@ -4,6 +4,9 @@ import controlador.Conexion.SQLclass;
 import controlador.tda.lista.ListaEnlazada;
 import controlador.utiles.Utilidades;
 import static controlador.utiles.Utilidades.getMethod;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,7 +16,7 @@ import java.lang.reflect.Method;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import jdk.jfr.Timestamp;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -45,7 +48,7 @@ public class AdaptadorDao<T> implements InterfazDao<T> {
     public ListaEnlazada<T> listar() {
         ListaEnlazada<T> lista = new ListaEnlazada<>();
         try {
-            //System.out.println("ESTA EN EL METODO");
+
             PreparedStatement stmt = getConexion().prepareStatement(ALL);
             ResultSet resultSet = stmt.executeQuery();
             ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
@@ -53,29 +56,40 @@ public class AdaptadorDao<T> implements InterfazDao<T> {
             for (int i = 0; i < resultSetMetaData.getColumnCount(); i++) {
                 columna[i] = resultSetMetaData.getColumnLabel(i + 1);
             }
-
+            String ruta = "";
             while (resultSet.next()) {
-                //System.out.println("RESULT SET");
+                System.out.println("RESULT SET");
                 T obj = (T) clazz.getConstructor().newInstance();
                 for (int i = 0; i < columna.length; i++) {
                     Object objeto = resultSet.getObject(i + 1);
-                    //System.out.println("** " + objeto + columna[i]);
+                    System.out.println("** " + objeto + columna[i]);
+                    System.out.println("======== " + objeto.getClass().getName() + columna[i]);
                     if (objeto != null && objeto.getClass().getName().equals("java.sql.Date")) {
                         java.sql.Date aux = (java.sql.Date) objeto;
-                         java.util.Date fecha = new Date();
-                        
-                       Utilidades.cambiarDatos(fecha, columna[i], obj);
+                        java.util.Date fecha = new Date();
+                        Utilidades.cambiarDatos(fecha, columna[i], obj);
                     } else {
                         Utilidades.cambiarDatos(objeto, columna[i], obj);
+                    }
+                    if (objeto.getClass().getName().equals("java.sql.Blob")) {
+                        java.sql.Blob aux =(java.sql.Blob)objeto;
+                        byte[] pdfG = new byte[(int) ruta.length()];
+                        Utilidades.cambiarDatos(pdfG, columna[i], obj);
                     }
                 }
                 lista.insertar(obj);
             }
+            System.out.println("***********************************************");
         } catch (Exception e) {
             System.out.println("Error al cargar " + e);
             e.printStackTrace();
         }
         return lista;
+    }
+
+    public static Date getDateFormat(String formatPattern, String date) throws ParseException {
+        SimpleDateFormat formatter = new SimpleDateFormat(formatPattern);
+        return formatter.parse(date);
     }
 
     @Override
@@ -101,10 +115,8 @@ public class AdaptadorDao<T> implements InterfazDao<T> {
             stmt.executeUpdate();
         } catch (Exception e) {
             System.out.println("Error en guardar " + e);
-            e.printStackTrace();
+            e.printStackTrace();           
         }
-
-        System.out.println(comando);
     }
 
     @Override
@@ -154,10 +166,10 @@ public class AdaptadorDao<T> implements InterfazDao<T> {
             obj = (T) clazz.getConstructor().newInstance();
             for (int i = 0; i < columna.length; i++) {
                 Object objeto = resultSet.getObject(i + 1);
-                //System.out.println("** " + objeto + columna[i]);
-                if (objeto != null && objeto.getClass().getName().equals("java.sql.Date")) {
-                    java.sql.Date aux = (java.sql.Date) objeto;
-                    java.util.Date fecha = new Date();
+                System.out.println("** " + objeto + columna[i]);
+                if (objeto != null && objeto.getClass().getName().equals("java.sql.Timestamp")) {
+                    java.sql.Timestamp aux = (java.sql.Timestamp) objeto;
+                    java.util.Date fecha = new Date(aux.getTime());
                     Utilidades.cambiarDatos(fecha, columna[i], obj);
                 } else {
                     Utilidades.cambiarDatos(objeto, columna[i], obj);

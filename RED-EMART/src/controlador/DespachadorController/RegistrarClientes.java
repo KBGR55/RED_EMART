@@ -3,8 +3,6 @@ package controlador.DespachadorController;
 import controlador.Adaptador.DAO_Modelo.PersonaDAO;
 import controlador.tda.lista.ListaEnlazada;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -14,8 +12,7 @@ import modelo.Persona;
  *
  * @author Hilary-Madelein
  */
-public class RegistrarClientes {
-    
+public class RegistrarClientes {    
     Persona personaPrueba = new Persona();
     PersonaDAO dao = new PersonaDAO();
     private Integer ID;
@@ -36,6 +33,10 @@ public class RegistrarClientes {
         this.dao = dao;
     }
 
+    /**
+     * Metodo que permite guardar un cliente del tipo Persona en la base de datos 
+     * @return Boolean - true si fue ingresado correctamente
+     */
     public Boolean registrarCliente(String nombres, String apellidos, String identificacion, String tipo_iden, Date fecha_nac, String cell) throws Exception{
         ID= dao.listado().getSize();
         Boolean verificar = false;
@@ -53,6 +54,10 @@ public class RegistrarClientes {
         return verificar;
     }
     
+    /**
+     * Metodo que valida la cedula ingresada
+     * @return Boolean - true si esta correcta
+     */
     public static boolean cedula(String cedula) {
         boolean estado = false;
         try {
@@ -67,11 +72,8 @@ public class RegistrarClientes {
                     int modulo = 0;
 
                     for (int i = 0; i < cedula.length() - 1; i++) {
-
                         digitoXcoeficiente = Integer.parseInt(cedula.substring(i, i + 1)) * coeficientes[i];
-
                         digitoXcoeficiente = (digitoXcoeficiente > 9) ? digitoXcoeficiente -= 9 : digitoXcoeficiente;
-
                         suma += digitoXcoeficiente;
                     }
 
@@ -98,6 +100,9 @@ public class RegistrarClientes {
         return estado;
     }  
     
+    /**
+     * Metodo que permite llenar una tabla de una lista tipo ListaEnlazada<Persona>
+     */
     public void leer(JTable tableClientes, ListaEnlazada<Persona>  clientes) {
         DefaultTableModel tabla = new DefaultTableModel();
         try {
@@ -124,7 +129,6 @@ public class RegistrarClientes {
         } catch (Exception e) {
             System.out.println("ERROR en cargar: " + e);
         }
-    }
-    
+    }  
     
 }

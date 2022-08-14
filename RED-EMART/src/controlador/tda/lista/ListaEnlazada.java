@@ -13,7 +13,6 @@ import java.lang.reflect.Method;
  *
  * @author KBGR55/Hilary-Madelein/Thaisncp/AdrianArtz/ronaldcuenca19
  */
-
 public class ListaEnlazada<E> {
 
     private NodoLista<E> cabecera;

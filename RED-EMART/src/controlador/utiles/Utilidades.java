@@ -69,7 +69,6 @@ public class Utilidades {
      * @throws Exception 
      */
     public static Object cambiarDatos(Object dato, String field, Object a) throws Exception {
-
         Field fieldA = getField(field, a.getClass());
         char[] arr = field.toCharArray();
         arr[0] = Character.toUpperCase(arr[0]);
@@ -83,10 +82,11 @@ public class Utilidades {
                 method.invoke(a, enume);
             } else if(fieldA.getType().getSimpleName().equalsIgnoreCase("Boolean")) {                
                 method.invoke(a, dato.toString().equalsIgnoreCase("true"));
-            } else if(fieldA.getType().getSimpleName().equalsIgnoreCase("Date")) {                                
+            } else if(fieldA.getType().getSimpleName().equalsIgnoreCase("Date")) {               
                 method.invoke(a, dato);
-            }
-            else {
+            }else if(fieldA.getType().getSimpleName().equalsIgnoreCase("byte[]")) {               
+                method.invoke(a, dato);
+            } else {
                 method.invoke(a, dato);//solo para string
             }
 

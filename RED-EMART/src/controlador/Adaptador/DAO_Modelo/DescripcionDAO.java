@@ -3,7 +3,6 @@ package controlador.Adaptador.DAO_Modelo;
 import controlador.Adaptador.AdaptadorDao;
 import controlador.tda.lista.ListaEnlazada;
 import modelo.Descripcion_BienInmueble;
-import modelo.Direccion;
 
 /**
  *
@@ -52,12 +51,12 @@ public class DescripcionDAO extends AdaptadorDao<Descripcion_BienInmueble> {
         setListaDes(listar());
         return listaDes;
     } 
-//    
-//    public static void main(String[] args) {
+    
+    public static void main(String[] args) {
 //        DescripcionDAO des = new DescripcionDAO ();
 //        ListaEnlazada<Descripcion_BienInmueble> lista = des.listar();
 //        try {
-//            des.getDes().setId_descripcion(2);
+//            des.getDes().setId_descripcion(0);
 //            des.getDes().setId_tipo_bien("TB_C");
 //            des.getDes().setMetros_cuadrados(300.0);
 //            des.getDes().setColor("Blanco");
@@ -71,5 +70,5 @@ public class DescripcionDAO extends AdaptadorDao<Descripcion_BienInmueble> {
 //        } catch (Exception e) {
 //            System.out.println("ERROR: " + e);
 //        }
-//    }
+    }
 }

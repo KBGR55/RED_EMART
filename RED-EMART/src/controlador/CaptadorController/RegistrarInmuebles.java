@@ -4,19 +4,17 @@ import controlador.Adaptador.DAO_Modelo.Bien_InmuebleDAO;
 import controlador.Adaptador.DAO_Modelo.DescripcionDAO;
 import controlador.Adaptador.DAO_Modelo.DireccionDAO;
 import controlador.tda.lista.ListaEnlazada;
-import controlador.tda.lista.exception.PosicionException;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import modelo.Bien_Inmueble;
 import modelo.Descripcion_BienInmueble;
 import modelo.Direccion;
-import modelo.Persona;
 
 /**
  *
- * @author KBGR55/Hilary-Madelein/Thaisncp/AdrianArtz/ronaldcuenca19
+ * @author KBGR55/Hilary-Madelein/Thaisncp/AdrianArtz
  */
 public class RegistrarInmuebles {
 
@@ -26,7 +24,8 @@ public class RegistrarInmuebles {
     private DireccionDAO daoD = new DireccionDAO();
     private Descripcion_BienInmueble desc = new Descripcion_BienInmueble();
     private DescripcionDAO daoDes = new DescripcionDAO();
-    private String lista[][]; private String lista2[][];
+    private String lista[][];
+    private String lista2[][];
     private Integer ID;
 
     public Bien_Inmueble getBien() {
@@ -77,40 +76,50 @@ public class RegistrarInmuebles {
         this.daoDes = daoDes;
     }
 
-    public void resgitrarDireccion(String id_lugar, String calleP, String calleS) throws Exception {
-        ID = daoD.listar().getSize();
-        dic.setId_lugar(id_lugar);
-        dic.setCalle_principal(calleP);
-        dic.setCalle_secundaria(calleS);
-        dic = new Direccion(ID, dic.getId_lugar(), dic.getCalle_principal(), dic.getCalle_secundaria());
-        daoD.guardar(dic);
+    public Boolean resgitrarDireccion(String id_lugar, String calleP, String calleS) throws Exception {
+        try {
+            ID = daoD.listar().getSize();
+            dic.setId_lugar(id_lugar);
+            dic.setCalle_principal(calleP);
+            dic.setCalle_secundaria(calleS);
+            dic = new Direccion(ID, dic.getId_lugar(), dic.getCalle_principal(), dic.getCalle_secundaria());
+            daoD.guardar(dic);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
-    public void registrarDescripcion(String id_tipo_bien, Double metros_cuadrados, String color, Integer n_pisos, Integer n_cuartos, String amueblado, String ascensor, String piscina) throws Exception {
-        ID = daoDes.listar().getSize();
-        desc.setId_tipo_bien(id_tipo_bien);
-        desc.setMetros_cuadrados(metros_cuadrados);
-        desc.setColor(color);
-        desc.setN_pisos(n_pisos);
-        desc.setN_cuartos(n_cuartos);
-        desc.setAmueblado(amueblado);
-        desc.setAscensor(ascensor);
-        desc.setPiscina(piscina);
-        desc = new Descripcion_BienInmueble(ID, desc.getId_tipo_bien(), desc.getMetros_cuadrados(), desc.getColor(), desc.getN_pisos(), desc.getN_cuartos(), desc.getAmueblado(), desc.getAscensor(), desc.getPiscina());
-        daoDes.guardar(desc);
+    public Boolean registrarDescripcion(String id_tipo_bien, Double metros_cuadrados, String color, Integer n_pisos, Integer n_cuartos, String amueblado, String ascensor, String piscina) throws Exception {
+        try {
+            ID = daoDes.listar().getSize();
+            desc.setId_tipo_bien(id_tipo_bien);
+            desc.setMetros_cuadrados(metros_cuadrados);
+            desc.setColor(color);
+            desc.setN_pisos(n_pisos);
+            desc.setN_cuartos(n_cuartos);
+            desc.setAmueblado(amueblado);
+            desc.setAscensor(ascensor);
+            desc.setPiscina(piscina);
+            desc = new Descripcion_BienInmueble(ID, desc.getId_tipo_bien(), desc.getMetros_cuadrados(), desc.getColor(), desc.getN_pisos(), desc.getN_cuartos(), desc.getAmueblado(), desc.getAscensor(), desc.getPiscina());
+            daoDes.guardar(desc);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
-    public void registrarCliente(Integer id_descripcion, Integer id_direccion, Date fecha, Double precio, String estado) throws Exception {
+    public void registrarInmueble(Integer id_descripcion, Integer id_direccion, Date fecha, Double precio, String estado) throws Exception {
         ID = dao.listar().getSize();
         bien.setFecha_ingreso(fecha);
         bien.setPrecio(precio);
-        bien.setEstado(estado);
+        bien.setId_estado_b(estado);
         bien.setId_descripcion(id_descripcion);
         bien.setId_direccion(id_direccion);
-        bien = new Bien_Inmueble(ID, bien.getId_direccion(), bien.getId_descripcion(), ID, bien.getFecha_ingreso(), bien.getPrecio(), bien.getEstado());
+        bien = new Bien_Inmueble(ID, bien.getId_direccion(), bien.getId_descripcion(), bien.getId_estado_b(), ID, bien.getFecha_ingreso(), bien.getPrecio());
         dao.guardar(bien);
     }
-    
+
     public void leer(JTable table, ListaEnlazada<Bien_Inmueble> bienes, ListaEnlazada<Descripcion_BienInmueble> desc, ListaEnlazada<Direccion> dir) {
         DefaultTableModel tabla = new DefaultTableModel();
         try {
@@ -129,7 +138,7 @@ public class RegistrarInmuebles {
                 datos[2] = "" + dir.obtenerDato(i).getId_lugar();
                 datos[3] = "" + bienes.obtenerDato(i).getEncargado_Captador();
                 datos[4] = "" + bienes.obtenerDato(i).getFecha_ingreso();
-                datos[5] = "" + bienes.obtenerDato(i).getEstado();
+                datos[5] = "" + bienes.obtenerDato(i).getId_estado_b();
                 tabla.addRow(datos);
                 table.setModel(tabla);
             }
@@ -140,7 +149,7 @@ public class RegistrarInmuebles {
 
     public void leerDesc(JTable table, ListaEnlazada<Descripcion_BienInmueble> listaDesc) {
         DefaultTableModel tabla = new DefaultTableModel();
-        lista = new String [4][listaDesc.getSize()];
+        lista = new String[4][listaDesc.getSize()];
         try {
             tabla.addColumn("ID");
             tabla.addColumn("TIPO INMUEBLE");
@@ -162,11 +171,9 @@ public class RegistrarInmuebles {
         }
     }
 
-
-
     public void leerDir(JTable table, ListaEnlazada<Direccion> listaDir) {
         DefaultTableModel tabla = new DefaultTableModel();
-        lista2 = new String [4][listaDir.getSize()];
+        lista2 = new String[4][listaDir.getSize()];
         try {
             tabla.addColumn("ID");
             tabla.addColumn("ID LUGAR");

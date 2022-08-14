@@ -61,14 +61,14 @@ public class Bien_InmuebleDAO extends AdaptadorDao<Bien_Inmueble> {
     }
     
     public static void main(String[] args) {
-        Bien_InmuebleDAO inmueble = new Bien_InmuebleDAO();
-        ListaEnlazada<Bien_Inmueble> lista = inmueble.listar();
+     Bien_InmuebleDAO inmueble = new Bien_InmuebleDAO();
+    ListaEnlazada<Bien_Inmueble> lista = inmueble.listar();
         try {
-            inmueble.getInmueble().setId_Bien_Inmueble(1);
-            inmueble.getInmueble().setId_direccion(2);
+           inmueble.getInmueble().setId_Bien_Inmueble(0);
+            inmueble.getInmueble().setId_direccion(0);
             inmueble.getInmueble().setId_estado_b("EB_D");
-            inmueble.getInmueble().setId_descripcion(2);
-            inmueble.getInmueble().setEncargado_Captador(0);
+            inmueble.getInmueble().setId_descripcion(0);
+            inmueble.getInmueble().setEncargado_Captador(2);
             inmueble.getInmueble().setFecha_ingreso(new Date());
             inmueble.getInmueble().setPrecio(150.000);
             inmueble.guardar(inmueble.getInmueble());

@@ -14,9 +14,9 @@ public class SQLclass {
     public static Connection conn(){
         try {
             DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
-            //System.out.println("connection to data base");
-            Connection connection= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "USERPY", "grupo1");
-            //System.out.println("CONEXION EXITOSA");
+            System.out.println("connection to data base");
+            Connection connection= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "C##USERPYY", "grupo1");
+            System.out.println("CONEXION EXITOSA");
             return connection;
             
         } catch (Exception e) {
