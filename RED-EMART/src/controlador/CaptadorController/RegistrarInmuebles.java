@@ -109,12 +109,13 @@ public class RegistrarInmuebles {
         }
     }
 
-    public void registrarInmueble(Integer id_descripcion, Integer id_direccion, Date fecha, Double precio, String estado) throws Exception {
+    public void registrarInmueble(Integer id_descripcion, Integer id_direccion, Date fecha,Integer empleado ,Double precio, String estado) throws Exception {
         ID = dao.listar().getSize();
         bien.setFecha_ingreso(fecha);
         bien.setPrecio(precio);
         bien.setId_estado_b(estado);
         bien.setId_descripcion(id_descripcion);
+        bien.setEncargado_Captador(empleado);
         bien.setId_direccion(id_direccion);
         bien = new Bien_Inmueble(ID, bien.getId_direccion(), bien.getId_descripcion(), bien.getId_estado_b(), ID, bien.getFecha_ingreso(), bien.getPrecio());
         dao.guardar(bien);

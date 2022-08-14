@@ -4,9 +4,6 @@ import controlador.Conexion.SQLclass;
 import controlador.tda.lista.ListaEnlazada;
 import controlador.utiles.Utilidades;
 import static controlador.utiles.Utilidades.getMethod;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,7 +13,7 @@ import java.lang.reflect.Method;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.swing.JOptionPane;
+import jdk.jfr.Timestamp;
 
 /**
  *
@@ -33,7 +30,7 @@ public class AdaptadorDao<T> implements InterfazDao<T> {
         this.clazz = clazz;
         this.conexion = SQLclass.conn();
         ALL += clazz.getSimpleName().toLowerCase();
-        ALL_ID += clazz.getSimpleName().toLowerCase() + " where id = ";
+        ALL_ID += clazz.getSimpleName().toLowerCase() + " where id_persona = ";
     }
 
     public Connection getConexion() {
@@ -56,7 +53,7 @@ public class AdaptadorDao<T> implements InterfazDao<T> {
             for (int i = 0; i < resultSetMetaData.getColumnCount(); i++) {
                 columna[i] = resultSetMetaData.getColumnLabel(i + 1);
             }
-            String ruta = "";
+
             while (resultSet.next()) {
                 System.out.println("RESULT SET");
                 T obj = (T) clazz.getConstructor().newInstance();
@@ -66,15 +63,11 @@ public class AdaptadorDao<T> implements InterfazDao<T> {
                     System.out.println("======== " + objeto.getClass().getName() + columna[i]);
                     if (objeto != null && objeto.getClass().getName().equals("java.sql.Date")) {
                         java.sql.Date aux = (java.sql.Date) objeto;
-                        java.util.Date fecha = new Date();
-                        Utilidades.cambiarDatos(fecha, columna[i], obj);
+                         java.util.Date fecha = new Date();
+                        
+                       Utilidades.cambiarDatos(fecha, columna[i], obj);
                     } else {
                         Utilidades.cambiarDatos(objeto, columna[i], obj);
-                    }
-                    if (objeto.getClass().getName().equals("java.sql.Blob")) {
-                        java.sql.Blob aux =(java.sql.Blob)objeto;
-                        byte[] pdfG = new byte[(int) ruta.length()];
-                        Utilidades.cambiarDatos(pdfG, columna[i], obj);
                     }
                 }
                 lista.insertar(obj);
@@ -115,8 +108,10 @@ public class AdaptadorDao<T> implements InterfazDao<T> {
             stmt.executeUpdate();
         } catch (Exception e) {
             System.out.println("Error en guardar " + e);
-            e.printStackTrace();           
+            e.printStackTrace();
         }
+
+        System.out.println(comando);
     }
 
     @Override
@@ -131,7 +126,7 @@ public class AdaptadorDao<T> implements InterfazDao<T> {
         Object id = null;
         String datos = "";
         for (int i = 0; i < columnas.length; i++) {
-            if (!columnas[i].equalsIgnoreCase("id")) {
+            if (!columnas[i].equalsIgnoreCase("id_persona")) {
                 if (i == columnas.length - 1) {
                     //variables += columnas[i];//id, nombres, external_id, ...
                     datos += columnas[i] + "=" + tipoDato(columnas[i], dato);//0, "casa", "343-545
@@ -144,7 +139,7 @@ public class AdaptadorDao<T> implements InterfazDao<T> {
             }
 
         }
-        comando += datos + " where id = " + id.toString();
+        comando += datos + " where id_persona = " + id.toString();
         try {
             PreparedStatement stmt = getConexion().prepareStatement(comando);
             stmt.executeUpdate();
