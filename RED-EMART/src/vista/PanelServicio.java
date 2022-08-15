@@ -55,22 +55,23 @@ public class PanelServicio extends javax.swing.JPanel {
         Panelcontenido.repaint();
     }
 
-    public Integer traerDato(Integer id) throws Exception {
-        try {
-            Integer dato;
-            int idPos = tblInmuebles.getSelectedRow();
-            if (idPos > -1) {
-                dato = v.getDaoBien().getListaInmuebles().obtenerDato(idPos).getId_direccion();
-                return dato;
-            } else {
-                JOptionPane.showMessageDialog(null, "Selecciones una fila de bien inmueble");
-                return null;
-            }
-
-        } catch (PosicionException ex) {
-            return null;
-        }
-    }
+//    public Integer traerDato(Integer id) throws Exception {
+//        try {
+//            Integer dato;
+//            int idPos = tblInmuebles.getSelectedRow();
+//            System.out.println("------------------------"+idPos);
+//            if (idPos > -1) {
+//                dato = v.getDaoBien().getListaInmuebles().obtenerDato(idPos).getId_direccion();
+//                return dato;
+//            } else {
+//                JOptionPane.showMessageDialog(null, "Selecciones una fila de bien inmueble");
+//                return null;
+//            }
+//
+//        } catch (PosicionException ex) {
+//            return null;
+//        }
+//    }
 
     private void setColor(JPanel p) {
         p.setBackground(new Color(153, 153, 153));
@@ -103,9 +104,6 @@ public class PanelServicio extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblInmuebles = new javax.swing.JTable();
-        jSeparator22 = new javax.swing.JSeparator();
-        buscarInmuebleBttn = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jSeparator23 = new javax.swing.JSeparator();
         Text11 = new javax.swing.JLabel();
         totalVentaTxT = new javax.swing.JTextField();
@@ -251,7 +249,7 @@ public class PanelServicio extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "ID", "Precio", "Direccion", "TipoInmueble"
+                "ID", "Precio", "Direccion", "Inmueble"
             }
         ));
         tblInmuebles.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -263,39 +261,7 @@ public class PanelServicio extends javax.swing.JPanel {
 
         jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 350, 80));
 
-        jSeparator22.setForeground(new java.awt.Color(255, 0, 51));
-        jSeparator22.setPreferredSize(new java.awt.Dimension(200, 10));
-        jPanel4.add(jSeparator22, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 160, 10));
-
-        buscarInmuebleBttn.setBackground(new java.awt.Color(5, 23, 58));
-        buscarInmuebleBttn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        buscarInmuebleBttn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                buscarInmuebleBttnMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                buscarInmuebleBttnMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                buscarInmuebleBttnMousePressed(evt);
-            }
-        });
-        buscarInmuebleBttn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Detalle Inmueble");
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
-            }
-        });
-        buscarInmuebleBttn.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 30));
-
-        jPanel4.add(buscarInmuebleBttn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 160, 30));
-
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, 370, 150));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, 370, 120));
 
         jSeparator23.setForeground(new java.awt.Color(51, 51, 55));
         jSeparator23.setPreferredSize(new java.awt.Dimension(200, 10));
@@ -362,18 +328,6 @@ public class PanelServicio extends javax.swing.JPanel {
         setColor(BotonGuardar);
     }//GEN-LAST:event_BotonGuardarMouseEntered
 
-    private void buscarInmuebleBttnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarInmuebleBttnMouseEntered
-        setColor(buscarInmuebleBttn);
-    }//GEN-LAST:event_buscarInmuebleBttnMouseEntered
-
-    private void buscarInmuebleBttnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarInmuebleBttnMouseExited
-        resetColor(buscarInmuebleBttn);
-    }//GEN-LAST:event_buscarInmuebleBttnMouseExited
-
-    private void buscarInmuebleBttnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarInmuebleBttnMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscarInmuebleBttnMousePressed
-
     private void totalVentaTxTMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_totalVentaTxTMousePressed
 
     }//GEN-LAST:event_totalVentaTxTMousePressed
@@ -382,14 +336,9 @@ public class PanelServicio extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_fechaTxTActionPerformed
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        PanelDescripcion pd = new PanelDescripcion(v.getDaoBien().listado().getSize());
-        mostrarContenido(pd);
-    }//GEN-LAST:event_jLabel2MouseClicked
-
     private void BotonGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonGuardarMouseClicked
         try {
-            v.generarVenta(datoCliente(), v.id_despachador(txtCedulaDespachador.getText()), fechaVenta.getDate(), datoPrecio(), datoID());
+            v.generarVenta(datoCliente(),datoID(), v.id_despachador(txtCedulaDespachador.getText()), fechaVenta.getDate(), datoPrecio(), datoID());
         } catch (Exception ex) {
             System.out.println("ERROR: " + ex);
         }
@@ -406,7 +355,7 @@ public class PanelServicio extends javax.swing.JPanel {
     public Integer datoID() throws Exception {
         try {
             Integer dato;
-            int idPos = tblInmuebles.getSelectedRow();
+            int idPos = tblInmuebles.getSelectedRow()+1;
             if (idPos > -1) {
                 dato = v.getDaoBien().getListaInmuebles().obtenerDato(idPos).getId_Bien_Inmueble();
                 return dato;
@@ -440,7 +389,7 @@ public class PanelServicio extends javax.swing.JPanel {
     public Double datoPrecio() throws Exception {
         try {
             Double dato;
-            int idPos = tblInmuebles.getSelectedRow() ;
+            int idPos = tblInmuebles.getSelectedRow()+1;
             if (idPos > -1) {
                 dato = v.getDaoBien().getListaInmuebles().obtenerDato(idPos).getPrecio();
                 return dato;
@@ -464,11 +413,9 @@ public class PanelServicio extends javax.swing.JPanel {
     private javax.swing.JLabel Text9;
     private javax.swing.JLabel TitleUserTxT1;
     private javax.swing.JPanel body1;
-    private javax.swing.JPanel buscarInmuebleBttn;
     private javax.swing.JTextField fechaTxT;
     private com.toedter.calendar.JDateChooser fechaVenta;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -478,7 +425,6 @@ public class PanelServicio extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator20;
     private javax.swing.JSeparator jSeparator21;
-    private javax.swing.JSeparator jSeparator22;
     private javax.swing.JSeparator jSeparator23;
     private javax.swing.JSeparator jSeparator24;
     private javax.swing.JTextField nroVentaTxT;
