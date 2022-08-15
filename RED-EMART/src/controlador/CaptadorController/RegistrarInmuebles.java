@@ -177,7 +177,7 @@ public class RegistrarInmuebles {
             for (int i = 0; i < clientes.getSize(); i++) {
                 datos[0] = "" + clientes.obtenerDato(i).getId_Bien_Inmueble();
                 datos[1] = "" + clientes.obtenerDato(i).getId_descripcion();
-                datos[2] = "" + clientes.obtenerDato(i).getId_descripcion();
+                datos[2] = "" + clientes.obtenerDato(i).getId_direccion();
                 datos[3] = "" + clientes.obtenerDato(i).getEncargado_Captador();
                 datos[4] = "" + clientes.obtenerDato(i).getFecha_ingreso();
                 datos[5] = "" + clientes.obtenerDato(i).getPrecio();
