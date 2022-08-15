@@ -84,8 +84,8 @@ public class PanelNuevoEmpleado extends javax.swing.JPanel {
 
             if (ContraseñaTxT.getText().equalsIgnoreCase(ConfirmarContraseñaTxT.getText()) && conf == 1 && cont == 1) {
                 if (isNumeric(telefonoTxT.getText())) {
-                    for (int i = 0; i < re.getEd().listado().getSize(); i++) {
-                        if (UsuarioTxT.getText().equals(re.getEd().listado().obtenerDato(i).getUsuario())) {
+                    for (int i = 0; i < re.getEd().listar().getSize(); i++) {
+                        if (UsuarioTxT.getText().equals(re.getEd().listar().obtenerDato(i).getUsuario())) {
                             c++;
                         }
                     }

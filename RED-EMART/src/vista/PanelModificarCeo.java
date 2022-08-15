@@ -30,9 +30,9 @@ public class PanelModificarCeo extends javax.swing.JPanel {
     
     private void modificarCEO() throws Exception{
         Integer id_ceo = 0;
-        for (int i = 0; i < mc.getEd().listado().getSize(); i++) {
-            if (mc.getEd().listado().obtenerDato(i).getId_tipo_emp().equals("A_C")) {
-                id_ceo = mc.getEd().listado().obtenerDato(i).getId_persona();
+        for (int i = 0; i < mc.getEd().listar().getSize(); i++) {
+            if (mc.getEd().listar().obtenerDato(i).getId_tipo_emp().equals("A_C")) {
+                id_ceo = mc.getEd().listar().obtenerDato(i).getId_persona();
             }
         }
         if (!NombreTxT.getText().equals("")&&!ApellidoTxT1.getText().equals("")&&!TelefonoTxT1.getText().equals("")&&!ident.getText().equals("")&&!UsuarioTxT.getText().equals("")&&!ContraseñaTxT.getText().equals("")&&!ConfirmarContraseñaTxT.getText().equals("")) {

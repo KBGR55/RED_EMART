@@ -82,28 +82,20 @@ public class InterfacePrincipal extends javax.swing.JFrame {
             SubTarea3Bttn.setVisible(true);
             subTarea3TxT.setText("Lista Ventas");
             icon3TxT.setIcon(icon);
-            icon = new ImageIcon("src/vista/imagenes/saldo.png");
-            SubTarea4Bttn.setVisible(true);
-            subTarea4TxT.setText("Saldo Actual");
-            icon4TxT.setIcon(icon);
         } else if (rol.equalsIgnoreCase("Captador")) {
             SubTarea1Bttn.setVisible(true);            
-            icon = new ImageIcon("src/vista/imagenes/saldo.png");
-            icon2TxT.setIcon(icon);
-            subTarea1TxT.setText("Saldo Actual");
+            icon = new ImageIcon("src/vista/imagenes/venta.png");
+            SubTarea1Bttn.setVisible(true);
+            subTarea1TxT.setText("ingresar Direccion");
             icon1TxT.setIcon(icon);
             icon = new ImageIcon("src/vista/imagenes/venta.png");
             SubTarea2Bttn.setVisible(true);
-            subTarea2TxT.setText("ingresar Direccion");
+            subTarea2TxT.setText("ingresar Descripcion");
             icon2TxT.setIcon(icon);
             icon = new ImageIcon("src/vista/imagenes/venta.png");
             SubTarea3Bttn.setVisible(true);
-            subTarea3TxT.setText("ingresar Descripcion");
+            subTarea3TxT.setText("ingresar Inmueble");
             icon3TxT.setIcon(icon);
-            icon = new ImageIcon("src/vista/imagenes/venta.png");
-            SubTarea4Bttn.setVisible(true);
-            subTarea4TxT.setText("ingresar Inmueble");
-            icon4TxT.setIcon(icon);
         }
     }
     
@@ -598,8 +590,8 @@ public class InterfacePrincipal extends javax.swing.JFrame {
             PanelClientes pC = new PanelClientes();
             mostrarContenido(pC);
         } else if (rol.equalsIgnoreCase("Captador")) {
-            PanelSaldo pS = new PanelSaldo(nameUser,"22% x inmueble captado");
-            mostrarContenido(pS);
+            PanelDireccion pd = new PanelDireccion();
+            mostrarContenido(pd);
         }
     }//GEN-LAST:event_SubTarea1BttnMousePressed
 
@@ -619,8 +611,8 @@ public class InterfacePrincipal extends javax.swing.JFrame {
             PanelServicio pS = new PanelServicio();
             mostrarContenido(pS);
         } else if (rol.equalsIgnoreCase("Captador")) {
-            PanelDireccion pd = new PanelDireccion();
-            mostrarContenido(pd);
+            PanelDescripcionInmueble pde = new PanelDescripcionInmueble();
+            mostrarContenido(pde);
         }
     }//GEN-LAST:event_SubTarea2BttnMousePressed
 
@@ -633,12 +625,12 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_SubTarea3BttnMouseExited
 
     private void SubTarea3BttnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubTarea3BttnMousePressed
-        if (rol.equalsIgnoreCase("Captador")) {
-            PanelDescripcionInmueble pde = new PanelDescripcionInmueble();
-            mostrarContenido(pde);
-        } else if (rol.equalsIgnoreCase("Despachador")) {
+        if (rol.equalsIgnoreCase("Despachador")) {
             PanelVentas pV = new PanelVentas();
             mostrarContenido(pV);
+        }else if (rol.equalsIgnoreCase("Captador")) {
+            PanelNuevoBienInmueble pnbi = new PanelNuevoBienInmueble();
+            mostrarContenido(pnbi);
         }
     }//GEN-LAST:event_SubTarea3BttnMousePressed
 
@@ -651,13 +643,6 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_SubTarea4BttnMouseExited
 
     private void SubTarea4BttnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubTarea4BttnMousePressed
-        if (rol.equalsIgnoreCase("Despachador")) {
-            PanelSaldo ps = new PanelSaldo(nameUser, "25% x inmueble vendido");
-            mostrarContenido(ps);
-        } else if (rol.equalsIgnoreCase("Captador")) {
-            PanelNuevoBienInmueble pnbi = new PanelNuevoBienInmueble();
-            mostrarContenido(pnbi);
-        }
     }//GEN-LAST:event_SubTarea4BttnMousePressed
     private void setColor(JPanel p) {
         p.setBackground(new Color(153, 153, 153));

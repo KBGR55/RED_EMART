@@ -70,13 +70,12 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Datos incompletos", "ERROR", JOptionPane.ERROR_MESSAGE);
         } else {
             registro.registrarInmueble(Integer.valueOf(descripcionTxT.getText()), Integer.valueOf(direccionTxT.getText()), DateFecha.getDate(), Integer.valueOf(registro.id_captador(txtCedula.getText())), Double.valueOf(precioTxT1.getText()), "EB_D");
-            JOptionPane.showMessageDialog(null, "Datos ingresados correctamente", "ERROR", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Datos ingresados correctamente");
             limpiar();
         }
     }
 
-    public void editar() throws Exception {
-        System.out.println("vista.PanelNuevoBienInmueble.editar()");
+   public void editar() throws Exception {
         if (txtCedula.getText().trim().length() == 0 || precioTxT1.getText().trim().length() == 0 || direccionTxT.getText().trim().length() == 0 || descripcionTxT.getText().trim().length() == 0) {
             JOptionPane.showMessageDialog(null, "Datos incompletos", "ERROR", JOptionPane.ERROR_MESSAGE);
         } else {
@@ -85,18 +84,10 @@ public class PanelNuevoBienInmueble extends javax.swing.JPanel {
             try {
                 switch (tipoBien) {
                     case 1:
-
-                        //correct = registro.modificarInmueble(bien, Integer.valueOf(descripcionTxT.getText()), Integer.valueOf(direccionTxT.getText()), DateFecha.getDate(), Integer.valueOf(registro.id_captador(txtCedula.getText())), Double.valueOf(precioTxT1.getText()), "EE_D");
+                        correct = registro.modificarInmueble(bien, Integer.valueOf(descripcionTxT.getText()), Integer.valueOf(direccionTxT.getText()), DateFecha.getDate(),Double.valueOf(precioTxT1.getText()), "EE_D");
                         break;
                     case 2:
-                        System.out.println(bien);
-                        System.out.println(descripcionTxT.getText());
-                        System.out.println(descripcionTxT.getText());
-                        System.out.println(descripcionTxT.getText());
-                        correct = registro.modificarInmueble(bien, Integer.valueOf(descripcionTxT.getText()),
-                                Integer.valueOf(direccionTxT.getText()),
-                                DateFecha.getDate(),
-                                Double.valueOf(precioTxT1.getText()), "EE_V");
+                        correct = registro.modificarInmueble(bien, Integer.valueOf(descripcionTxT.getText()),Integer.valueOf(direccionTxT.getText()),DateFecha.getDate(), Double.valueOf(precioTxT1.getText()), "EE_V");
                         break;
                     default:
                         JOptionPane.showMessageDialog(null, "Seleccione el estado del inmueble", "Error", JOptionPane.ERROR_MESSAGE);
