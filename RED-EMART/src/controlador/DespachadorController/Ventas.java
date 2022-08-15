@@ -68,19 +68,19 @@ public class Ventas {
     }
 
     public void mostrarDatosTablaInmuebles(JTable tableVentas) {
-
+        
         DefaultTableModel tablaCuenta = new DefaultTableModel();
         tablaCuenta.addColumn("ID");
         tablaCuenta.addColumn("Precio");
         tablaCuenta.addColumn("Direccion");
-        tablaCuenta.addColumn("Tipo Inmueble");
+        tablaCuenta.addColumn("Inmueble");
         tableVentas.setModel(tablaCuenta);
 
         String[] datos = new String[4];
 
         try {
             Statement leer = conect.createStatement();
-            ResultSet resultado = leer.executeQuery("SELECT id_bien_inmueble, precio, id_direccion, id_descripcion FROM bien_inmueble WHERE id_estado_b = 'EB_D' ");
+            ResultSet resultado = leer.executeQuery("SELECT id_bien_inmueble, precio, id_direccion, id_bien_inmueble FROM bien_inmueble WHERE id_estado_b = 'EB_D' ");
             while (resultado.next()) {
                 datos[0] = String.valueOf(resultado.getInt(1));
                 datos[1] = String.valueOf(resultado.getDouble(2));
@@ -143,43 +143,43 @@ public class Ventas {
         }
     }
 
-    public void mostrarDatosTablaDescripcion(JTable tableDes, Integer id_des) {
-
-        DefaultTableModel tablaDes = new DefaultTableModel();
-        tablaDes.addColumn("ID");
-        tablaDes.addColumn("Tipo inmueble");
-        tablaDes.addColumn("Metros cuadrados");
-        tablaDes.addColumn("Color");
-        tablaDes.addColumn("Nro. Pisos");
-        tablaDes.addColumn("Piscina");
-        tablaDes.addColumn("Amoblado");
-        tablaDes.addColumn("Ascensor");
-        tablaDes.addColumn("Nro.Cuartos");
-        tableDes.setModel(tablaDes);
-
-        String[] datos = new String[9];
-
-        try {
-            Statement leer = conect.createStatement();
-            ResultSet resultado = leer.executeQuery("SELECT * FROM descripcion_bieninmueble WHERE id_descripcion = '" + id_des + " ' ");
-            while (resultado.next()) {
-                datos[0] = String.valueOf(resultado.getInt(1));
-                datos[1] = resultado.getString(2);
-                datos[2] = String.valueOf(resultado.getDouble(3));
-                datos[3] = resultado.getString(4);
-                datos[4] = String.valueOf(resultado.getInt(5));
-                datos[5] = resultado.getString(6);
-                datos[6] = resultado.getString(7);
-                datos[7] = resultado.getString(8);
-                datos[8] = String.valueOf(resultado.getInt(9));
-                tablaDes.addRow(datos);
-            }
-            tableDes.setModel(tablaDes);
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error en la consulta: " + e);
-            e.printStackTrace();
-        }
-    }
+//    public void mostrarDatosTablaDescripcion(JTable tableDes, Integer id_des) {
+//
+//        DefaultTableModel tablaDes = new DefaultTableModel();
+//        tablaDes.addColumn("ID");
+//        tablaDes.addColumn("Tipo inmueble");
+//        tablaDes.addColumn("Metros cuadrados");
+//        tablaDes.addColumn("Color");
+//        tablaDes.addColumn("Nro. Pisos");
+//        tablaDes.addColumn("Piscina");
+//        tablaDes.addColumn("Amoblado");
+//        tablaDes.addColumn("Ascensor");
+//        tablaDes.addColumn("Nro.Cuartos");
+//        tableDes.setModel(tablaDes);
+//
+//        String[] datos = new String[9];
+//
+//        try {
+//            Statement leer = conect.createStatement();
+//            ResultSet resultado = leer.executeQuery("SELECT * FROM descripcion_bieninmueble WHERE id_descripcion = '" + id_des + " ' ");
+//            while (resultado.next()) {
+//                datos[0] = String.valueOf(resultado.getInt(1));
+//                datos[1] = resultado.getString(2);
+//                datos[2] = String.valueOf(resultado.getDouble(3));
+//                datos[3] = resultado.getString(4);
+//                datos[4] = String.valueOf(resultado.getInt(5));
+//                datos[5] = resultado.getString(6);
+//                datos[6] = resultado.getString(7);
+//                datos[7] = resultado.getString(8);
+//                datos[8] = String.valueOf(resultado.getInt(9));
+//                tablaDes.addRow(datos);
+//            }
+//            tableDes.setModel(tablaDes);
+//        } catch (SQLException e) {
+//            JOptionPane.showMessageDialog(null, "Error en la consulta: " + e);
+//            e.printStackTrace();
+//        }
+//    }
 
     public Integer id_despachador(String iden) {
         try {
@@ -199,10 +199,11 @@ public class Ventas {
         }
     }
 
-    public void generarVenta(Integer id_cliente, Integer despachador, Date fecha, Double precio, Integer id_bien) throws Exception {
+    public void generarVenta(Integer id_cliente, Integer inmueble, Integer despachador, Date fecha, Double precio, Integer id_bien) throws Exception {
         id = daoVen.listado().getSize();
         ventaPrueba.setId_venta(id);
         ventaPrueba.setId_cliente(id_cliente);
+        ventaPrueba.setId_bien_inmueble(inmueble);
         ventaPrueba.setEncargado_Despachador(despachador);
         ventaPrueba.setFecha(fecha);
         ventaPrueba.setPrecio_total_pagar(precio);
@@ -229,17 +230,19 @@ public class Ventas {
         try {
             tabla.addColumn("ID");
             tabla.addColumn("Cliente");
+            tabla.addColumn("Bien inmueble");
             tabla.addColumn("Vendedor");
             tabla.addColumn("Fecha");
             tabla.addColumn("Precio");
             tableClientes.setModel(tabla);
-            String datos[] = new String[5];
+            String datos[] = new String[6];
             for (int i = 0; i < ventas.getSize(); i++) {
                 datos[0] = "" + ventas.obtenerDato(i).getId_venta();
                 datos[1] = "" + ventas.obtenerDato(i).getId_cliente();
-                datos[2] = "" + ventas.obtenerDato(i).getEncargado_Despachador();
-                datos[3] = "" + ventas.obtenerDato(i).getFecha();
-                datos[4] = "" + ventas.obtenerDato(i).getPrecio_total_pagar();
+                datos[2] = "" + ventas.obtenerDato(i).getId_bien_inmueble();
+                datos[3] = "" + ventas.obtenerDato(i).getEncargado_Despachador();
+                datos[4] = "" + ventas.obtenerDato(i).getFecha();
+                datos[5] = "" + ventas.obtenerDato(i).getPrecio_total_pagar();
                 tabla.addRow(datos);
                 tableClientes.setModel(tabla);
             }
@@ -248,60 +251,32 @@ public class Ventas {
         }
     }
 
-    public void mostrarDatosTablaCliente(JTable tableDes, Integer id_des) {
-
-        DefaultTableModel tablaDes = new DefaultTableModel();
-        tablaDes.addColumn("ID");
-        tablaDes.addColumn("Nombres");
-        tablaDes.addColumn("Apellidos");
-        tablaDes.addColumn("Identificacion");
-        tableDes.setModel(tablaDes);
-
-        String[] datos = new String[4];
-
-        try {
-            Statement leer = conect.createStatement();
-            ResultSet resultado = leer.executeQuery("SELECT id_persona, nombres, apellidos, identificacion FROM persona WHERE id_persona = '" + id_des + " ' ");
-            while (resultado.next()) {
-                datos[0] = String.valueOf(resultado.getInt(1));
-                datos[1] = resultado.getString(2);
-                datos[2] = resultado.getString(3);
-                datos[3] = resultado.getString(4);
-                tablaDes.addRow(datos);
-            }
-            tableDes.setModel(tablaDes);
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error en la consulta: " + e);
-            e.printStackTrace();
-        }
-    }
-
-    public void mostrarDatosTablaInmuebleVenta(JTable tableDes, Integer id_des) {
-
-        DefaultTableModel tablaDes = new DefaultTableModel();
-        tablaDes.addColumn("ID");
-        tablaDes.addColumn("Nombres");
-        tablaDes.addColumn("Apellidos");
-        tablaDes.addColumn("Identificacion");
-        tableDes.setModel(tablaDes);
-
-        String[] datos = new String[4];
-
-        try {
-            Statement leer = conect.createStatement();
-            ResultSet resultado = leer.executeQuery("SELECT id_persona, nombres, apellidos, identificacion FROM persona WHERE id_persona = '" + id_des + " ' ");
-            while (resultado.next()) {
-                datos[0] = String.valueOf(resultado.getInt(1));
-                datos[1] = resultado.getString(2);
-                datos[2] = resultado.getString(3);
-                datos[3] = resultado.getString(4);
-                tablaDes.addRow(datos);
-            }
-            tableDes.setModel(tablaDes);
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error en la consulta: " + e);
-            e.printStackTrace();
-        }
-    }
+//    public void mostrarDatosTablaCliente(JTable tableDes, Integer id_des) {
+//
+//        DefaultTableModel tablaDes = new DefaultTableModel();
+//        tablaDes.addColumn("ID");
+//        tablaDes.addColumn("Nombres");
+//        tablaDes.addColumn("Apellidos");
+//        tablaDes.addColumn("Identificacion");
+//        tableDes.setModel(tablaDes);
+//
+//        String[] datos = new String[4];
+//
+//        try {
+//            Statement leer = conect.createStatement();
+//            ResultSet resultado = leer.executeQuery("SELECT id_persona, nombres, apellidos, identificacion FROM persona WHERE id_persona = '" + id_des + " ' ");
+//            while (resultado.next()) {
+//                datos[0] = String.valueOf(resultado.getInt(1));
+//                datos[1] = resultado.getString(2);
+//                datos[2] = resultado.getString(3);
+//                datos[3] = resultado.getString(4);
+//                tablaDes.addRow(datos);
+//            }
+//            tableDes.setModel(tablaDes);
+//        } catch (SQLException e) {
+//            JOptionPane.showMessageDialog(null, "Error en la consulta: " + e);
+//            e.printStackTrace();
+//        }
+//    }
 
 }
