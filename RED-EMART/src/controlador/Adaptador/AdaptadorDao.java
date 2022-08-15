@@ -13,7 +13,6 @@ import java.lang.reflect.Method;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import jdk.jfr.Timestamp;
 
 /**
  *
@@ -148,7 +147,6 @@ public class AdaptadorDao<T> implements InterfazDao<T> {
         }
 
         System.out.println(comando);
-
     }
 
     @Override
@@ -174,7 +172,7 @@ public class AdaptadorDao<T> implements InterfazDao<T> {
         return obj;
     }
 
-    private String[] columnas() {
+    public String[] columnas() {
         String[] columna = null;
         try {
             String seleccion = ALL;
@@ -191,7 +189,7 @@ public class AdaptadorDao<T> implements InterfazDao<T> {
         return columna;
     }
 
-    private Object tipoDato(String name, T objeto) {
+    public Object tipoDato(String name, T objeto) {
         String aux = "";
         try {
             Field field = Utilidades.getField(name, clazz);
