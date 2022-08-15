@@ -84,16 +84,13 @@ public class PanelNuevoEmpleado extends javax.swing.JPanel {
 
             if (ContraseñaTxT.getText().equalsIgnoreCase(ConfirmarContraseñaTxT.getText()) && conf == 1 && cont == 1) {
                 if (isNumeric(telefonoTxT.getText())) {
-                    for (int i = 0; i < re.getEd().listar().getSize(); i++) {
-                        if (UsuarioTxT.getText().equals(re.getEd().listar().obtenerDato(i).getUsuario())) {
+                    for (int i = 0; i < re.getEd().listado().getSize(); i++) {
+                        if (UsuarioTxT.getText().equals(re.getEd().listado().obtenerDato(i).getUsuario())) {
                             c++;
                         }
                     }
                     if (c == 0) {
-                        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                        String fechaN = jComboBox2.getSelectedItem().toString() + "/" + jComboBox3.getSelectedItem().toString() + "/" + (Integer.parseInt(jComboBox1.getSelectedItem().toString()) - 1000);
-                        Date fn = sdf.parse(fechaN);
-                        re.registrarEmpleado(tipoE, "EE_A", UsuarioTxT.getText(), ContraseñaTxT.getText(), NombreTxT.getText(), ApellidoTxT.getText(), IndentificacionTxt.getText(), tipoI, fn, telefonoTxT.getText());
+                        re.registrarEmpleado(tipoE, "EE_A", UsuarioTxT.getText(), ContraseñaTxT.getText(), NombreTxT.getText(), ApellidoTxT.getText(), IndentificacionTxt.getText(), tipoI, DateFecha.getDate(), telefonoTxT.getText());
                     } else {
                         JOptionPane.showMessageDialog(null, "Ingrese usuario no repetido");
                     }
@@ -145,10 +142,7 @@ public class PanelNuevoEmpleado extends javax.swing.JPanel {
 
             if (ContraseñaTxT.getText().equalsIgnoreCase(ConfirmarContraseñaTxT.getText()) && conf == 1 && cont == 1) {
                 if (isNumeric(telefonoTxT.getText())) {
-                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                String fechaN = jComboBox2.getSelectedItem().toString() + "/" + jComboBox3.getSelectedItem().toString() + "/" + (Integer.parseInt(jComboBox1.getSelectedItem().toString()) - 1000);
-                Date fn = sdf.parse(fechaN);
-                re.modificarEmpleado(Integer.parseInt(PanelEmpleados.empEdit[6].toString()), tipoE, "EE_A", UsuarioTxT.getText(), ContraseñaTxT.getText(), NombreTxT.getText(), ApellidoTxT.getText(), IndentificacionTxt.getText(), tipoI, fn, telefonoTxT.getText());
+                re.modificarEmpleado(Integer.parseInt(PanelEmpleados.empEdit[6].toString()), tipoE, "EE_A", UsuarioTxT.getText(), ContraseñaTxT.getText(), NombreTxT.getText(), ApellidoTxT.getText(), IndentificacionTxt.getText(), tipoI, DateFecha.getDate(), telefonoTxT.getText());
                 }  else{
                     JOptionPane.showMessageDialog(null, "Ingrese Telefono Valido");
                 } 
@@ -167,6 +161,16 @@ public class PanelNuevoEmpleado extends javax.swing.JPanel {
         } catch (NumberFormatException nfe) {
             return false;
         }
+    }
+    
+    private void limpiar(){
+        NombreTxT.setText("Ingresar Nombre");
+        ApellidoTxT.setText("Ingresar Apellido");
+        IndentificacionTxt.setText("Ingresar Identificacion");
+        telefonoTxT.setText("Ingresar Telefono");
+        UsuarioTxT.setText("Ingrese un nombre de usuario");
+        ContraseñaTxT.setText("Ingrese una contraseña");
+        ConfirmarContraseñaTxT.setText("Repita la contraseña");
     }
 
     @SuppressWarnings("unchecked")
@@ -209,12 +213,7 @@ public class PanelNuevoEmpleado extends javax.swing.JPanel {
         Text5 = new javax.swing.JLabel();
         Text9 = new javax.swing.JLabel();
         jSeparator20 = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        DateFecha = new com.toedter.calendar.JDateChooser();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(750, 430));
@@ -351,6 +350,11 @@ public class PanelNuevoEmpleado extends javax.swing.JPanel {
                 ApellidoTxTMousePressed(evt);
             }
         });
+        ApellidoTxT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ApellidoTxTActionPerformed(evt);
+            }
+        });
         jPanel1.add(ApellidoTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 260, 30));
 
         jSeparator17.setForeground(new java.awt.Color(0, 153, 255));
@@ -398,7 +402,7 @@ public class PanelNuevoEmpleado extends javax.swing.JPanel {
         Text8.setText("Tipo Idenficacion");
         jPanel1.add(Text8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 150, -1));
 
-        cargoComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONE", "CEDULA", "PASAPORTE", " " }));
+        cargoComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONE", "CEDULA", " " }));
         jPanel1.add(cargoComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 260, 30));
 
         jSeparator19.setForeground(new java.awt.Color(0, 153, 255));
@@ -431,23 +435,8 @@ public class PanelNuevoEmpleado extends javax.swing.JPanel {
         jSeparator20.setPreferredSize(new java.awt.Dimension(200, 10));
         jPanel1.add(jSeparator20, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, 260, 10));
 
-        jLabel2.setText("Dia:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 50, -1, -1));
-
-        jLabel3.setText("Mes:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 50, -1, -1));
-
-        jLabel4.setText("Año:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 50, -1, -1));
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1940", "1941", "1942", "1943", "1944", "1945", "1946", "1947", "1948", "1949", "1950", "1951", "1952", "1953", "1954", "1955", "1956", "1957", "1958", "1959", "1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 50, 50, -1));
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 50, 50, -1));
-
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
-        jPanel1.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 50, 50, -1));
+        DateFecha.setDateFormatString("yyyy-MM-dd");
+        jPanel1.add(DateFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 50, 260, 30));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 410));
     }// </editor-fold>//GEN-END:initComponents
@@ -464,12 +453,14 @@ public class PanelNuevoEmpleado extends javax.swing.JPanel {
         if (this.edit == false) {
             try {
                 guardarEmpleado();
+                limpiar();
             } catch (Exception ex) {
                 System.out.println(ex);
             }
         } else {
             try {
                 modificarEmpleado();
+                limpiar();
             } catch (Exception ex) {
                 System.out.println(ex);
             }
@@ -514,12 +505,17 @@ public class PanelNuevoEmpleado extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_NombreTxTActionPerformed
 
+    private void ApellidoTxTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApellidoTxTActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ApellidoTxTActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ApellidoTxT;
     private javax.swing.JPanel BotonGuardar;
     private javax.swing.JTextField ConfirmarContraseñaTxT;
     private javax.swing.JTextField ContraseñaTxT;
+    private com.toedter.calendar.JDateChooser DateFecha;
     private javax.swing.JTextField IndentificacionTxt;
     private javax.swing.JTextField NombreTxT;
     private javax.swing.JLabel Text12;
@@ -539,13 +535,7 @@ public class PanelNuevoEmpleado extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cargoComboBox;
     private javax.swing.JComboBox<String> cargoComboBox1;
     private javax.swing.JLabel datosjlabel;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator13;
     private javax.swing.JSeparator jSeparator17;

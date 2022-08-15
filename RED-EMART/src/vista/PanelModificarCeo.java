@@ -30,17 +30,14 @@ public class PanelModificarCeo extends javax.swing.JPanel {
     
     private void modificarCEO() throws Exception{
         Integer id_ceo = 0;
-        for (int i = 0; i < mc.getEd().listar().getSize(); i++) {
-            if (mc.getEd().listar().obtenerDato(i).getId_tipo_emp().equals("A_C")) {
-                id_ceo = mc.getEd().listar().obtenerDato(i).getId_persona();
+        for (int i = 0; i < mc.getEd().listado().getSize(); i++) {
+            if (mc.getEd().listado().obtenerDato(i).getId_tipo_emp().equals("A_C")) {
+                id_ceo = mc.getEd().listado().obtenerDato(i).getId_persona();
             }
         }
         if (!NombreTxT.getText().equals("")&&!ApellidoTxT1.getText().equals("")&&!TelefonoTxT1.getText().equals("")&&!ident.getText().equals("")&&!UsuarioTxT.getText().equals("")&&!ContraseñaTxT.getText().equals("")&&!ConfirmarContraseñaTxT.getText().equals("")) {
             if (isNumeric(TelefonoTxT1.getText())) {
-                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            String fechaN = jComboBox2.getSelectedItem().toString()+"/"+jComboBox3.getSelectedItem().toString()+"/"+(Integer.parseInt(jComboBox1.getSelectedItem().toString())-1000);
-            Date fn = sdf.parse(fechaN);
-            mc.modificarCEO(id_ceo, "EE_A", UsuarioTxT.getText(), ContraseñaTxT.getText(), NombreTxT.getText(), ApellidoTxT1.getText(), IdentificacionTxT.getText(), "TI_C", fn, TelefonoTxT1.getText());
+            mc.modificarCEO(id_ceo, "EE_A", UsuarioTxT.getText(), ContraseñaTxT.getText(), NombreTxT.getText(), ApellidoTxT1.getText(), IdentificacionTxT.getText(), "TI_C", DateFecha.getDate(), TelefonoTxT1.getText());
             }else{
                 JOptionPane.showMessageDialog(null, "Ingrese Telefono Valido");
             }           
@@ -91,12 +88,7 @@ public class PanelModificarCeo extends javax.swing.JPanel {
         TelefonoTxT1 = new javax.swing.JTextField();
         jSeparator19 = new javax.swing.JSeparator();
         ident = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        DateFecha = new com.toedter.calendar.JDateChooser();
         TitleUserTxT1 = new javax.swing.JLabel();
         datosjlabel = new javax.swing.JLabel();
 
@@ -294,23 +286,8 @@ public class PanelModificarCeo extends javax.swing.JPanel {
         ident.setText("Identificacion");
         jPanel1.add(ident, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 50, -1));
-
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
-        jPanel1.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 110, 50, -1));
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1940", "1941", "1942", "1943", "1944", "1945", "1946", "1947", "1948", "1949", "1950", "1951", "1952", "1953", "1954", "1955", "1956", "1957", "1958", "1959", "1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 110, 50, -1));
-
-        jLabel2.setText("Dia:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, -1, -1));
-
-        jLabel3.setText("Mes:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 110, -1, -1));
-
-        jLabel4.setText("Año:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 110, -1, -1));
+        DateFecha.setDateFormatString("yyyy-MM-dd");
+        jPanel1.add(DateFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, 260, 30));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 410));
 
@@ -429,6 +406,7 @@ public class PanelModificarCeo extends javax.swing.JPanel {
     private javax.swing.JPanel BotonGuardar;
     private javax.swing.JTextField ConfirmarContraseñaTxT;
     private javax.swing.JTextField ContraseñaTxT;
+    private com.toedter.calendar.JDateChooser DateFecha;
     private javax.swing.JTextField IdentificacionTxT;
     private javax.swing.JTextField NombreTxT;
     private javax.swing.JTextField TelefonoTxT1;
@@ -446,13 +424,7 @@ public class PanelModificarCeo extends javax.swing.JPanel {
     private javax.swing.JPanel body1;
     private javax.swing.JLabel datosjlabel;
     private javax.swing.JLabel ident;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator13;
     private javax.swing.JSeparator jSeparator16;

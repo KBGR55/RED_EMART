@@ -216,7 +216,7 @@ public class PanelEmpleados extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 740, 300));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONE", "CEDULA", "PASAPORTE" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONE", "CEDULA" }));
         add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, 220, 30));
     }// </editor-fold>//GEN-END:initComponents
 
