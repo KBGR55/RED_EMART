@@ -11,6 +11,7 @@ public class EmpleadoDAO extends AdaptadorDao<Empleado> {
     private Empleado emp;
     private PersonaDAO personaDAO = new PersonaDAO();
     private ListaEnlazada<Empleado> listaEmpleados = listar();
+    private String rol;
 
     public EmpleadoDAO() {
         super(Empleado.class);
@@ -27,32 +28,19 @@ public class EmpleadoDAO extends AdaptadorDao<Empleado> {
         this.emp = emp;
     }
 
-    public Object[] iniciarSesion(String usuario, String password) throws PosicionException {
-        Object[] datos = {Boolean.FALSE, "", ""};
+    public Boolean iniciarSesion(String usuario, String password) throws PosicionException {
         for (int i = 0; i < listaEmpleados.getSize(); i++) {
             if (listaEmpleados.obtenerDato(i).getUsuario().equals(usuario) && listaEmpleados.obtenerDato(i).getClave().equals(password)) {
                 System.out.println("El rol es: " + rol(i));
-                datos[0] = Boolean.TRUE;
-                datos[1] = personaDAO.listar().obtenerDato(i).getNombres() + " " + personaDAO.listar().obtenerDato(i).getApellidos();
-                datos[2] = rol(i);
-                return datos;
+                setEmp(new Empleado(listaEmpleados.obtenerDato(i).getId_tipo_emp(), listaEmpleados.obtenerDato(i).getId_estado_emp(),
+                        listaEmpleados.obtenerDato(i).getUsuario(), listaEmpleados.obtenerDato(i).getClave(), listaEmpleados.obtenerDato(i).getId_persona(),
+                        personaDAO.listar().obtenerDato(i).getNombres(), personaDAO.listar().obtenerDato(i).getApellidos(),
+                        personaDAO.listar().obtenerDato(i).getIdentificacion(), personaDAO.listar().obtenerDato(i).getId_tipo_identificacion(),
+                        personaDAO.listar().obtenerDato(i).getFecha_Nacimiento(), personaDAO.listar().obtenerDato(i).getTelefono()));
+                return true;
             }
         }
-        return datos;
-    }
-
-    private String rol(int i) throws PosicionException {
-        String rol = "";
-        return switch (listaEmpleados.obtenerDato(i).getId_tipo_emp()) {
-            case "A_C" ->
-                rol = "CEO";
-            case "E_C" ->
-                rol = "CAPTADOR";
-            case "E_D" ->
-                rol = "DESPACHADOR";
-            default ->
-                rol;
-        };
+        return false;
     }
 
     public Boolean guardar_modificar() {
@@ -68,19 +56,29 @@ public class EmpleadoDAO extends AdaptadorDao<Empleado> {
             return false;
         }
     }
-    
+
+    public String getRol() {
+        return rol;
+    }
+
+    private String rol(int i) throws PosicionException {
+        this.rol = "";
+        return switch (listaEmpleados.obtenerDato(i).getId_tipo_emp()) {
+            case "A_C" ->
+                this.rol = "CEO";
+            case "E_C" ->
+                this.rol = "CAPTADOR";
+            case "E_D" ->
+                this.rol = "DESPACHADOR";
+            default ->
+                this.rol;
+        };
+    }
+
     //TEST
-    //    public static void main(String[] args) throws PosicionException {
-    //        EmpleadoDAO empleadoDao = new EmpleadoDAO();
-    //        //test
-    //        System.out.println(empleadoDao.iniciarSesion("samaelhg", "admin30"));
-    //        System.out.println(empleadoDao.iniciarSesion("karencat", "noche30"));
-    //        System.out.println(empleadoDao.iniciarSesion("thaisxd", "cantaclaro"));
-    //        System.out.println(empleadoDao.iniciarSesion("jordy", "tarado"));
-    //
-    //        PersonaDAO personaDao = new PersonaDAO();
-    //        personaDao.listar();
-    //
-    //    }
-    
+//        public static void main(String[] args) throws PosicionException {
+//            EmpleadoDAO empleadoDao = new EmpleadoDAO();
+//            empleadoDao.iniciarSesion("samaelhg", "admin30");
+//            System.out.println(empleadoDao.getEmp().getNombres() + " "+ empleadoDao.getEmp().getApellidos());
+//        }
 }
