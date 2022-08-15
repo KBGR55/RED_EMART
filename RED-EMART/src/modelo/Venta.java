@@ -9,6 +9,7 @@ import java.util.Date;
 public class Venta {
     private Integer id_venta;
     private Integer id_cliente;
+    private Integer id_bien_inmueble;
     private Integer encargado_Despachador;
     private Date fecha;
     private Double precio_total_pagar;
@@ -37,6 +38,15 @@ public class Venta {
         this.id_cliente = id_cliente;
     }
 
+    public Integer getId_bien_inmueble() {
+        return id_bien_inmueble;
+    }
+
+    public void setId_bien_inmueble(Integer id_bien_inmueble) {
+        this.id_bien_inmueble = id_bien_inmueble;
+    }
+    
+
     public Date getFecha() {
         return fecha;
     }
@@ -53,10 +63,11 @@ public class Venta {
         this.precio_total_pagar = precio_total_pagar;
     }
 
-    public Venta(Integer id_venta, Integer encargado_Despachador, Integer id_cliente, Date fecha, Double precio_total_pagar) {
+    public Venta(Integer id_venta, Integer id_cliente, Integer id_bien_inmueble, Integer encargado_Despachador, Date fecha, Double precio_total_pagar) {
         this.id_venta = id_venta;
-        this.encargado_Despachador = encargado_Despachador;
         this.id_cliente = id_cliente;
+        this.id_bien_inmueble = id_bien_inmueble;
+        this.encargado_Despachador = encargado_Despachador;
         this.fecha = fecha;
         this.precio_total_pagar = precio_total_pagar;
     }
