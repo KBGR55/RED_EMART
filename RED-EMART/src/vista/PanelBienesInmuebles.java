@@ -4,38 +4,43 @@
  */
 package vista;
 
+import controlador.CaptadorController.RegistrarInmuebles;
 import java.awt.Color;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
+import javax.swing.JOptionPane;
 import static vista.InterfacePrincipal.Panelcontenido;
 
 public class PanelBienesInmuebles extends javax.swing.JPanel {
+    public static Object[] inmuebleedit = new Object[7];
+    RegistrarInmuebles registro = new RegistrarInmuebles();
 
     public PanelBienesInmuebles() {
         initComponents();
-
     }
 
     public void mostrarContenido(JPanel p) {
         p.setSize(750, 430);
         p.setLocation(0, 0);
-
         Panelcontenido.removeAll();
         Panelcontenido.add(p, BorderLayout.CENTER);
         Panelcontenido.revalidate();
         Panelcontenido.repaint();
     }
-    
-    public PanelBienesInmuebles(String rol) {
+
+   public PanelBienesInmuebles(String rol) {
         initComponents();
         BotonEditar.setVisible(false);
         TablaBienesInmuebles.setEnabled(false);
         if (rol.equalsIgnoreCase("CAPTADOR")) {
+            registro.leerInmuebles(TablaBienesInmuebles, registro.getDao().listado());
             BotonEditar.setVisible(true);
             TablaBienesInmuebles.setEnabled(true);
+        } else {
+                registro.leerInmuebles(TablaBienesInmuebles, registro.getDao().listado());
         }
     }
-
+    
     private void setColor(JPanel p) {
         p.setBackground(new Color(153, 153, 153));
     }
@@ -140,30 +145,30 @@ public class PanelBienesInmuebles extends javax.swing.JPanel {
         TablaBienesInmuebles.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         TablaBienesInmuebles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Estado del Inmueble", "Precio", "Dirección", "TipoServicio", "Descripcion"
+                "ID", "ID Estado del Inmueble", "Precio", "ID Dirección", "ID Descripcion"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, true, true, true
+                false, true, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -212,8 +217,23 @@ public class PanelBienesInmuebles extends javax.swing.JPanel {
 
     //ABRIR SECCIÓN EDITAR
     private void BotonEditarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonEditarMousePressed
-        PanelNuevoBienInmueble pnbi = new PanelNuevoBienInmueble(Boolean.TRUE);
-        mostrarContenido(pnbi);
+        int idcell = TablaBienesInmuebles.getSelectedRow();
+        if (idcell <= -1) {
+            JOptionPane.showMessageDialog(this, "seleccionar el inmueble a editar. \n", "AVISO", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            try {
+                System.out.println(idcell);
+                Integer id_bien= registro.getDao().getListaInmuebles().obtenerDato(idcell).getId_Bien_Inmueble();
+                String id_direccion = String.valueOf(registro.getDao().getListaInmuebles().obtenerDato(idcell).getId_direccion());
+                String id_descripcion = String.valueOf(registro.getDao().getListaInmuebles().obtenerDato(idcell).getId_descripcion());
+                String precio = String.valueOf(registro.getDao().getListaInmuebles().obtenerDato(idcell).getPrecio());
+                PanelNuevoBienInmueble pnbi = new PanelNuevoBienInmueble(id_bien,id_direccion, id_descripcion, precio);
+                mostrarContenido(pnbi);
+            } catch (Exception e) {
+            }
+        }
+//        PanelNuevoBienInmueble pnbi = new PanelNuevoBienInmueble(Boolean.TRUE);
+//        mostrarContenido(pnbi);
     }//GEN-LAST:event_BotonEditarMousePressed
     // BUSCAR
     private void BotonBuscarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonBuscarMousePressed
