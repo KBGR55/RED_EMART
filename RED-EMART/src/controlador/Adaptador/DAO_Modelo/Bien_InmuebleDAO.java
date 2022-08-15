@@ -2,6 +2,7 @@ package controlador.Adaptador.DAO_Modelo;
 
 import controlador.Adaptador.AdaptadorDao;
 import controlador.tda.lista.ListaEnlazada;
+import java.sql.PreparedStatement;
 import java.time.LocalDate;
 import java.time.temporal.TemporalQueries;
 import java.util.Date;
@@ -44,7 +45,7 @@ public class Bien_InmuebleDAO extends AdaptadorDao<Bien_Inmueble> {
     public Boolean guardar_modificar() {
         try {
             if (getInmueble().getId_Bien_Inmueble() != null) {
-                modificar(this.getInmueble());
+                modificarB(this.getInmueble());
             } else {
                 guardar(this.getInmueble());
             }
@@ -53,6 +54,32 @@ public class Bien_InmuebleDAO extends AdaptadorDao<Bien_Inmueble> {
             System.out.println("Error en guadar o modificar");
             return false;
         }
+    }
+    
+    public void modificarB(Bien_Inmueble dato) throws Exception {
+        String[] columnas = columnas();
+        String comando = "update  BIEN_INMUEBLE  SET ";
+        String datos = "";
+        for (int i = 0; i < columnas.length; i++) {
+            System.out.println("controlador.Adaptador.DAO_Modelo.Bien_InmuebleDAO.modificarB()");
+            if (!columnas[i].equalsIgnoreCase("ID_BIEN_INMUEBLE")&&!columnas[i].equalsIgnoreCase("ENCARGADO_CAPTADOR")) {
+                if (i == columnas.length - 1) {
+                    //variables += columnas[i];//id, nombres, external_id, ...
+                    datos += columnas[i] + "=" + tipoDato(columnas[i], dato);//0, "casa", "343-545
+                } else {
+                    //variables += columnas[i] + " , ";
+                    datos += columnas[i] + "=" + tipoDato(columnas[i], dato) + " , ";//0, "casa", "343-545
+                }
+            }
+        }
+        comando += datos + " where ID_BIEN_INMUEBLE = " + dato.getId_Bien_Inmueble();
+        try {
+            PreparedStatement stmt = getConexion().prepareStatement(comando);
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Error en modificar" + e);
+        }
+        System.out.println(comando);
     }
     
     public ListaEnlazada<Bien_Inmueble> listado() {
