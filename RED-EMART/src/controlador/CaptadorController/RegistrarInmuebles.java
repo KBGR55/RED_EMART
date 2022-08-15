@@ -3,12 +3,17 @@ package controlador.CaptadorController;
 import controlador.Adaptador.DAO_Modelo.Bien_InmuebleDAO;
 import controlador.Adaptador.DAO_Modelo.DescripcionDAO;
 import controlador.Adaptador.DAO_Modelo.DireccionDAO;
+import controlador.Conexion.SQLclass;
 import controlador.tda.lista.ListaEnlazada;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import modelo.Bien_Inmueble;
+import java.sql.Connection;
 import modelo.Descripcion_BienInmueble;
 import modelo.Direccion;
 
@@ -27,6 +32,7 @@ public class RegistrarInmuebles {
     private String lista[][];
     private String lista2[][];
     private Integer ID;
+    Connection conect = SQLclass.conn();
 
     public Bien_Inmueble getBien() {
         return bien;
@@ -109,7 +115,7 @@ public class RegistrarInmuebles {
         }
     }
 
-    public void registrarInmueble(Integer id_descripcion, Integer id_direccion, Date fecha,Integer empleado ,Double precio, String estado) throws Exception {
+    public void registrarInmueble(Integer id_descripcion, Integer id_direccion, Date fecha, Integer empleado, Double precio, String estado) throws Exception {
         ID = dao.listar().getSize();
         bien.setFecha_ingreso(fecha);
         bien.setPrecio(precio);
@@ -117,31 +123,67 @@ public class RegistrarInmuebles {
         bien.setId_descripcion(id_descripcion);
         bien.setEncargado_Captador(empleado);
         bien.setId_direccion(id_direccion);
-        bien = new Bien_Inmueble(ID, bien.getId_direccion(), bien.getId_descripcion(), bien.getId_estado_b(), ID, bien.getFecha_ingreso(), bien.getPrecio());
+        bien = new Bien_Inmueble(ID, bien.getId_direccion(), bien.getId_descripcion(), bien.getId_estado_b(), bien.getEncargado_Captador(), bien.getFecha_ingreso(), bien.getPrecio());
         dao.guardar(bien);
     }
 
-    public void leer(JTable table, ListaEnlazada<Bien_Inmueble> bienes, ListaEnlazada<Descripcion_BienInmueble> desc, ListaEnlazada<Direccion> dir) {
+    public Boolean modificarInmueble(Integer id_bien, Integer id_descripcion, Integer id_direccion, Date fecha, Double precio, String estado) throws Exception {
+        try {
+            ID = id_bien;
+            bien.setFecha_ingreso(fecha);
+            bien.setPrecio(precio);
+            bien.setId_estado_b(estado);
+            bien.setId_descripcion(id_descripcion);
+            bien.setId_direccion(id_direccion);
+            bien = new Bien_Inmueble(ID, bien.getId_direccion(), bien.getId_descripcion(), bien.getId_estado_b(), bien.getEncargado_Captador(), bien.getFecha_ingreso(), bien.getPrecio());
+            System.out.println("controlador.CaptadorController.RegistrarInmuebles.modificarInmueble()");
+            dao.modificarB(bien);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public Integer id_captador(String iden) {
+        try {
+            PreparedStatement leer = conect.prepareStatement("SELECT id_persona FROM persona WHERE identificacion = '" + iden + "'");
+            ResultSet resultado = leer.executeQuery();
+            if (resultado.next()) {
+                Integer captador = resultado.getInt("id_persona");
+                return captador;
+            } else {
+                JOptionPane.showMessageDialog(null, "Datos no encontrados");
+                return null;
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error en la consulta ");
+            return null;
+        }
+    }
+
+    public void leerInmuebles(JTable tableClientes, ListaEnlazada<Bien_Inmueble> clientes) {
         DefaultTableModel tabla = new DefaultTableModel();
         try {
             tabla.addColumn("ID");
-            tabla.addColumn("ID TIPO INMUEBLE");
-            tabla.addColumn("ID LUGAR");
-            tabla.addColumn("ID CAPTADOR");
-            tabla.addColumn("FECHA INGRESO");
-            tabla.addColumn("ESTADO");
-            table.setModel(tabla);
-            String datos[] = new String[6];
-
-            for (int i = 0; i < bienes.getSize(); i++) {
-                datos[0] = "" + bienes.obtenerDato(i).getId_Bien_Inmueble();
-                datos[1] = "" + desc.obtenerDato(i).getId_tipo_bien();
-                datos[2] = "" + dir.obtenerDato(i).getId_lugar();
-                datos[3] = "" + bienes.obtenerDato(i).getEncargado_Captador();
-                datos[4] = "" + bienes.obtenerDato(i).getFecha_ingreso();
-                datos[5] = "" + bienes.obtenerDato(i).getId_estado_b();
+            tabla.addColumn("Direcccion");
+            tabla.addColumn("Descripcion");
+            tabla.addColumn("Captador");
+            tabla.addColumn("Fecha ingreso");
+            tabla.addColumn("Precio");
+            tabla.addColumn("Estado");
+            tableClientes.setModel(tabla);
+            String datos[] = new String[7];
+            for (int i = 0; i < clientes.getSize(); i++) {
+                datos[0] = "" + clientes.obtenerDato(i).getId_Bien_Inmueble();
+                datos[1] = "" + clientes.obtenerDato(i).getId_descripcion();
+                datos[2] = "" + clientes.obtenerDato(i).getId_descripcion();
+                datos[3] = "" + clientes.obtenerDato(i).getEncargado_Captador();
+                datos[4] = "" + clientes.obtenerDato(i).getFecha_ingreso();
+                datos[5] = "" + clientes.obtenerDato(i).getPrecio();
+                datos[6] = "" + clientes.obtenerDato(i).getId_estado_b();
                 tabla.addRow(datos);
-                table.setModel(tabla);
+                tableClientes.setModel(tabla);
             }
         } catch (Exception e) {
             System.out.println("ERROR en cargar: " + e);
