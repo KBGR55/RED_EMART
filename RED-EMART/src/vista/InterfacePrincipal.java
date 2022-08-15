@@ -10,12 +10,14 @@ import java.time.LocalDate;
 import javax.swing.ImageIcon;
 
 import javax.swing.JPanel;
+import modelo.Empleado;
 
 public class InterfacePrincipal extends javax.swing.JFrame {
     
     private int xMouse, yMouse;
     private Boolean permiso;
     private String nameUser, rol;
+    private Empleado empleado;
     
     public InterfacePrincipal() {
         initComponents();
@@ -36,10 +38,10 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         
     }
     
-    public InterfacePrincipal(Boolean permiso, String nameUser, String rol) {
+    public InterfacePrincipal(Empleado empleado, String rol) {
         initComponents();
-        this.nameUser = nameUser;
-        this.permiso = permiso;
+        this.empleado = empleado;
+        this.nameUser = empleado.getNombres() + " "+ empleado.getApellidos();
         this.rol = rol;
         verSubtareas();
         setLocationRelativeTo(null);
@@ -51,7 +53,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         fecha.setText("Hoy es " + dia + " de " + meses[month - 1] + " del " + year);
         PanelPrincipal p1 = new PanelPrincipal(nameUser);
         mostrarContenido(p1);
-        
+
     }
     
     private void verSubtareas(String rol) {

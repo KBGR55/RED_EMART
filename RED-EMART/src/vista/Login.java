@@ -252,11 +252,9 @@ public class Login extends javax.swing.JFrame {
     private void EntrarTxTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EntrarTxTMouseClicked
         String nameExample = CajaUsuario.getText();
         String passExample = String.valueOf(CajaPassword.getPassword());
-        Object [] datos;
         try {
-            datos = empleadoDao.iniciarSesion(nameExample, passExample);
-            if (datos[0].equals(Boolean.TRUE)) {
-                nuevaVentana = new InterfacePrincipal(Boolean.TRUE, datos[1].toString(), datos[2].toString());
+            if (empleadoDao.iniciarSesion(nameExample, passExample) == true) {
+                nuevaVentana = new InterfacePrincipal(empleadoDao.getEmp(), empleadoDao.getRol());
                 nuevaVentana.setVisible(true);
                 this.dispose();
             } else {
@@ -265,7 +263,6 @@ public class Login extends javax.swing.JFrame {
         } catch (PosicionException ex) {
             System.out.println(""+ex);
         }
-
     }//GEN-LAST:event_EntrarTxTMouseClicked
 
     private void EntrarTxTMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EntrarTxTMouseEntered
